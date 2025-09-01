@@ -3,7 +3,7 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
-  --color-primary: #ded0c0;
+  --color-primary: #e6dbc9;
   --color-secondary: #565449;
   --color-neutral: #191714;
 }
