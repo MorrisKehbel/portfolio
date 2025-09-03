@@ -58,6 +58,7 @@ export const PROJECTS_DATA = [
       "/projects/pokemon/pokemon-4.png",
       "/projects/pokemon/pokemon-5.png",
       "/projects/pokemon/pokemon-6.png",
+      "/projects/pokemon/pokemon-7.png",
     ],
   },
 ];
