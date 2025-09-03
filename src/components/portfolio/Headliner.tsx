@@ -10,9 +10,7 @@ export const Headliner = () => {
         id={language}
         className="text-4xl text-text leading-[1.05] font-serif md:text-5xl lg:text-6xl"
       >
-        {typeof messages.headline === "function"
-          ? messages.headline()
-          : messages.headline}
+        {messages.headline()}
       </AnimatedText>
 
       <div className="hidden md:flex h-20 w-20 items-center justify-center rounded-full border border-black/10">

@@ -12,9 +12,31 @@ type LanguageContextProps = {
   messages: Messages;
 };
 
-type Messages = {
-  [key: string]: string | (() => React.ReactNode);
-};
+interface ProjectText {
+  title: string;
+  description: string;
+  details: string;
+}
+
+interface Projects {
+  [key: string]: ProjectText;
+}
+interface Messages {
+  headline: () => React.ReactNode;
+  contact: () => React.ReactNode;
+  contact2: () => React.ReactNode;
+  contactName: string;
+  contactName2: string;
+  contactMail: string;
+  contactCompany: string;
+  contactMsg: string;
+  contactError: string;
+  technologies: () => React.ReactNode;
+  techNew: string;
+  projectSubTitle: string;
+  projectTitle: string;
+  projects: Projects;
+}
 
 const LanguageContext = createContext<LanguageContextProps | undefined>(
   undefined
