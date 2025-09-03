@@ -1,24 +1,106 @@
-const STACK_LEFT = ["Next.js", "React", "TypeScript", "Node.js"];
-const STACK_RIGHT = ["Tailwind CSS", "Vite/TSUP", "PostgreSQL", "MongoDB"];
+"use client";
+
+import { motion, Variants } from "framer-motion";
+import StackIcon from "tech-stack-icons";
+
+import { useLanguage } from "@/context/LanguageContext";
+import { AnimatedText } from "@/components/wrapper/AnimatedText";
+
+const tech = [
+  { name: "html5", label: "HTML5" },
+  { name: "css3", label: "CSS3" },
+  { name: "js", label: "JavaScript" },
+  { name: "typescript", label: "TypeScript", new: true },
+  { name: "json", label: "JSON" },
+
+  { name: "react", label: "React.js" },
+  { name: "nextjs", label: "Next.js", new: true },
+  { name: "tailwindcss", label: "Tailwind" },
+  { name: "expressjs", label: "Express.js" },
+  { name: "vitejs", label: "Vite.js" },
+  { name: "zod", label: "Zod" },
+
+  { name: "nodejs", label: "Node.js" },
+  { name: "postgresql", label: "PostgreSQL" },
+  { name: "mongodb", label: "MongoDB" },
+  { name: "cloudinary", label: "Cloudinary" },
+
+  { name: "git", label: "Git" },
+  { name: "github", label: "GitHub" },
+  { name: "npm", label: "NPM" },
+  { name: "vercel", label: "Vercel" },
+  { name: "render", label: "Render" },
+  { name: "postman", label: "Postman" },
+  { name: "vscode", label: "VSCode" },
+  { name: "bash", label: "Bash" },
+  { name: "slack", label: "Slack" },
+
+  { name: "openai", label: "OpenAI" },
+  { name: "gemini", label: "Gemini" },
+  { name: "figma", label: "Figma" },
+];
+
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 120, damping: 20 },
+  },
+};
 
 export const TechStack = () => {
+  const { messages, language } = useLanguage();
+
   return (
-    <div className="grid grid-cols-2 gap-x-10 gap-y-2 md:grid-cols-2">
-      <div>
-        <h3 className="mb-2 text-xl font-serif">Tech Stack</h3>
-        <ul className="space-y-1 opacity-90">
-          {STACK_LEFT.map((s) => (
-            <li key={s}>• {s}</li>
-          ))}
-        </ul>
-      </div>
-      <div className="self-end">
-        <ul className="mt-7 space-y-1 opacity-90 md:mt-8">
-          {STACK_RIGHT.map((s) => (
-            <li key={s}>• {s}</li>
-          ))}
-        </ul>
-      </div>
+    <div className="h-full flex flex-col items-center justify-between">
+      <AnimatedText
+        id={language}
+        className="text-4xl text-text font-serif mt-4"
+      >
+        {typeof messages.technologies === "function"
+          ? messages.technologies()
+          : messages.technologies}
+      </AnimatedText>
+
+      <motion.div
+        className="grid grid-cols-12 gap-4"
+        variants={container}
+        initial="hidden"
+        animate="show"
+      >
+        {tech.map((itemData) => (
+          <motion.div
+            key={itemData.name}
+            className="group relative flex flex-col items-center justify-center rounded-2xl p-4 bg-black/5 dark:bg-white/5 hover:bg-black/4 dark:hover:bg-white/6 shadow-md cursor-default"
+            variants={item}
+            whileHover={{ scale: 1.1 }}
+          >
+            {itemData.new && (
+              <span className="absolute -top-2 left-1/2 -translate-x-1/2 rounded-full bg-blue-500 dark:bg-blue-700 px-2 py-0.5 text-xs font-bold text-white shadow-md select-none">
+                {messages.techNew as string}
+              </span>
+            )}
+            <StackIcon
+              name={itemData.name}
+              className="h-12 w-12 group-hover:scale-105 transition-transform duration-300"
+              variant="light"
+            />
+            <p className="mt-3 text-sm text-text font-medium opacity-20 group-hover:opacity-100 transition-opacity duration-400">
+              {itemData.label}
+            </p>
+          </motion.div>
+        ))}
+      </motion.div>
     </div>
   );
 };

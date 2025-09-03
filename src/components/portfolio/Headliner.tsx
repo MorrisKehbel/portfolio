@@ -1,10 +1,20 @@
+import { useLanguage } from "@/context/LanguageContext";
+import { AnimatedText } from "@/components/wrapper/AnimatedText";
+
 export const Headliner = () => {
+  const { messages, language } = useLanguage();
+
   return (
     <div className="grid w-full grid-cols-[1fr_auto] items-end gap-4">
-      <h1 className="text-4xl leading-[1.05] font-serif md:text-5xl lg:text-6xl">
-        Let’s build digital
-        <br /> experiences that <em className="italic">matter</em>
-      </h1>
+      <AnimatedText
+        id={language}
+        className="text-4xl text-text leading-[1.05] font-serif md:text-5xl lg:text-6xl"
+      >
+        {typeof messages.headline === "function"
+          ? messages.headline()
+          : messages.headline}
+      </AnimatedText>
+
       <div className="hidden md:flex h-20 w-20 items-center justify-center rounded-full border border-black/10">
         <svg viewBox="0 0 24 24" className="h-8 w-8" aria-hidden>
           <path
