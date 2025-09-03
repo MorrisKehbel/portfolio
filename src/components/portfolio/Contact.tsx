@@ -52,17 +52,13 @@ export const Contact = () => {
     <div className="h-full flex flex-col gap-4">
       <div>
         <AnimatedText id={language} className="text-sm text-text opacity-70">
-          {typeof messages.contact === "function"
-            ? messages.contact()
-            : messages.contact}
+          {messages.contact()}
         </AnimatedText>
         <AnimatedText
           id={language}
           className="mt-2 text-4xl text-text font-serif"
         >
-          {typeof messages.contact2 === "function"
-            ? messages.contact2()
-            : messages.contact2}
+          {messages.contact2()}
         </AnimatedText>
       </div>
       <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
