@@ -3,10 +3,10 @@ interface CardProps {
   children: React.ReactNode;
 }
 
-export const Card: React.FC<CardProps> = ({ className, children }) => {
+export const Card = ({ className, children }: CardProps) => {
   return (
     <div
-      className={`${className} rounded-2xl bg-primary p-6 outline outline-gray-700/10`}
+      className={`${className} h-full w-full rounded-2xl bg-primary p-6 overflow-hidden transition-all duration-400 outline outline-gray-700/10`}
     >
       {children}
     </div>
