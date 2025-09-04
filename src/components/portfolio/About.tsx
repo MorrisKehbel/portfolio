@@ -9,10 +9,10 @@ export const About = () => {
   const { messages, language } = useLanguage();
 
   return (
-    <div className="w-full h-full flex flex-col justify-between p-2 rounded-2xl border border-text/40">
+    <div className="w-full h-full flex flex-col justify-between items-center p-2 rounded-2xl border border-text/40">
       <AnimatedText
         id={language}
-        className="text-5xl xl:text-6xl text-text/40 font-mono select-none"
+        className="text-5xl xl:text-6xl text-text/40 font-mono select-none self-start"
       >
         {`<${messages.aboutHi}>`}
       </AnimatedText>
