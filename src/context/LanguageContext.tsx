@@ -31,6 +31,9 @@ interface Messages {
   contactCompany: string;
   contactMsg: string;
   contactError: string;
+  contactSnd: string;
+  contactLoading: string;
+  contactSuccess: string;
   technologies: () => React.ReactNode;
   techNew: string;
   projectSubTitle: string;

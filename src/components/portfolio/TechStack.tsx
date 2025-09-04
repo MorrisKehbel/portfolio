@@ -62,18 +62,16 @@ export const TechStack = () => {
   const { messages, language } = useLanguage();
 
   return (
-    <div className="h-full flex flex-col items-center justify-between">
+    <div className="h-full flex flex-col gap-6">
       <AnimatedText
         id={language}
-        className="text-4xl text-text font-serif mt-4"
+        className="text-4xl text-text font-serif mt-4 text-center"
       >
-        {typeof messages.technologies === "function"
-          ? messages.technologies()
-          : messages.technologies}
+        {messages.technologies()}
       </AnimatedText>
 
       <motion.div
-        className="grid grid-cols-12 gap-4"
+        className="grid grid-cols-[repeat(auto-fit,minmax(70px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-4"
         variants={container}
         initial="hidden"
         animate="show"
@@ -87,15 +85,15 @@ export const TechStack = () => {
           >
             {itemData.new && (
               <span className="absolute -top-2 left-1/2 -translate-x-1/2 rounded-full bg-blue-500 dark:bg-blue-700 px-2 py-0.5 text-xs font-bold text-white shadow-md select-none">
-                {messages.techNew as string}
+                {messages.techNew}
               </span>
             )}
             <StackIcon
               name={itemData.name}
-              className="h-12 w-12 group-hover:scale-105 transition-transform duration-300"
+              className="h-12 w-12 grayscale-40 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
               variant="light"
             />
-            <p className="mt-3 text-sm text-text font-medium opacity-20 group-hover:opacity-100 transition-opacity duration-400">
+            <p className="mt-3 text-sm text-text/50 font-medium group-hover:text-text/100 transition-colors duration-400">
               {itemData.label}
             </p>
           </motion.div>
