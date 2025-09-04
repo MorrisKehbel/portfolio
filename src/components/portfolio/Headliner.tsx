@@ -13,7 +13,7 @@ export const Headliner = () => {
         {messages.headline()}
       </AnimatedText>
 
-      <div className="hidden md:flex h-20 w-20 items-center justify-center rounded-full border border-black/10">
+      <div className="hidden 2xl:flex h-20 w-20 items-center justify-center rounded-full border border-black/10">
         <svg viewBox="0 0 24 24" className="h-8 w-8" aria-hidden>
           <path
             d="M8 7l-5 5 5 5M16 7l5 5-5 5"

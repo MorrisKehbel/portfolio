@@ -22,8 +22,8 @@ export const GridLayout = () => {
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setStartScale(true), 500);
-    const timer2 = setTimeout(() => setShowAll(true), 400);
+    const timer1 = setTimeout(() => setStartScale(true), 100);
+    const timer2 = setTimeout(() => setShowAll(true), 50);
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
@@ -102,7 +102,7 @@ export const GridLayout = () => {
               src="/me.png"
               alt="My Portrait"
               fill
-              sizes="(max-width: 640px) 40vw, (max-width: 1024px) 50vw, 16vw"
+              sizes="(max-width: 640px)80vw, (max-width: 1024px) 60vw, 90vw"
               priority
               className="object-cover filter grayscale-20 scale-110 hover:scale-115 translate-y-[-5%] transition-transform duration-1300 delay-300 select-none dark:opacity-85"
             />

@@ -23,3 +23,11 @@ html[data-theme="dark"] {
   -ms-overflow-style: none; /* IE, Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+input::placeholder {
+  user-select: none;
+}
+
+textarea::placeholder {
+  user-select: none;
+}

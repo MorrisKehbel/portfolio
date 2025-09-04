@@ -86,7 +86,7 @@ export const Projects = () => {
       if (moodsyncIndex !== -1) {
         setOpenIndex(moodsyncIndex);
       }
-    }, 1200);
+    }, 600);
 
     return () => clearTimeout(timer);
   }, []);
@@ -171,7 +171,7 @@ export const Projects = () => {
               key={currentImages[selectedImageIndex!]}
               src={currentImages[selectedImageIndex!]}
               alt={`Image ${selectedImageIndex}`}
-              className="max-h-[90%] max-w-[90%] rounded-lg shadow-lg"
+              className="max-h-[90%] max-w-[90%] rounded-lg shadow-lg select-none"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
@@ -330,7 +330,7 @@ export const Projects = () => {
                                   alt={`Image ${idx}`}
                                   fill
                                   sizes="(max-width: 640px) 150px, 200px"
-                                  className="object-cover"
+                                  className="object-cover select-none"
                                 />
                               </motion.button>
                             </div>

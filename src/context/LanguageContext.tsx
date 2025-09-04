@@ -23,6 +23,9 @@ interface Projects {
 }
 interface Messages {
   headline: () => React.ReactNode;
+  aboutHi: string;
+  aboutText: () => React.ReactNode;
+  aboutSubText: string;
   contact: () => React.ReactNode;
   contact2: () => React.ReactNode;
   contactName: string;

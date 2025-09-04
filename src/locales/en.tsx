@@ -6,6 +6,20 @@ export const enMessages = {
       experiences that <em className="italic">matter</em>
     </>
   ),
+
+  aboutHi: "Hey",
+  aboutText: () => (
+    <>
+      I’m <strong className="text-xl">Morris Kehbel</strong>, building scalable,
+      modern web applications that combine clean code, performance, and
+      thoughtful design. Always learning, exploring new technologies, and
+      leveraging AI to enhance user experiences.
+    </>
+  ),
+
+  aboutSubText:
+    "Currently focused on Next.js, server actions with AI integration, TypeScript and accessible UI systems.",
+
   contact: () => <>Have some questions?</>,
   contact2: () => (
     <>

@@ -51,7 +51,7 @@ export const Settings = () => {
           <button
             key={lang.code}
             onClick={() => setLanguage(lang.code)}
-            className={`group relative flex-1 min-h-12 flex items-center justify-center transition-all duration-200 ${
+            className={`group relative flex-1 min-h-12 flex items-center justify-center transition-all duration-200 select-none ${
               language !== lang.code && "cursor-pointer"
             }`}
           >

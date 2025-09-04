@@ -6,6 +6,22 @@ export const deMessages = {
       Erlebnisse schaffen, die etwas <em className="italic">bewegen</em>
     </>
   ),
+
+  aboutHi: "Moin",
+
+  aboutText: () => (
+    <>
+      Ich bin <strong className="text-xl">Morris Kehbel</strong> und entwickle
+      gerne skalierbare, moderne Webanwendungen, die sauberen Code, Performance
+      und durchdachtes Design vereinen. Stets neugierig, lerne ich neue
+      Technologien und erstelle KI-Features, um das Nutzererlebnis zu
+      verbessern.
+    </>
+  ),
+
+  aboutSubText:
+    "Momentan liegt mein Fokus auf Next.js, Server-Aktionen mit KI-Integration, TypeScript sowie nutzerfreundlichen und optisch ansprechenden UI/UX-Systemen.",
+
   contact: () => <>Haben Sie Fragen?</>,
   contact2: () => (
     <>
