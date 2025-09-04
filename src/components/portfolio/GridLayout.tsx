@@ -64,14 +64,14 @@ export const GridLayout = () => {
         transition={Slide}
       />
       <motion.div
-        className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12 lg:grid-rows-12 mx-auto p-6 h-full"
+        className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-12 2xl:grid-rows-12 mx-auto p-2"
         variants={containerVariants}
         initial="hidden"
         animate={showAll ? "visible" : "hidden"}
       >
         <motion.section
           aria-labelledby="settings"
-          className="lg:col-span-1 lg:row-span-3 lg:order-2"
+          className="2xl:col-span-1 2xl:row-span-3 md:col-span-2 md:order-2 xl:order-2 xl:col-span-1"
           variants={cardVariants}
         >
           <Card>
@@ -81,7 +81,7 @@ export const GridLayout = () => {
 
         <motion.section
           aria-labelledby="headline"
-          className="lg:col-span-6 lg:row-span-3 lg:order-1"
+          className="2xl:col-span-6 2xl:row-span-3 md:col-span-2 md:order-1 xl:order-1 xl:col-span-3"
           variants={cardVariants}
         >
           <Card className="flex items-end">
@@ -94,7 +94,7 @@ export const GridLayout = () => {
           initial={{ scale: 1.25 }}
           animate={{ scale: startScale ? 1 : 1.25 }}
           transition={{ type: "spring", stiffness: 120, damping: 20 }}
-          className="lg:col-span-2 lg:row-span-4 lg:order-5"
+          className="2xl:col-span-2 2xl:row-span-4 md:col-span-1 md:order-4 xl:order-5 xl:col-span-1 2xl:order-5"
           style={{ transformStyle: "preserve-3d", willChange: "transform" }}
         >
           <Card className="relative aspect-[1/1]">
@@ -102,16 +102,16 @@ export const GridLayout = () => {
               src="/me.png"
               alt="My Portrait"
               fill
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16vw"
+              sizes="(max-width: 640px) 40vw, (max-width: 1024px) 50vw, 16vw"
               priority
-              className="object-cover filter grayscale-20 scale-110 hover:scale-115 translate-y-[-5%] transition-transform duration-1300 delay-300 select-none dark:opacity-75"
+              className="object-cover filter grayscale-20 scale-110 hover:scale-115 translate-y-[-5%] transition-transform duration-1300 delay-300 select-none dark:opacity-85"
             />
           </Card>
         </motion.section>
 
         <motion.section
           aria-labelledby="about-me"
-          className="lg:col-span-5 lg:row-span-4 lg:order-4"
+          className="2xl:col-span-5 2xl:row-span-4 md:col-span-1 md:order-3 xl:order-4 xl:col-span-2"
           variants={cardVariants}
         >
           <Card>
@@ -121,7 +121,7 @@ export const GridLayout = () => {
 
         <motion.section
           aria-labelledby="projects-portfolio"
-          className="lg:col-span-5 lg:row-span-7 lg:order-3"
+          className="2xl:col-span-5 2xl:row-span-7 md:order-5 md:col-span-2 xl:col-span-2 2xl:order-3"
           variants={cardVariants}
         >
           <Card>
@@ -131,7 +131,7 @@ export const GridLayout = () => {
 
         <motion.section
           aria-labelledby="techstack"
-          className="lg:col-span-6 lg:row-span-5 lg:order-8"
+          className="2xl:col-span-6 2xl:row-span-5 md:order-6 md:col-span-2 xl:col-span-2 2xl:order-8"
           variants={cardVariants}
         >
           <Card>
@@ -141,7 +141,7 @@ export const GridLayout = () => {
 
         <motion.section
           aria-labelledby="social-links"
-          className="lg:col-span-1 lg:row-span-5 lg:order-6"
+          className="2xl:col-span-1 2xl:row-span-5 md:order-7 md:col-span-2 xl:col-span-1 xl:order-3 2xl:order-6"
           variants={cardVariants}
         >
           <Card>
@@ -151,7 +151,7 @@ export const GridLayout = () => {
 
         <motion.section
           aria-labelledby="contact-me"
-          className="lg:col-span-5 lg:row-span-5 lg:order-7"
+          className="2xl:col-span-5 2xl:row-span-5 md:order-8 md:col-span-2 xl:col-span-4 2xl:order-7"
           variants={cardVariants}
         >
           <Card>
