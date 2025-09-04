@@ -23,9 +23,9 @@ export const Headliner: React.FC<HeadlinerProps> = ({
 
       <button
         onClick={() => setGridShift((prev) => !prev)}
-        className="hidden 2xl:flex h-20 w-20 items-center justify-center rounded-full border border-black/10 cursor-pointer"
+        className="hidden 2xl:flex h-20 w-20 items-center justify-center rounded-full border border-text/20 cursor-pointer"
       >
-        <svg viewBox="0 0 24 24" className="h-8 w-8" aria-hidden>
+        <svg viewBox="0 0 24 24" className="h-8 w-8 text-text" aria-hidden>
           <path
             d="M8 7l-5 5 5 5M16 7l5 5-5 5"
             stroke="currentColor"
