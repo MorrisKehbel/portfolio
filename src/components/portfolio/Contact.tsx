@@ -49,7 +49,7 @@ export const Contact = () => {
   };
 
   return (
-    <div className="h-full flex flex-col gap-4">
+    <div className="h-full flex flex-col justify-evenly gap-4">
       <div>
         <AnimatedText id={language} className="text-sm text-text opacity-70">
           {messages.contact()}

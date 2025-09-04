@@ -239,7 +239,7 @@ export const Projects = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="text-text hover:text-gray-700 transition-colors"
+                      className="text-text/70 hover:text-text transition-colors"
                     >
                       <ExternalLink className="h-5 w-5" />
                     </a>
@@ -252,7 +252,7 @@ export const Projects = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="text-text hover:text-gray-700 transition-colors"
+                      className="text-text/70 hover:text-text transition-colors"
                     >
                       <Github className="h-5 w-5" />
                     </a>
