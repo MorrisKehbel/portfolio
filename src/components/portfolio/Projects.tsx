@@ -96,7 +96,7 @@ export const Projects = () => {
   const scroll = (key: string, direction: "left" | "right") => {
     const container = containerRefs.current[key];
     if (container) {
-      const scrollAmount = 200;
+      const scrollAmount = 212; // img width + gap
       container.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -127,6 +127,11 @@ export const Projects = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImageIndex(null)}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") {
+                setSelectedImageIndex(null);
+              }
+            }}
           >
             {/* close button */}
             <button
@@ -184,7 +189,7 @@ export const Projects = () => {
       </AnimatedText>
       <AnimatedText
         id={language}
-        className="text-sm text-text opacity-70 pb-6 text-center"
+        className="mt-1 text-sm text-text opacity-70 pb-6 text-center"
       >
         {messages.projectSubTitle}
       </AnimatedText>
@@ -202,6 +207,14 @@ export const Projects = () => {
               {/* Header */}
               <div
                 onClick={() => setOpenIndex(isOpen ? null : i)}
+                tabIndex={0}
+                role="button"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setOpenIndex(isOpen ? null : i);
+                  }
+                }}
                 className="flex justify-between items-center cursor-pointer"
               >
                 <div className="flex flex-col">
@@ -219,21 +232,7 @@ export const Projects = () => {
                   </AnimatedText>
                 </div>
 
-                <div className="flex items-center gap-6">
-                  {p.github ? (
-                    <a
-                      href={p.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="text-text hover:text-gray-700 transition-colors"
-                    >
-                      <Github className="h-5 w-5" />
-                    </a>
-                  ) : (
-                    <span className="h-5 w-5 invisible" />
-                  )}
-
+                <div className="flex flex-col lg:flex-row items-center ml-4 gap-6">
                   {p.href ? (
                     <a
                       href={p.href}
@@ -247,7 +246,19 @@ export const Projects = () => {
                   ) : (
                     <span className="h-5 w-5 invisible" />
                   )}
-
+                  {p.github ? (
+                    <a
+                      href={p.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-text hover:text-gray-700 transition-colors"
+                    >
+                      <Github className="h-5 w-5" />
+                    </a>
+                  ) : (
+                    <span className="h-5 w-5 invisible" />
+                  )}
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
@@ -300,13 +311,14 @@ export const Projects = () => {
                         >
                           {p.images.map((src, idx) => (
                             <div
-                              className="relative w-[200px] h-[128px] flex-shrink-0 rounded-lg overflow-hidden"
+                              className="relative w-[150px] h-[96px] sm:w-[200px] sm:h-[128px] flex-shrink-0 rounded-lg overflow-hidden"
                               key={idx}
                             >
-                              <motion.div
+                              <motion.button
+                                type="button"
                                 whileHover={{ scale: 1.25 }}
                                 transition={{ duration: 0.3 }}
-                                className="w-full h-full"
+                                className="group relative w-full h-full cursor-pointer"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   setCurrentImages(p.images!);
@@ -317,9 +329,10 @@ export const Projects = () => {
                                   src={src}
                                   alt={`Image ${idx}`}
                                   fill
+                                  sizes="(max-width: 640px) 150px, 200px"
                                   className="object-cover"
                                 />
-                              </motion.div>
+                              </motion.button>
                             </div>
                           ))}
                         </div>

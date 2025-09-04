@@ -20,6 +20,10 @@ export const deMessages = {
   contactError:
     "Es gab ein Problem beim Senden deiner Nachricht. Überprüfe bitte deine Internetverbindung oder versuche es später erneut.",
 
+  contactSnd: "Nachricht senden",
+  contactLoading: "Senden...",
+  contactSuccess: "Nachricht erfolgreich gesendet!",
+
   technologies: () => (
     <>
       <em className="italic">Kern</em> Technologien
@@ -35,18 +39,18 @@ export const deMessages = {
 
   projects: {
     portfolio: {
-      title: "Persönliches Portfolio: Interaktive Webpräsenz",
+      title: "Persönliches Portfolio: Webpräsenz",
       description:
         "Next.js, TypeScript, Tailwind und Framer Motion animierte Sektionen.",
       details:
-        "Dieses Projekt ist meine persönliche Portfolio-Website, entwickelt mit TypeScript und Next.js. Sie verfügt über ein responsives Grid-System mit animierten Sektionen dank Framer Motion, einen Dark/Light Mode + einen Sprachwechsel via Context API und eine Kontaktfunktion, die über den Next.js-Server verarbeitet wird. Ziel war es, eine übersichtliche Webseite zu schaffen, auf der alle Inhalte auf einen Blick verfügbar sind und Nutzer schnell zu den gewünschten Informationen gelangen.",
+        "Dieses Projekt ist meine persönliche Portfolio-Website, entwickelt mit TypeScript und Next.js. Sie verfügt über ein responsives Grid-System mit animierten Sektionen dank Framer Motion, einen Dark/Light Mode sowie Sprachwechsel via Context API und ein Kontaktformular, das serverseitig über Next.js API Routes verarbeitet wird. Ziel war es, eine übersichtliche, benutzerfreundliche Website zu schaffen, auf der alle Inhalte auf einen Blick verfügbar sind und Nutzer schnell zu den gewünschten Informationen gelangen.",
     },
     moodsync: {
       title: "MoodSync: Smarte Web-App für mentales Wohlbefinden",
       description:
         "React.js, Tailwind, Express.js, MongoDB (mongoose) und OpenAI API Integration.",
       details:
-        "Eine smarte Web-App für mentale Gesundheit, entwickelt in nur 4 Wochen als Gruppen-Abschlussprojekt im WBS-Trainingsprogramm. Die App nutzt tägliches Journaling und KI, um persönliche Zusammenfassungen und praktische Empfehlungen zu erstellen, die gesündere Gewohnheiten und Zielerreichung unterstützen. Das übersichtliche Dashboard bietet motivierende Tipps, zeigt wöchentliche Zusammenfassungen nach Kategorien, ermöglicht die Stimmungsverfolgung im Monatsüberblick und lässt Nutzer mit einem KI-Chatbot für individuelle Unterstützung interagieren. Alles darauf ausgelegt, Balance, Selbstreflexion und mentales Wohlbefinden zu fördern.",
+        "Eine smarte Web-App für mentale Gesundheit, entwickelt in nur 4 Wochen als Gruppen-Abschlussprojekt im WBS-Trainingsprogramm. Die App nutzt tägliches Journaling und KI, um persönliche Zusammenfassungen und praktische Empfehlungen zu erstellen, die gesunde Gewohnheiten fördern und die Zielerreichung unterstützen. Das übersichtliche Dashboard bietet motivierende Tipps, zeigt wöchentliche Zusammenfassungen nach Kategorien, ermöglicht Emotionstracking im Monatsüberblick und lässt Nutzer mit einem KI-Chatbot für individuelle Unterstützung interagieren. Alles darauf ausgelegt, Balance, Selbstreflexion und mentales Wohlbefinden zu fördern.",
     },
     pokemon: {
       title: "Pokémon Battle Game: Strategisches Online-Spiel",

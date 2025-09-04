@@ -70,18 +70,8 @@ export const GridLayout = () => {
         animate={showAll ? "visible" : "hidden"}
       >
         <motion.section
-          aria-labelledby="headline"
-          className="lg:col-span-6 lg:row-span-3"
-          variants={cardVariants}
-        >
-          <Card className="flex items-end">
-            <Headliner />
-          </Card>
-        </motion.section>
-
-        <motion.section
           aria-labelledby="settings"
-          className="lg:col-span-1 lg:row-span-3"
+          className="lg:col-span-1 lg:row-span-3 lg:order-2"
           variants={cardVariants}
         >
           <Card>
@@ -90,34 +80,24 @@ export const GridLayout = () => {
         </motion.section>
 
         <motion.section
-          aria-labelledby="projects-portfolio"
-          className="lg:col-span-5 lg:row-span-7"
+          aria-labelledby="headline"
+          className="lg:col-span-6 lg:row-span-3 lg:order-1"
           variants={cardVariants}
         >
-          <Card>
-            <Projects />
-          </Card>
-        </motion.section>
-
-        <motion.section
-          aria-labelledby="about-me"
-          className="lg:col-span-5 lg:row-span-4"
-          variants={cardVariants}
-        >
-          <Card>
-            <About />
+          <Card className="flex items-end">
+            <Headliner />
           </Card>
         </motion.section>
 
         <motion.section
           layout
-          initial={{ scale: 1.5 }}
-          animate={{ scale: startScale ? 1 : 1.5 }}
+          initial={{ scale: 1.25 }}
+          animate={{ scale: startScale ? 1 : 1.25 }}
           transition={{ type: "spring", stiffness: 120, damping: 20 }}
-          className="lg:col-span-2 lg:row-span-4"
+          className="lg:col-span-2 lg:row-span-4 lg:order-5"
           style={{ transformStyle: "preserve-3d", willChange: "transform" }}
         >
-          <Card className="relative">
+          <Card className="relative aspect-[1/1]">
             <Image
               src="/me.png"
               alt="My Portrait"
@@ -130,8 +110,38 @@ export const GridLayout = () => {
         </motion.section>
 
         <motion.section
+          aria-labelledby="about-me"
+          className="lg:col-span-5 lg:row-span-4 lg:order-4"
+          variants={cardVariants}
+        >
+          <Card>
+            <About />
+          </Card>
+        </motion.section>
+
+        <motion.section
+          aria-labelledby="projects-portfolio"
+          className="lg:col-span-5 lg:row-span-7 lg:order-3"
+          variants={cardVariants}
+        >
+          <Card>
+            <Projects />
+          </Card>
+        </motion.section>
+
+        <motion.section
+          aria-labelledby="techstack"
+          className="lg:col-span-6 lg:row-span-5 lg:order-8"
+          variants={cardVariants}
+        >
+          <Card>
+            <TechStack />
+          </Card>
+        </motion.section>
+
+        <motion.section
           aria-labelledby="social-links"
-          className="lg:col-span-1 lg:row-span-5"
+          className="lg:col-span-1 lg:row-span-5 lg:order-6"
           variants={cardVariants}
         >
           <Card>
@@ -141,21 +151,11 @@ export const GridLayout = () => {
 
         <motion.section
           aria-labelledby="contact-me"
-          className="lg:col-span-5 lg:row-span-5"
+          className="lg:col-span-5 lg:row-span-5 lg:order-7"
           variants={cardVariants}
         >
           <Card>
             <Contact />
-          </Card>
-        </motion.section>
-
-        <motion.section
-          aria-labelledby="techstack"
-          className="lg:col-span-6 lg:row-span-5"
-          variants={cardVariants}
-        >
-          <Card>
-            <TechStack />
           </Card>
         </motion.section>
       </motion.div>

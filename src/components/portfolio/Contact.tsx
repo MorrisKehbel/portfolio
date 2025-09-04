@@ -14,7 +14,7 @@ export const Contact = () => {
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
   const [message, setMessage] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "loading">("idle");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ export const Contact = () => {
       });
 
       if (res.ok) {
-        setStatus("success");
+        toast.success(messages.contactSuccess);
         setFirstName("");
         setLastName("");
         setEmail("");
@@ -36,14 +36,14 @@ export const Contact = () => {
         setMessage("");
       } else {
         setStatus("idle");
-        toast.error(messages.contactError as string);
+        toast.error(messages.contactError);
       }
     } catch (error) {
       setStatus("idle");
       if (error instanceof Error) {
         toast.error(error.message);
       } else {
-        toast.error(messages.contactError as string);
+        toast.error(messages.contactError);
       }
     }
   };
@@ -61,17 +61,20 @@ export const Contact = () => {
           {messages.contact2()}
         </AnimatedText>
       </div>
-      <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+      >
         {/* First Name */}
         <input
           type="text"
           id="firstName"
           name="firstName"
           autoComplete="given-name"
-          placeholder={messages.contactName as string}
+          placeholder={messages.contactName}
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
-          className="p-3 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-text shadow-inner border border-white/60 dark:border-white/10 transition w-full placeholder-text/50"
+          className="p-3 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-text shadow-inner border border-white/30 dark:border-white/10 transition-all w-full placeholder-text/50"
         />
 
         {/* Last Name */}
@@ -80,10 +83,10 @@ export const Contact = () => {
           id="lastName"
           name="lastName"
           autoComplete="family-name"
-          placeholder={messages.contactName2 as string}
+          placeholder={messages.contactName2}
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
-          className="p-3 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-text shadow-inner border border-white/60 dark:border-white/10 transition w-full placeholder-text/50"
+          className="p-3 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-text shadow-inner border border-white/30 dark:border-white/10 transition w-full placeholder-text/50"
         />
 
         {/* Email Address */}
@@ -92,11 +95,11 @@ export const Contact = () => {
           id="email"
           name="email"
           autoComplete="email"
-          placeholder={messages.contactMail as string}
+          placeholder={messages.contactMail}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="p-3 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-text shadow-inner border border-white/60 dark:border-white/10 transition w-full placeholder-text/50"
+          className="p-3 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-text shadow-inner border border-white/30 dark:border-white/10 transition w-full placeholder-text/50"
         />
 
         {/* Company Name */}
@@ -105,10 +108,10 @@ export const Contact = () => {
           id="company"
           name="company"
           autoComplete="organization"
-          placeholder={messages.contactCompany as string}
+          placeholder={messages.contactCompany}
           value={company}
           onChange={(e) => setCompany(e.target.value)}
-          className="p-3 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-text shadow-inner border border-white/60 dark:border-white/10 transition w-full placeholder-text/50"
+          className="p-3 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-text shadow-inner border border-white/30 dark:border-white/10 transition w-full placeholder-text/50"
         />
 
         {/* Message */}
@@ -116,11 +119,11 @@ export const Contact = () => {
           id="message"
           name="message"
           autoComplete="off"
-          placeholder={messages.contactMsg as string}
+          placeholder={messages.contactMsg}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           required
-          className="col-span-2 p-3 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-text resize-none h-40 shadow-inner border border-white/60 dark:border-white/10 transition w-full placeholder-text/50"
+          className="sm:col-span-2 p-3 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-text resize-none h-40 shadow-inner border border-white/30 dark:border-white/10 transition w-full placeholder-text/50"
         />
 
         {/* Submit Button */}
@@ -128,10 +131,10 @@ export const Contact = () => {
           type="submit"
           id="submit"
           name="submit"
-          className="col-span-2 bg-secondary/20  text-text rounded-lg p-3 mt-2 hover:bg-secondary/40 hover:shadow-md dark:hover:bg-neutral transition font-semibold w-full cursor-pointer"
+          className="sm:col-span-2 bg-secondary/20  text-text rounded-lg p-3 mt-2 hover:bg-secondary/40 hover:shadow-md dark:hover:bg-neutral transition font-semibold w-full cursor-pointer"
           disabled={status === "loading"}
         >
-          {status === "loading" ? "Sending..." : "Send Message"}
+          {status === "loading" ? messages.contactLoading : messages.contactSnd}
         </button>
       </form>
     </div>

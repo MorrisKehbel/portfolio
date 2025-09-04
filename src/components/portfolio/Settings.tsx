@@ -11,7 +11,7 @@ export const Settings = () => {
   const iconControls = useAnimation();
 
   return (
-    <div className="h-full flex flex-col gap-6 rounded-3xl">
+    <div className="h-full grid grid-cols-2 md:grid-cols-1 gap-6 rounded-3xl">
       {/* DarkMode */}
       <div className="flex-1">
         <motion.button
@@ -42,7 +42,7 @@ export const Settings = () => {
       </div>
 
       {/* Language Switch */}
-      <div className="relative w-full h-28 rounded-xl bg-neutral/20 dark:bg-neutral/70 p-1 flex flex-col items-center justify-between overflow-hidden shadow-inner border border-white/60 dark:border-white/10">
+      <div className="relative w-full h-28 rounded-xl bg-neutral/20 dark:bg-neutral/70 p-1 flex flex-col items-center justify-between overflow-hidden shadow-inner border border-white/10">
         {/* Animated Background */}
         <motion.div
           className="absolute left-1 right-1 rounded-lg bg-primary shadow-md"

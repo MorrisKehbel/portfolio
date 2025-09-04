@@ -20,6 +20,10 @@ export const enMessages = {
   contactError:
     "There was a problem sending your message. Please check your internet connection or try again later.",
 
+  contactSnd: "Send Message",
+  contactLoading: "Sending...",
+  contactSuccess: "Message sent successfully!",
+
   technologies: () => (
     <>
       <em className="italic">Core</em> Technologies
@@ -35,11 +39,11 @@ export const enMessages = {
 
   projects: {
     portfolio: {
-      title: "Personal Portfolio: Interactive Web Showcase",
+      title: "Personal Portfolio: Web Showcase",
       description:
         "Next.js, TypeScript, Tailwind and Framer Motion animated sections.",
       details:
-        "This project is my personal portfolio website, built with TypeScript and Next.js. It features a responsive grid system with animated sections using Framer Motion, a dark/light mode + language switch via Context API, and a contact form handled server-side with Next.js. The goal was to create a clear, user-friendly website where all content is available at a glance and users can quickly access the information they need.",
+        "This project is my personal portfolio website, built with TypeScript and Next.js. It features a responsive grid system with animated sections using Framer Motion, a dark/light mode and language switch via Context API, as well as a contact form powered by Next.js API Routes for server-side handling. The goal was to create a clear, user-friendly website where all content is available at a glance and users can quickly access the information they need.",
     },
     moodsync: {
       title: "MoodSync: Smart Mental Wellness Web App",
