@@ -20,6 +20,7 @@ import {
 export const GridLayout = () => {
   const [startScale, setStartScale] = useState(false);
   const [showAll, setShowAll] = useState(false);
+  const [gridShift, setGridShift] = useState(true);
 
   useEffect(() => {
     const timer1 = setTimeout(() => setStartScale(true), 100);
@@ -29,6 +30,7 @@ export const GridLayout = () => {
       clearTimeout(timer2);
     };
   }, []);
+
   const containerVariants = {
     hidden: {},
     visible: {
@@ -81,11 +83,13 @@ export const GridLayout = () => {
 
         <motion.section
           aria-labelledby="headline"
-          className="2xl:col-span-6 2xl:row-span-3 md:col-span-2 md:order-1 xl:order-1 xl:col-span-3"
+          className={` ${
+            gridShift ? "2xl:col-span-6" : "2xl:col-span-4"
+          }  2xl:row-span-3 md:col-span-2 md:order-1 xl:order-1 xl:col-span-3`}
           variants={cardVariants}
         >
           <Card className="flex items-end">
-            <Headliner />
+            <Headliner gridShift={gridShift} setGridShift={setGridShift} />
           </Card>
         </motion.section>
 
@@ -111,7 +115,9 @@ export const GridLayout = () => {
 
         <motion.section
           aria-labelledby="about-me"
-          className="2xl:col-span-5 2xl:row-span-4 md:col-span-1 md:order-3 xl:order-4 xl:col-span-2"
+          className={`${
+            gridShift ? "2xl:col-span-5" : "2xl:col-span-3"
+          } 2xl:row-span-4 md:col-span-1 md:order-3 xl:order-4 xl:col-span-2`}
           variants={cardVariants}
         >
           <Card>
@@ -121,7 +127,9 @@ export const GridLayout = () => {
 
         <motion.section
           aria-labelledby="projects-portfolio"
-          className="2xl:col-span-5 2xl:row-span-7 md:order-5 md:col-span-2 xl:col-span-2 2xl:order-3"
+          className={` ${
+            gridShift ? "2xl:col-span-5" : "2xl:col-span-7"
+          } 2xl:row-span-7 md:order-5 md:col-span-2 xl:col-span-2 2xl:order-3`}
           variants={cardVariants}
         >
           <Card>
