@@ -65,13 +65,13 @@ export const TechStack = () => {
     <div className="h-full flex flex-col gap-6">
       <AnimatedText
         id={language}
-        className="text-4xl text-text font-serif mt-4 text-center"
+        className="text-3xl md:text-4xl text-text font-serif mt-4 text-center"
       >
         {messages.technologies()}
       </AnimatedText>
 
       <motion.div
-        className="grid grid-cols-[repeat(auto-fit,minmax(70px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-4"
+        className="grid grid-cols-[repeat(auto-fit,minmax(70px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(80px,1fr))] gap-4"
         variants={container}
         initial="hidden"
         animate="show"
@@ -90,7 +90,7 @@ export const TechStack = () => {
             )}
             <StackIcon
               name={itemData.name}
-              className="h-12 w-12 grayscale-40 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
+              className="h-8 w-8 grayscale-40 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
               variant="light"
             />
             <p className="mt-3 text-sm text-text/50 font-medium group-hover:text-text/100 transition-colors duration-400">

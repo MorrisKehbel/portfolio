@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 import { Providers } from "@/context/Providers";
@@ -31,8 +32,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      suppressHydrationWarning
+      data-theme="light"
+      style={{ backgroundColor: "var(--color-neutral)" }}
+    >
       <body className={`antialiased`}>
+        <Script id="theme-loader" strategy="beforeInteractive">
+          {`
+            (function() {
+              const saved = localStorage.getItem('darkMode');
+              if (saved) {
+                document.documentElement.setAttribute('data-theme', saved === "true" ? "dark" : "light");
+              } else {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                document.documentElement.setAttribute('data-theme', prefersDark ? "dark" : "light");
+              }
+            })()
+          `}
+        </Script>
         <Providers>{children}</Providers>
       </body>
     </html>

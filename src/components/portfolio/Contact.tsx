@@ -57,7 +57,7 @@ export const Contact = () => {
         </AnimatedText>
         <AnimatedText
           id={language}
-          className="mt-2 text-4xl text-text font-serif"
+          className="mt-2 text-3xl md:text-4xl text-text font-serif"
         >
           {messages.contact2()}
         </AnimatedText>

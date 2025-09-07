@@ -18,14 +18,15 @@ const DarkModeContext = createContext<DarkModeContextType | undefined>(
 );
 
 export const DarkModeProvider = ({ children }: { children: ReactNode }) => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const saved = localStorage.getItem("darkMode");
-    if (saved) setDarkMode(saved === "true");
+    const theme = document.documentElement.getAttribute("data-theme");
+    setDarkMode(theme === "dark");
   }, []);
 
   useEffect(() => {
+    if (darkMode === null) return;
     localStorage.setItem("darkMode", darkMode.toString());
     document.documentElement.setAttribute(
       "data-theme",
@@ -33,10 +34,16 @@ export const DarkModeProvider = ({ children }: { children: ReactNode }) => {
     );
   }, [darkMode]);
 
+  const toggleDarkMode = () => {
+    setDarkMode((prev) => (prev === null ? true : !prev));
+  };
+
+  if (darkMode === null) {
+    return null;
+  }
+
   return (
-    <DarkModeContext.Provider
-      value={{ darkMode, toggleDarkMode: () => setDarkMode(!darkMode) }}
-    >
+    <DarkModeContext.Provider value={{ darkMode, toggleDarkMode }}>
       {children}
     </DarkModeContext.Provider>
   );

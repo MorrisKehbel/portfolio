@@ -80,16 +80,16 @@ export const Projects = () => {
     }),
   }));
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const moodsyncIndex = PROJECTS.findIndex((p) => p.key === "moodsync");
-      if (moodsyncIndex !== -1) {
-        setOpenIndex(moodsyncIndex);
-      }
-    }, 600);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     const moodsyncIndex = PROJECTS.findIndex((p) => p.key === "moodsync");
+  //     if (moodsyncIndex !== -1) {
+  //       setOpenIndex(moodsyncIndex);
+  //     }
+  //   }, 600);
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   const containerRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
@@ -183,7 +183,7 @@ export const Projects = () => {
       </AnimatePresence>
       <AnimatedText
         id={language}
-        className="mt-2 text-4xl text-text font-serif text-center"
+        className="mt-2 text-3xl md:text-4xl text-text font-serif text-center"
       >
         {messages.projectTitle}
       </AnimatedText>
