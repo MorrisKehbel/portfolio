@@ -17,7 +17,7 @@ export const Settings = () => {
   ];
 
   return (
-    <div className="h-full grid grid-cols-2 xl:grid-cols-1 gap-6">
+    <div className="h-full grid grid-cols-2 xl:grid-cols-1 gap-4">
       {/* DarkMode */}
       <motion.button
         onClick={toggleDarkMode}
@@ -25,21 +25,21 @@ export const Settings = () => {
         whileTap={{ scale: 0.95 }}
         onHoverStart={() => iconControls.start({ rotate: 45 })}
         onHoverEnd={() => iconControls.start({ rotate: 0 })}
-        className="w-full flex items-center justify-center bg-secondary/20 cursor-pointer rounded-xl"
+        className="w-full flex items-center justify-center bg-secondary/20 cursor-pointer rounded-xl "
       >
         <motion.div
           animate={{ rotate: 380 }}
           transition={{ duration: 2, ease: "easeInOut" }}
-          className="flex items-center justify-center"
+          className="flex items-center justify-center py-2"
         >
           <motion.div
             animate={iconControls}
             transition={{ ease: "easeInOut", duration: 0.5 }}
           >
             {darkMode ? (
-              <Moon className="text-text transition duration-200" size={42} />
+              <Moon className="text-text transition duration-200" size={34} />
             ) : (
-              <Sun className="text-text transition duration-200" size={42} />
+              <Sun className="text-text transition duration-200" size={34} />
             )}
           </motion.div>
         </motion.div>
@@ -51,7 +51,7 @@ export const Settings = () => {
           <button
             key={lang.code}
             onClick={() => setLanguage(lang.code)}
-            className={`group relative flex-1 min-h-12 flex items-center justify-center transition-all duration-200 select-none ${
+            className={`group relative flex-1 flex items-center py-2 justify-center transition-all duration-200 select-none ${
               language !== lang.code && "cursor-pointer"
             }`}
           >
@@ -63,7 +63,7 @@ export const Settings = () => {
               />
             )}
             <span
-              className={`font-bold text-lg relative z-10 transition-all duration-200 ${
+              className={`font-bold text-sm relative z-10 transition-all duration-200 ${
                 language === lang.code
                   ? "text-text"
                   : "text-text/50 group-hover:text-text/70 group-hover:scale-105"

@@ -12,18 +12,18 @@ export const About = () => {
     <div className="w-full h-full flex flex-col justify-between items-center p-2 rounded-2xl border border-text/40">
       <AnimatedText
         id={language}
-        className="text-5xl xl:text-6xl text-text/40 font-mono select-none self-start"
+        className="text-4xl xl:text-5xl text-text/40 font-mono select-none self-start"
       >
         {`<${messages.aboutHi}>`}
       </AnimatedText>
 
       <div className="text-left xl:text-center text-text p-2">
-        <AnimatedText id={language} className="my-4 text-lg">
+        <AnimatedText id={language} className="my-4 text-md md:text-lg">
           {messages.aboutText()}
         </AnimatedText>
         <AnimatedText
           id={language}
-          className="italic text-md font-semibold text-gray-500 dark:text-gray-300"
+          className="italic text-xs lg:text-base font-semibold text-gray-500 dark:text-gray-300"
         >
           {messages.aboutSubText}
         </AnimatedText>

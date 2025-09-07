@@ -66,14 +66,14 @@ export const GridLayout = () => {
         transition={Slide}
       />
       <motion.div
-        className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4 super:grid-cols-12 super:grid-rows-12 mx-auto p-2"
+        className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4 super:grid-cols-12 super:[repeat(12,minmax(0,1fr))] mx-auto p-4 min-h-screen"
         variants={containerVariants}
         initial="hidden"
         animate={showAll ? "visible" : "hidden"}
       >
         <motion.section
           aria-labelledby="settings"
-          className="super:col-span-1 super:row-span-3 md:col-span-2 md:order-2 xl:order-2 xl:col-span-1"
+          className="super:col-span-1 super:row-span-3 md:col-span-2 xl:order-2 xl:col-span-1"
           variants={cardVariants}
         >
           <Card>
@@ -85,7 +85,7 @@ export const GridLayout = () => {
           aria-labelledby="headline"
           className={` ${
             gridShift ? "super:col-span-6" : "super:col-span-4"
-          }  super:row-span-3 md:col-span-2 md:order-1 xl:order-1 xl:col-span-3`}
+          }  super:row-span-3 md:col-span-2 xl:order-1 xl:col-span-3`}
           variants={cardVariants}
         >
           <Card className="flex items-end">
@@ -95,20 +95,22 @@ export const GridLayout = () => {
 
         <motion.section
           layout
-          initial={{ scale: 1.25 }}
-          animate={{ scale: startScale ? 1 : 1.25 }}
+          initial={{ scale: 1.25, opacity: 0 }}
+          animate={{ scale: startScale ? 1 : 1.25, opacity: 1 }}
           transition={{ type: "spring", stiffness: 120, damping: 20 }}
           className="super:col-span-2 super:row-span-4 md:col-span-1 md:order-4 xl:order-5 xl:col-span-1 super:order-5"
           style={{ transformStyle: "preserve-3d", willChange: "transform" }}
         >
-          <Card className="relative aspect-[1/1]">
+          <Card className="relative aspect-[1/1] border-2 border-white/10">
+            <div className="absolute inset-3 rounded-2xl border-5 border-text/10 pointer-events-none"></div>
+
             <Image
               src="/me.png"
               alt="My Portrait"
               fill
-              sizes="(max-width: 640px)80vw, (max-width: 1024px) 60vw, 90vw"
+              sizes="(max-width: 1024px) 90vw, 50vw"
               priority
-              className="object-cover filter grayscale-20 scale-110 hover:scale-115 translate-y-[-5%] transition-transform duration-1300 delay-300 select-none dark:opacity-85"
+              className="object-cover filter grayscale-20 scale-110 hover:scale-115 translate-y-[-5%] transition-all duration-1300 delay-300 select-none dark:brightness-85"
             />
           </Card>
         </motion.section>
