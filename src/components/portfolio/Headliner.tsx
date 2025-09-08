@@ -20,7 +20,7 @@ export const Headliner = ({ gridShift, setGridShift }: HeadlinerProps) => {
 
       <button
         onClick={() => setGridShift((prev) => !prev)}
-        className="hidden 2xl:flex h-14 w-14 items-center justify-center rounded-full border border-text/20 cursor-pointer"
+        className="hidden super:flex h-14 w-14 items-center justify-center rounded-full border border-text/20 cursor-pointer"
       >
         <svg viewBox="0 0 24 24" className="h-6 w-6 text-text" aria-hidden>
           <path

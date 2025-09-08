@@ -3,17 +3,17 @@ export const enMessages = {
     <>
       Let’s build digital
       <br />
-      experiences that <em className="italic">matter</em>
+      experiences that <strong className="italic">matter</strong>
     </>
   ),
 
   aboutHi: "Hey",
   aboutText: () => (
     <>
-      I’m <strong>Morris Kehbel</strong>, building scalable, modern web
+      I’m <strong>Morris Kehbel</strong> and I develop modern, scalable web
       applications that combine clean code, performance, and thoughtful design.
-      Always learning, exploring new technologies, and leveraging AI to enhance
-      user experiences.
+      Always learning and exploring new technologies and implementing AI
+      features to enhance user experiences.
     </>
   ),
 
@@ -23,7 +23,7 @@ export const enMessages = {
   contact: () => <>Have some questions?</>,
   contact2: () => (
     <>
-      Contact <em className="italic">me</em>
+      Contact <strong className="italic">me</strong>
     </>
   ),
   contactName: "First Name",
@@ -40,13 +40,17 @@ export const enMessages = {
 
   technologies: () => (
     <>
-      <em className="italic">Core</em> Technologies
+      Skills <em className="italic font-bold">&</em> Technologies
     </>
   ),
 
   techNew: "NEW",
 
-  projectTitle: "My Projects",
+  projectTitle: () => (
+    <>
+      <strong className="italic">My</strong> Projects
+    </>
+  ),
 
   projectSubTitle:
     "A selection of recent work showcasing my skills and creativity.",

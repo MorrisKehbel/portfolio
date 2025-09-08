@@ -1,5 +1,11 @@
-import { redirect } from "next/navigation";
+"use client";
+
+import { useEffect } from "react";
 
 export default function Home() {
-  redirect("/portfolio#de");
+  useEffect(() => {
+    window.location.href = "/portfolio#de";
+  }, []);
+
+  return null;
 }

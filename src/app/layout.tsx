@@ -38,7 +38,7 @@ export default function RootLayout({
       data-theme="light"
       style={{ backgroundColor: "var(--color-neutral)" }}
     >
-      <body className={`antialiased`}>
+      <body>
         <Script id="theme-loader" strategy="beforeInteractive">
           {`
             (function() {

@@ -96,7 +96,7 @@ export const Projects = () => {
   const scroll = (key: string, direction: "left" | "right") => {
     const container = containerRefs.current[key];
     if (container) {
-      const scrollAmount = 212; // img width + gap
+      const scrollAmount = 162; // img width + gap
       container.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -185,16 +185,16 @@ export const Projects = () => {
         id={language}
         className="mt-2 text-3xl md:text-4xl text-text font-serif text-center"
       >
-        {messages.projectTitle}
+        {messages.projectTitle()}
       </AnimatedText>
       <AnimatedText
         id={language}
-        className="mt-1 text-sm text-text opacity-70 pb-6 text-center"
+        className="mt-1 text-sm text-text opacity-70 m-2 text-center"
       >
         {messages.projectSubTitle}
       </AnimatedText>
 
-      <div className="space-y-6">
+      <div>
         {PROJECTS.map((p, i) => {
           const isOpen = i === openIndex;
           const isLast = i === PROJECTS.length - 1;
@@ -202,7 +202,7 @@ export const Projects = () => {
           return (
             <div
               key={p.key}
-              className={`pb-4 ${!isLast ? "border-b border-text/40" : ""}`}
+              className={`py-4 ${!isLast ? "border-b border-text/40 " : ""}`}
             >
               {/* Header */}
               <div
@@ -226,19 +226,20 @@ export const Projects = () => {
                   </AnimatedText>
                   <AnimatedText
                     id={`${language}-${p.key}-desc`}
-                    className="mt-1 mb-4 text-sm text-text/70"
+                    className="mt-1 text-sm text-text/70"
                   >
                     {p.description}
                   </AnimatedText>
                 </div>
 
-                <div className="flex flex-col lg:flex-row items-center ml-4 gap-6">
+                <div className="flex flex-col lg:flex-row items-center mx-4 gap-6">
                   {p.href ? (
                     <a
                       href={p.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
+                      onKeyDown={(e) => e.stopPropagation()}
                       className="text-text/70 hover:text-text transition-colors"
                     >
                       <ExternalLink className="h-5 w-5" />
@@ -252,6 +253,7 @@ export const Projects = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
+                      onKeyDown={(e) => e.stopPropagation()}
                       className="text-text/70 hover:text-text transition-colors"
                     >
                       <Github className="h-5 w-5" />
@@ -263,7 +265,7 @@ export const Projects = () => {
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <ChevronDown className="h-4 w-4 text-text opacity-60" />
+                    <ChevronDown className="h-5 w-5 text-text opacity-60" />
                   </motion.div>
                 </div>
               </div>
@@ -311,7 +313,7 @@ export const Projects = () => {
                         >
                           {p.images.map((src, idx) => (
                             <div
-                              className="relative w-[150px] h-[96px] sm:w-[200px] sm:h-[128px] flex-shrink-0 rounded-lg overflow-hidden"
+                              className="relative w-[150px] h-[96px] flex-shrink-0 rounded-lg overflow-hidden"
                               key={idx}
                             >
                               <motion.button
