@@ -3,7 +3,7 @@ export const deMessages = {
     <>
       Lass uns digitale
       <br />
-      Erlebnisse schaffen, die etwas <em className="italic">bewegen</em>
+      Erlebnisse schaffen, die etwas <strong className="italic">bewegen</strong>
     </>
   ),
 
@@ -13,8 +13,8 @@ export const deMessages = {
     <>
       Ich bin <strong>Morris Kehbel</strong> und entwickle skalierbare, moderne
       Webanwendungen, die sauberen Code, Performance und durchdachtes Design
-      vereinen. Stets neugierig, lerne ich neue Technologien und erstelle
-      KI-Features, um das Nutzererlebnis zu verbessern.
+      vereinen. Immer offen für neue Technologien, entwickle ich KI-Features, um
+      das Nutzererlebnis zu verbessern.
     </>
   ),
 
@@ -24,7 +24,7 @@ export const deMessages = {
   contact: () => <>Haben Sie Fragen?</>,
   contact2: () => (
     <>
-      Kontaktieren Sie <em className="italic">mich</em>
+      Kontaktieren Sie <strong className="italic">mich</strong>
     </>
   ),
   contactName: "Vorname",
@@ -41,13 +41,17 @@ export const deMessages = {
 
   technologies: () => (
     <>
-      <em className="italic">Kern</em> Technologien
+      Expertise <strong className="italic">&</strong> Technologien
     </>
   ),
 
   techNew: "NEU",
 
-  projectTitle: "Meine Projekte",
+  projectTitle: () => (
+    <>
+      <strong className="italic">Meine</strong> Projekte
+    </>
+  ),
 
   projectSubTitle:
     "Eine Auswahl aktueller Arbeiten, die meine Fähigkeiten und Kreativität präsentieren.",

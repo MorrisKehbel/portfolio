@@ -40,7 +40,7 @@ interface Messages {
   technologies: () => React.ReactNode;
   techNew: string;
   projectSubTitle: string;
-  projectTitle: string;
+  projectTitle: () => React.ReactNode;
   projects: Projects;
 }
 

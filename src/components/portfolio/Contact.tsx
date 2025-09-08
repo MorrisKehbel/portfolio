@@ -135,7 +135,11 @@ export const Contact = () => {
           className="sm:col-span-2 bg-secondary/20  text-text rounded-lg p-3 mt-2 hover:bg-secondary/40 hover:shadow-md dark:hover:bg-neutral transition font-semibold w-full cursor-pointer select-none"
           disabled={status === "loading"}
         >
-          {status === "loading" ? messages.contactLoading : messages.contactSnd}
+          <AnimatedText id={language}>
+            {status === "loading"
+              ? messages.contactLoading
+              : messages.contactSnd}
+          </AnimatedText>
         </button>
       </form>
     </div>
