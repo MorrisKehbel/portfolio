@@ -20,7 +20,7 @@ export const enMessages = {
   aboutSubText:
     "Currently focused on Next.js, server actions with AI integration, TypeScript, Flutter Apps and accessible UI systems.",
 
-  contact: () => <>Have some questions?</>,
+  contact: "Have some questions?",
   contact2: () => (
     <>
       Contact <strong className="italic">me</strong>

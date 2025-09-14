@@ -26,7 +26,7 @@ interface Messages {
   aboutHi: string;
   aboutText: () => React.ReactNode;
   aboutSubText: string;
-  contact: () => React.ReactNode;
+  contact: string;
   contact2: () => React.ReactNode;
   contactName: string;
   contactName2: string;

@@ -21,7 +21,7 @@ export const deMessages = {
   aboutSubText:
     "Momentan liegt mein Fokus auf Next.js, Server-Aktionen mit KI-Integration, TypeScript, Flutter Apps sowie nutzerfreundlichen und optisch ansprechenden UI/UX-Systemen.",
 
-  contact: () => <>Haben Sie Fragen?</>,
+  contact: "Haben Sie Fragen?",
   contact2: () => (
     <>
       Kontaktieren Sie <strong className="italic">mich</strong>
