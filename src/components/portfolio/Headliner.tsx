@@ -2,11 +2,10 @@ import { useLanguage } from "@/context/LanguageContext";
 import { AnimatedText } from "@/components/wrapper/AnimatedText";
 
 interface HeadlinerProps {
-  gridShift: boolean;
   setGridShift: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const Headliner = ({ gridShift, setGridShift }: HeadlinerProps) => {
+export const Headliner = ({ setGridShift }: HeadlinerProps) => {
   const { messages, language } = useLanguage();
 
   return (

@@ -46,7 +46,7 @@ export const Settings = () => {
       </motion.button>
 
       {/* Language Switch */}
-      <div className="flex-1 w-full flex flex-col rounded-xl bg-neutral/20 dark:bg-neutral/70 p-1 overflow-hidden shadow-inner border border-white/10">
+      <div className="flex flex-col rounded-xl bg-neutral/20 dark:bg-neutral/70 p-1 overflow-hidden shadow-inner border border-white/10">
         {languages.map((lang) => (
           <button
             key={lang.code}

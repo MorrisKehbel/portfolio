@@ -23,12 +23,12 @@ export const GridLayout = () => {
   const [gridShift, setGridShift] = useState(true);
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setStartScale(true), 100);
-    const timer2 = setTimeout(() => setShowAll(true), 50);
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-    };
+    const timer = setTimeout(() => {
+      setShowAll(true);
+      setStartScale(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const containerVariants = {
@@ -73,6 +73,7 @@ export const GridLayout = () => {
       >
         <motion.section
           aria-labelledby="settings"
+          layout
           className="super:col-span-1 super:row-span-3 md:col-span-2 xl:order-2 xl:col-span-1"
           variants={cardVariants}
         >
@@ -83,50 +84,60 @@ export const GridLayout = () => {
 
         <motion.section
           aria-labelledby="headline"
+          layout
           className={` ${
             gridShift ? "super:col-span-6" : "super:col-span-4"
           }  super:row-span-3 md:col-span-2 xl:order-1 xl:col-span-3`}
           variants={cardVariants}
         >
           <Card className="flex items-end">
-            <Headliner gridShift={gridShift} setGridShift={setGridShift} />
+            <Headliner setGridShift={setGridShift} />
           </Card>
         </motion.section>
 
         <motion.section
           layout
-          initial={{ scale: 1.25, opacity: 0 }}
-          animate={{ scale: startScale ? 1 : 1.25, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 120, damping: 20 }}
           className="super:col-span-2 super:row-span-4 md:col-span-1 md:order-4 xl:order-5 xl:col-span-1 super:order-5"
-          style={{ transformStyle: "preserve-3d", willChange: "transform" }}
         >
-          <Card className="relative aspect-square border-2 border-white/10 overflow-hidden flex justify-center items-end">
-            <div className="absolute inset-3 rounded-2xl border-5 border-text/10 pointer-events-none"></div>
+          <motion.div
+            initial={{ scale: 1.25, opacity: 0 }}
+            animate={{ scale: startScale ? 1 : 1.25, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 120, damping: 20 }}
+            style={{
+              transformStyle: "preserve-3d",
+              willChange: "transform",
+              height: "100%",
+              width: "100%",
+            }}
+          >
+            <Card className="relative aspect-square border-2 border-white/10 overflow-hidden flex justify-center items-end">
+              <div className="absolute inset-3 rounded-2xl border-5 border-text/10 pointer-events-none"></div>
 
-            <Image
-              src="/me.png"
-              alt="My Portrait"
-              width={1500}
-              height={2000}
-              sizes="(max-width: 1024px) 90vw, 50vw"
-              priority
-              className="hidden 2xl:flex object-cover filter grayscale-20 scale-180 hover:scale-190 translate-y-[-30%] transition-all duration-1300 delay-300 select-none dark:brightness-85"
-            />
+              <Image
+                src="/me.png"
+                alt="My Portrait"
+                width={1500}
+                height={2000}
+                sizes="(max-width: 1024px) 90vw, 50vw"
+                priority
+                className="hidden 2xl:flex object-cover filter grayscale-20 scale-180 hover:scale-190 translate-y-[-30%] transition-all duration-1300 delay-300 select-none dark:brightness-85"
+              />
 
-            <Image
-              src="/me.png"
-              alt="My Portrait"
-              fill
-              sizes="(max-width: 1024px) 90vw, 50vw"
-              priority
-              className="2xl:hidden object-cover filter grayscale-20 scale-110 hover:scale-115 translate-y-[-5%] transition-all duration-1300 delay-300 select-none dark:brightness-85"
-            />
-          </Card>
+              <Image
+                src="/me.png"
+                alt="My Portrait"
+                fill
+                sizes="(max-width: 1024px) 90vw, 50vw"
+                priority
+                className="2xl:hidden object-cover filter grayscale-20 scale-110 hover:scale-115 translate-y-[-5%] transition-all duration-1300 delay-300 select-none dark:brightness-85"
+              />
+            </Card>
+          </motion.div>
         </motion.section>
 
         <motion.section
           aria-labelledby="about-me"
+          layout
           className={`${
             gridShift ? "super:col-span-5" : "super:col-span-3"
           } super:row-span-4 md:col-span-1 md:order-3 xl:order-4 xl:col-span-2 2xl:col-span-2`}
@@ -139,6 +150,7 @@ export const GridLayout = () => {
 
         <motion.section
           aria-labelledby="projects-portfolio"
+          layout
           className={` ${
             gridShift ? "super:col-span-5" : "super:col-span-7"
           } super:row-span-7 md:order-5 md:col-span-2 xl:col-span-2 super:order-3`}
