@@ -63,6 +63,22 @@ export const PROJECTS_DATA = [
   },
 ];
 
+const smoothScrollToBottom = (container: HTMLDivElement, duration = 300) => {
+  const start = container.scrollTop;
+  const end = container.scrollHeight;
+  const change = end - start;
+  const startTime = performance.now();
+
+  const animateScroll = (time: number) => {
+    const elapsed = time - startTime;
+    const progress = Math.min(elapsed / duration, 1); // 0..1
+    container.scrollTop = start + change * progress; // linear
+    if (progress < 1) requestAnimationFrame(animateScroll);
+  };
+
+  requestAnimationFrame(animateScroll);
+};
+
 export const Projects = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
@@ -70,6 +86,7 @@ export const Projects = () => {
   );
   const [currentImages, setCurrentImages] = useState<string[]>([]);
   const { messages, language } = useLanguage();
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
   const PROJECTS: Project[] = PROJECTS_DATA.map((p) => ({
     ...p,
@@ -92,7 +109,7 @@ export const Projects = () => {
   // }, []);
 
   const containerRefs = useRef<Record<string, HTMLDivElement | null>>({});
-
+  // img overflow scroll
   const scroll = (key: string, direction: "left" | "right") => {
     const container = containerRefs.current[key];
     if (container) {
@@ -116,6 +133,23 @@ export const Projects = () => {
       return () => clearTimeout(timer);
     }
   }, [language]);
+
+  // escape key to close image modal
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedImageIndex(null);
+      }
+    };
+
+    if (selectedImageIndex !== null) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedImageIndex]);
 
   return (
     <>
@@ -194,7 +228,11 @@ export const Projects = () => {
         {messages.projectSubTitle}
       </AnimatedText>
 
-      <div>
+      <div
+        ref={scrollContainerRef}
+        style={{ overflowAnchor: "none" }}
+        className="2xl:max-h-[43vh] overflow-auto scrollbar-custom mt-4 px-2"
+      >
         {PROJECTS.map((p, i) => {
           const isOpen = i === openIndex;
           const isLast = i === PROJECTS.length - 1;
@@ -281,6 +319,12 @@ export const Projects = () => {
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
+                    onAnimationComplete={() => {
+                      // scroll if scroll container exists and this dropdown is open
+                      if (scrollContainerRef.current && openIndex === i) {
+                        smoothScrollToBottom(scrollContainerRef.current, 300);
+                      }
+                    }}
                   >
                     {p.details && (
                       <AnimatedText

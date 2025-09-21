@@ -21,7 +21,7 @@ export const Settings = () => {
       {/* DarkMode */}
       <motion.button
         onClick={toggleDarkMode}
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onHoverStart={() => iconControls.start({ rotate: 45 })}
         onHoverEnd={() => iconControls.start({ rotate: 0 })}
