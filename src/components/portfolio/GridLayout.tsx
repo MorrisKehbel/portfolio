@@ -97,7 +97,7 @@ export const GridLayout = () => {
 
         <motion.section
           layout
-          className="super:col-span-2 super:row-span-4 md:col-span-1 md:order-4 xl:order-5 xl:col-span-1 super:order-5"
+          className="super:col-span-2 super:row-span-2 md:col-span-1 md:order-4 xl:order-5 xl:col-span-1 super:order-5"
         >
           <motion.div
             initial={{ scale: 1.25, opacity: 0 }}
@@ -140,7 +140,7 @@ export const GridLayout = () => {
           layout
           className={`${
             gridShift ? "super:col-span-5" : "super:col-span-3"
-          } super:row-span-4 md:col-span-1 md:order-3 xl:order-4 xl:col-span-2 2xl:col-span-2`}
+          } super:row-span-2 md:col-span-1 md:order-3 xl:order-4 xl:col-span-2 2xl:col-span-2`}
           variants={cardVariants}
         >
           <Card>
@@ -153,7 +153,7 @@ export const GridLayout = () => {
           layout
           className={` ${
             gridShift ? "super:col-span-5" : "super:col-span-7"
-          } super:row-span-7 md:order-5 md:col-span-2 xl:col-span-2 super:order-3`}
+          } super:row-span-5 md:order-5 md:col-span-2 xl:col-span-2 super:order-3`}
           variants={cardVariants}
         >
           <Card>
