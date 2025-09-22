@@ -65,7 +65,7 @@ export const TechStack = () => {
     <div className="h-full flex flex-col gap-6">
       <AnimatedText
         id={language}
-        className="text-3xl md:text-4xl text-text font-serif mt-4 text-center"
+        className="text-3xl ultra:text-4xl text-text font-serif mt-4 text-center"
       >
         {messages.technologies()}
       </AnimatedText>
@@ -79,18 +79,18 @@ export const TechStack = () => {
         {tech.map((itemData) => (
           <motion.div
             key={itemData.name}
-            className="group relative flex flex-col items-center justify-center rounded-2xl p-4 bg-black/5 dark:bg-white/5 hover:bg-black/4 dark:hover:bg-white/6 shadow-md cursor-default"
+            className="group relative flex flex-col items-center justify-center rounded-2xl p-3 ultra:p-4 bg-black/5 dark:bg-white/5 hover:bg-black/4 dark:hover:bg-white/6 shadow-md cursor-default"
             variants={item}
             whileHover={{ scale: 1.1 }}
           >
             {itemData.new && (
-              <span className="absolute -top-2 left-1/2 -translate-x-1/2 rounded-full bg-blue-500 dark:bg-blue-700 px-2 py-0.5 text-xs font-bold text-white shadow-md select-none">
+              <span className="absolute -top-3 ultra:-top-2 left-1/2 -translate-x-1/2 rounded-full bg-blue-500 dark:bg-blue-700 px-2 py-0.5 text-xs font-bold text-white shadow-md select-none">
                 {messages.techNew}
               </span>
             )}
             <StackIcon
               name={itemData.name}
-              className="h-8 w-8 grayscale-40 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
+              className="h-6 w-6 ultra:h-8 ultra:w-8 grayscale-50 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
               variant="light"
             />
             <p className="mt-3 text-sm text-text/50 font-medium group-hover:text-text/100 transition-colors duration-400">

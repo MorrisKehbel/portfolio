@@ -63,22 +63,6 @@ export const PROJECTS_DATA = [
   },
 ];
 
-const smoothScrollToBottom = (container: HTMLDivElement, duration = 300) => {
-  const start = container.scrollTop;
-  const end = container.scrollHeight;
-  const change = end - start;
-  const startTime = performance.now();
-
-  const animateScroll = (time: number) => {
-    const elapsed = time - startTime;
-    const progress = Math.min(elapsed / duration, 1); // 0..1
-    container.scrollTop = start + change * progress; // linear
-    if (progress < 1) requestAnimationFrame(animateScroll);
-  };
-
-  requestAnimationFrame(animateScroll);
-};
-
 export const Projects = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
@@ -87,6 +71,8 @@ export const Projects = () => {
   const [currentImages, setCurrentImages] = useState<string[]>([]);
   const { messages, language } = useLanguage();
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const wheelHandlers = useRef<Record<string, (e: WheelEvent) => void>>({});
+  const [userOpened, setUserOpened] = useState(false);
 
   const PROJECTS: Project[] = PROJECTS_DATA.map((p) => ({
     ...p,
@@ -96,6 +82,51 @@ export const Projects = () => {
       details: string;
     }),
   }));
+
+  const handleOpen = (i: number) => {
+    setUserOpened(true);
+    setOpenIndex(openIndex === i ? null : i);
+  };
+
+  const setContainerRef = (key: string) => (el: HTMLDivElement | null) => {
+    // cleanup previous if exists
+    const prev = containerRefs.current[key];
+    if (prev && wheelHandlers.current[key]) {
+      prev.removeEventListener("wheel", wheelHandlers.current[key]);
+      prev.style.overscrollBehavior = "";
+      delete wheelHandlers.current[key];
+    }
+
+    if (el) {
+      containerRefs.current[key] = el;
+
+      const handler = (e: WheelEvent) => {
+        // only act if there's horizontal overflow
+        const isScrollable = el.scrollWidth > el.clientWidth;
+        if (!isScrollable) return;
+
+        // prefer deltaX (trackpad horizontal), otherwise use vertical deltaY to scroll horizontally
+        const delta =
+          Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+        if (delta === 0) return;
+
+        // prevent page from scrolling
+        e.preventDefault();
+        e.stopPropagation();
+
+        // horizontal scroll
+        el.scrollLeft += delta;
+      };
+
+      wheelHandlers.current[key] = handler;
+      el.addEventListener("wheel", handler, { passive: false });
+
+      // prevent scroll chaining to parent/page (fallback)
+      el.style.overscrollBehavior = "contain";
+    } else {
+      delete containerRefs.current[key];
+    }
+  };
 
   // useEffect(() => {
   //   const timer = setTimeout(() => {
@@ -148,6 +179,20 @@ export const Projects = () => {
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedImageIndex]);
+
+  useEffect(() => {
+    if (selectedImageIndex !== null) {
+      // Modal prevent background scroll
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    // Cleanup
+    return () => {
+      document.body.style.overflow = "";
     };
   }, [selectedImageIndex]);
 
@@ -231,7 +276,7 @@ export const Projects = () => {
       <div
         ref={scrollContainerRef}
         style={{ overflowAnchor: "none" }}
-        className="2xl:max-h-[43vh] overflow-auto scrollbar-custom mt-4 px-2"
+        className="super:max-h-[41vh] overflow-auto scrollbar-custom mt-4 px-2"
       >
         {PROJECTS.map((p, i) => {
           const isOpen = i === openIndex;
@@ -239,18 +284,19 @@ export const Projects = () => {
 
           return (
             <div
+              data-project-key={p.key}
               key={p.key}
               className={`py-4 ${!isLast ? "border-b border-text/40 " : ""}`}
             >
               {/* Header */}
               <div
-                onClick={() => setOpenIndex(isOpen ? null : i)}
+                onClick={() => handleOpen(i)}
                 tabIndex={0}
                 role="button"
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
-                    setOpenIndex(isOpen ? null : i);
+                    handleOpen(i);
                   }
                 }}
                 className="flex justify-between items-center cursor-pointer"
@@ -320,10 +366,21 @@ export const Projects = () => {
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     onAnimationComplete={() => {
-                      // scroll if scroll container exists and this dropdown is open
+                      if (!userOpened) return;
+
                       if (scrollContainerRef.current && openIndex === i) {
-                        smoothScrollToBottom(scrollContainerRef.current, 300);
+                        const itemEl = scrollContainerRef.current.querySelector(
+                          `[data-project-key="${p.key}"]`
+                        ) as HTMLElement | null;
+                        if (itemEl) {
+                          itemEl.scrollIntoView({
+                            behavior: "smooth",
+                            block: "nearest",
+                          });
+                        }
                       }
+
+                      setUserOpened(false);
                     }}
                   >
                     {p.details && (
@@ -347,17 +404,12 @@ export const Projects = () => {
                         </button>
 
                         <div
-                          className="flex gap-3 overflow-x-auto overflow-y-hidden scrollbar-hide"
-                          onWheel={(e) => {
-                            e.currentTarget.scrollLeft += e.deltaY;
-                          }}
-                          ref={(el) => {
-                            containerRefs.current[p.key] = el;
-                          }}
+                          className="flex gap-3 overflow-x-auto overflow-y-hidden scrollbar-custom"
+                          ref={setContainerRef(p.key)}
                         >
                           {p.images.map((src, idx) => (
                             <div
-                              className="relative w-[150px] h-[96px] flex-shrink-0 rounded-lg overflow-hidden"
+                              className="relative w-[150px] h-[96px] flex-shrink-0 rounded-lg overflow-hidden mb-1"
                               key={idx}
                             >
                               <motion.button
