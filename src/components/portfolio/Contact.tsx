@@ -50,14 +50,14 @@ export const Contact = () => {
   };
 
   return (
-    <div className="h-full flex flex-col justify-evenly gap-4">
-      <div>
+    <div className="h-full flex flex-col justify-evenly gap-2 ultra:gap-4">
+      <div className="ml-1">
         <AnimatedText id={language} className="text-sm text-text opacity-70">
           {messages.contact}
         </AnimatedText>
         <AnimatedText
           id={language}
-          className="mt-2 text-3xl md:text-4xl text-text font-serif"
+          className="mt-2 mb-1 text-3xl ultra:text-4xl text-text font-serif"
         >
           {messages.contact2()}
         </AnimatedText>
@@ -75,7 +75,7 @@ export const Contact = () => {
           placeholder={messages.contactName}
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
-          className="p-3 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-text shadow-inner border border-white/30 dark:border-white/10 transition-all w-full placeholder-text/50"
+          className="p-4 rounded-lg h-10 ultra:h-13 bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base text-text shadow-inner border border-white/30 dark:border-white/10 transition-all w-full placeholder-text/50"
         />
 
         {/* Last Name */}
@@ -87,7 +87,7 @@ export const Contact = () => {
           placeholder={messages.contactName2}
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
-          className="p-3 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-text shadow-inner border border-white/30 dark:border-white/10 transition w-full placeholder-text/50"
+          className="p-4 rounded-lg h-10 ultra:h-13 bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base text-text shadow-inner border border-white/30 dark:border-white/10 transition w-full placeholder-text/50"
         />
 
         {/* Email Address */}
@@ -100,7 +100,7 @@ export const Contact = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="p-3 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-text shadow-inner border border-white/30 dark:border-white/10 transition w-full placeholder-text/50"
+          className="p-4 rounded-lg h-10 ultra:h-13 bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base text-text shadow-inner border border-white/30 dark:border-white/10 transition w-full placeholder-text/50"
         />
 
         {/* Company Name */}
@@ -112,7 +112,7 @@ export const Contact = () => {
           placeholder={messages.contactCompany}
           value={company}
           onChange={(e) => setCompany(e.target.value)}
-          className="p-3 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-text shadow-inner border border-white/30 dark:border-white/10 transition w-full placeholder-text/50"
+          className="p-4 rounded-lg h-10 ultra:h-13 bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base text-text shadow-inner border border-white/30 dark:border-white/10 transition w-full placeholder-text/50"
         />
 
         {/* Message */}
@@ -124,7 +124,7 @@ export const Contact = () => {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           required
-          className="sm:col-span-2 p-3 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-text resize-none h-40 shadow-inner border border-white/30 dark:border-white/10 transition w-full placeholder-text/50"
+          className="sm:col-span-2 p-4 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base text-text resize-none h-30 ultra:h-40 shadow-inner border border-white/30 dark:border-white/10 transition w-full placeholder-text/50"
         />
 
         {/* Submit Button */}
@@ -132,7 +132,7 @@ export const Contact = () => {
           type="submit"
           id="submit"
           name="submit"
-          className="sm:col-span-2 bg-secondary/20  text-text rounded-lg p-3 mt-2 hover:bg-secondary/40 hover:shadow-md dark:hover:bg-neutral transition font-semibold w-full cursor-pointer select-none"
+          className="sm:col-span-2 bg-secondary/20  text-text rounded-lg p-2 ultra:p-3 hover:shadow-md hover:bg-neutral hover:text-primary dark:hover:text-text transition font-semibold w-full cursor-pointer select-none"
           disabled={status === "loading"}
         >
           <AnimatedText id={language}>

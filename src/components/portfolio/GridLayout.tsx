@@ -66,7 +66,7 @@ export const GridLayout = () => {
         transition={Slide}
       />
       <motion.div
-        className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4 super:grid-cols-12 super:[repeat(12,minmax(0,1fr))] mx-auto p-4 min-h-screen"
+        className="grid grid-cols-1 gap-4 ultra:gap-6 md:grid-cols-2 xl:grid-cols-4 super:grid-cols-12 super:[repeat(12,minmax(0,1fr))] mx-auto p-2 ultra:p-4 min-h-screen"
         variants={containerVariants}
         initial="hidden"
         animate={showAll ? "visible" : "hidden"}
@@ -110,8 +110,8 @@ export const GridLayout = () => {
               width: "100%",
             }}
           >
-            <Card className="relative aspect-square border-2 border-white/10 overflow-hidden flex justify-center items-end">
-              <div className="absolute inset-3 rounded-2xl border-5 border-text/10 pointer-events-none"></div>
+            <Card className="relative aspect-square border-2 border-white/5 overflow-hidden flex justify-center items-end">
+              <div className="absolute inset-4 rounded-xl border-5 border-text/10 pointer-events-none"></div>
 
               <Image
                 src="/me.png"
@@ -120,7 +120,7 @@ export const GridLayout = () => {
                 height={2000}
                 sizes="(max-width: 1024px) 90vw, 50vw"
                 priority
-                className="hidden 2xl:flex object-cover filter grayscale-20 scale-180 hover:scale-190 translate-y-[-30%] transition-all duration-1300 delay-300 select-none dark:brightness-85"
+                className="hidden 2xl:flex object-cover filter grayscale-20 scale-160 hover:scale-180 translate-y-[-20%] transition-all duration-1300 delay-300 select-none dark:brightness-85"
               />
 
               <Image
@@ -153,7 +153,7 @@ export const GridLayout = () => {
           layout
           className={` ${
             gridShift ? "super:col-span-5" : "super:col-span-7"
-          } super:row-span-5 md:order-5 md:col-span-2 xl:col-span-2 super:order-3`}
+          } super:row-span-5 md:order-5 md:col-span-2 md:row-span-2 xl:col-span-2 super:order-3`}
           variants={cardVariants}
         >
           <Card>
@@ -183,7 +183,7 @@ export const GridLayout = () => {
 
         <motion.section
           aria-labelledby="contact-me"
-          className="super:col-span-5 super:row-span-5 md:order-8 md:col-span-2 xl:col-span-4 super:order-7"
+          className="super:col-span-5 super:row-span-5 md:order-8 md:col-span-2 super:order-7"
           variants={cardVariants}
         >
           <Card>
