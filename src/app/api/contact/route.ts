@@ -5,7 +5,7 @@ export const POST = async (req: NextRequest) => {
   try {
     const { firstName, lastName, email, company, message } = await req.json();
 
-    if (!firstName || !email || !message) {
+    if (!email || !message) {
       return NextResponse.json(
         {
           success: false,

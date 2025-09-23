@@ -20,7 +20,6 @@ import {
 export const GridLayout = () => {
   const [startScale, setStartScale] = useState(false);
   const [showAll, setShowAll] = useState(false);
-  const [gridShift, setGridShift] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -85,13 +84,11 @@ export const GridLayout = () => {
         <motion.section
           aria-labelledby="headline"
           layout
-          className={` ${
-            gridShift ? "super:col-span-6" : "super:col-span-4"
-          }  super:row-span-3 md:col-span-2 xl:order-1 xl:col-span-3`}
+          className="super:col-span-6 super:row-span-3 md:col-span-2 xl:order-1 xl:col-span-3"
           variants={cardVariants}
         >
           <Card className="flex items-end">
-            <Headliner setGridShift={setGridShift} />
+            <Headliner />
           </Card>
         </motion.section>
 
@@ -112,25 +109,14 @@ export const GridLayout = () => {
           >
             <Card className="relative aspect-square border-2 border-white/5 overflow-hidden flex justify-center items-end">
               <div className="absolute inset-4 rounded-xl border-5 border-text/10 pointer-events-none"></div>
-
-              {/* <Image
-                src="/me.png"
-                alt="My Portrait"
-                width={1500}
-                height={2000}
-                sizes="(max-width: 1024px) 90vw, 50vw"
-                priority
-                className="hidden 2xl:flex object-cover filter grayscale-20 scale-160 hover:scale-180 translate-y-[-20%] transition-all duration-1300 delay-300 select-none dark:brightness-85"
-              /> */}
-
               <Image
                 src="/me.png"
                 alt="My Portrait"
                 fill
                 sizes="(max-width: 768px) 90vw, 
-         (max-width: 1280px) 45vw, 
-         (max-width: 1536px) 30vw, 
-         15vw"
+         (max-width: 1280px) 75vw, 
+         (max-width: 1536px) 45vw, 
+         35vw"
                 priority
                 fetchPriority="high"
                 className="object-cover filter grayscale-20 scale-110 hover:scale-115 translate-y-[-5%] translate-x-[1%] transition-all duration-1300 delay-300 select-none dark:brightness-85"
@@ -142,9 +128,7 @@ export const GridLayout = () => {
         <motion.section
           aria-label="about-me"
           layout
-          className={`${
-            gridShift ? "super:col-span-5" : "super:col-span-3"
-          } super:row-span-2 md:col-span-1 md:order-3 xl:order-4 xl:col-span-2 2xl:col-span-2`}
+          className="super:col-span-5 super:row-span-2 md:col-span-1 md:order-3 xl:order-4 xl:col-span-2 2xl:col-span-2"
           variants={cardVariants}
         >
           <Card>
@@ -155,9 +139,7 @@ export const GridLayout = () => {
         <motion.section
           aria-label="projects-portfolio"
           layout
-          className={` ${
-            gridShift ? "super:col-span-5" : "super:col-span-7"
-          } super:row-span-5 md:order-5 md:col-span-2 md:row-span-2 xl:col-span-2 super:order-3`}
+          className="super:col-span-5 super:row-span-5 md:order-5 md:col-span-2 md:row-span-2 xl:col-span-2 super:order-3"
           variants={cardVariants}
         >
           <Card>

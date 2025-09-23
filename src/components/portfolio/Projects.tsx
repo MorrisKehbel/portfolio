@@ -278,7 +278,7 @@ export const Projects = () => {
       <div
         ref={scrollContainerRef}
         style={{ overflowAnchor: "none" }}
-        className="super:max-h-[41vh] overflow-auto scrollbar-custom mt-4 px-2"
+        className="super:max-h-[40vh] overflow-auto scrollbar-custom mt-4 px-2"
       >
         {PROJECTS.map((p, i) => {
           const isOpen = i === openIndex;
