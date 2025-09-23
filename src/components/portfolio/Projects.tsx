@@ -61,6 +61,31 @@ export const PROJECTS_DATA = [
       "/projects/pokemon/pokemon-7.png",
     ],
   },
+  {
+    key: "travelagency",
+    github: "https://github.com/MorrisKehbel/Travel-Agency-Website",
+    images: [
+      "/projects/travelagency/travelagency-1.png",
+      "/projects/travelagency/travelagency-2.png",
+      "/projects/travelagency/travelagency-3.png",
+      "/projects/travelagency/travelagency-4.png",
+      "/projects/travelagency/travelagency-5.png",
+      "/projects/travelagency/travelagency-6.png",
+    ],
+  },
+  {
+    key: "shop",
+    href: "https://react-tailwind-shop.onrender.com/",
+    github: "https://github.com/MorrisKehbel/react-tailwind-shop/tree/main",
+    images: [
+      "/projects/shop/shop-1.png",
+      "/projects/shop/shop-2.png",
+      "/projects/shop/shop-3.png",
+      "/projects/shop/shop-4.png",
+      "/projects/shop/shop-5.png",
+      "/projects/shop/shop-6.png",
+    ],
+  },
 ];
 
 export const Projects = () => {
@@ -277,8 +302,11 @@ export const Projects = () => {
 
       <div
         ref={scrollContainerRef}
-        style={{ overflowAnchor: "none" }}
-        className="super:max-h-[40vh] overflow-auto scrollbar-custom mt-4 px-2"
+        style={{
+          overflowAnchor: "none",
+          scrollbarGutter: "stable",
+        }}
+        className="super:max-h-[375px] ultra:max-h-[590px] overflow-auto scrollbar-custom mt-4 px-2"
       >
         {PROJECTS.map((p, i) => {
           const isOpen = i === openIndex;

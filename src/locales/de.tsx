@@ -77,5 +77,17 @@ export const deMessages = {
       details:
         "Ein interaktives Pokémon-Kampfspiel, entwickelt als Gruppenprojekt im WBS-Trainingsprogramm. Das Frontend wurde mit React.js (Vite), React Router und Tailwind CSS umgesetzt, das Backend basiert auf Node.js mit Express. MongoDB Atlas mit Mongoose speichert persistente Daten, während die PokeAPI Pokémon-Daten bereitstellt. Spieler können sechs Pokémon für ihr Team auswählen, gegen zufällige Gegner kämpfen und ihren Fortschritt auf dem Leaderboard verfolgen. Eine RESTful API sorgt für die Kommunikation zwischen Frontend und Backend, und durch ein strukturiertes State-Management werden strategische Kämpfe unterstützt.",
     },
+    travelagency: {
+      title: "Reise Agentur Webseite: Entdecke Reiseziele weltweit",
+      description: "React.js, Tailwind, Express.js und PostgreSQL (sequelize)",
+      details:
+        "Eine Reise-Agentur-Website, die in sehr kurzer Zeit entwickelt wurde, um eine einfache und benutzerfreundliche Reisesuche zu ermöglichen. Nutzer können über ein Suchfeld nach Reisezielen suchen, was sie zu einer Übersichtsseite mit kuratierten Destinationen führt. Alle Standortdaten werden über eine eigene API aus einer PostgreSQL-Datenbank (gehostet auf NeonDB) bereitgestellt. Das Ziel des Projekts war es, einen funktionalen und benutzerfreundlichen Prototypen zu schaffen, der schnellen Zugang zu Reiseinspiration und wichtigen Informationen ermöglicht.",
+    },
+    shop: {
+      title: "Shop Webseite: Online-Shop",
+      description: "React.js und Tailwind",
+      details:
+        "Eine Shop-Webseite mit grundlegenden E-Commerce-Funktionen. Die Produkte werden über die FakeStoreAPI geladen, nach Kategorien sortiert und in einer übersichtlichen Produktgalerie dargestellt. Über die integrierte Suchleiste lassen sich Artikel schnell finden, während Nutzer Produkte direkt in den Warenkorb legen können. Der Warenkorb bietet eine klare Übersicht aller ausgewählten Items mit der Möglichkeit, diese anzupassen oder zu entfernen. Das Projekt entstand in kurzer Zeit als funktionsfähige Demo-Anwendung.",
+    },
   },
 };

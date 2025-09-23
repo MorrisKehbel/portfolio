@@ -19,12 +19,12 @@ export const About = () => {
       </AnimatedText>
 
       <div className="text-left xl:text-center text-text p-2">
-        <AnimatedText id={language} className="my-4 text-md md:text-lg">
+        <AnimatedText id={language} className="my-4 text-base ultra:text-lg">
           {messages.aboutText()}
         </AnimatedText>
         <AnimatedText
           id={language}
-          className="italic text-xs lg:text-base font-semibold text-gray-500 dark:text-gray-300"
+          className="italic text-xs lg:text-sm ultra:text-base font-semibold text-gray-500 dark:text-gray-300"
         >
           {messages.aboutSubText}
         </AnimatedText>
