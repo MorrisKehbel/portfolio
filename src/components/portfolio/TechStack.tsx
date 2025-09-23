@@ -65,6 +65,8 @@ export const TechStack = () => {
     <div className="h-full flex flex-col gap-6">
       <AnimatedText
         id={language}
+        ariaLabelledBy="techstack"
+        as="h2"
         className="text-3xl ultra:text-4xl text-text font-serif mt-4 text-center"
       >
         {messages.technologies()}

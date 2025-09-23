@@ -262,6 +262,8 @@ export const Projects = () => {
       </AnimatePresence>
       <AnimatedText
         id={language}
+        ariaLabelledBy="projects-portfolio"
+        as="h2"
         className="mt-2 text-3xl md:text-4xl text-text font-serif text-center"
       >
         {messages.projectTitle()}
@@ -291,8 +293,9 @@ export const Projects = () => {
               {/* Header */}
               <div
                 onClick={() => handleOpen(i)}
-                tabIndex={0}
                 role="button"
+                aria-expanded={isOpen}
+                aria-controls={`project-${i}-content dropdown`}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
@@ -304,6 +307,7 @@ export const Projects = () => {
                 <div className="flex flex-col">
                   <AnimatedText
                     id={`${language}-${p.key}-title`}
+                    as="h3"
                     className="text-xl text-text font-serif"
                   >
                     {p.title}
@@ -316,15 +320,16 @@ export const Projects = () => {
                   </AnimatedText>
                 </div>
 
-                <div className="flex flex-col lg:flex-row items-center mx-4 gap-6">
+                <div className="flex flex-col lg:flex-row items-center mx-4 gap-2">
                   {p.href ? (
                     <a
+                      aria-label="Project Website Link"
                       href={p.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
                       onKeyDown={(e) => e.stopPropagation()}
-                      className="text-text/70 hover:text-text transition-colors"
+                      className="inline-flex items-center justify-center w-10 h-10 rounded text-text/70 hover:text-text transition-colors"
                     >
                       <ExternalLink className="h-5 w-5" />
                     </a>
@@ -333,24 +338,27 @@ export const Projects = () => {
                   )}
                   {p.github ? (
                     <a
+                      aria-label="Project GitHub Link"
                       href={p.github}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
                       onKeyDown={(e) => e.stopPropagation()}
-                      className="text-text/70 hover:text-text transition-colors"
+                      className="inline-flex items-center justify-center w-10 h-10 rounded text-text/70 hover:text-text transition-colors"
                     >
                       <Github className="h-5 w-5" />
                     </a>
                   ) : (
                     <span className="h-5 w-5 invisible" />
                   )}
-                  <motion.div
+                  <motion.button
+                    aria-label="Toggle Project Details"
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
+                    className="inline-flex items-center justify-center w-10 h-10 rounded text-text/70 hover:text-text transition-colors cursor-pointer"
                   >
-                    <ChevronDown className="h-5 w-5 text-text opacity-60" />
-                  </motion.div>
+                    <ChevronDown className="h-5 w-5" />
+                  </motion.button>
                 </div>
               </div>
 
@@ -359,6 +367,7 @@ export const Projects = () => {
                 {isOpen && !forceCloseDropdown && (
                   <motion.div
                     key={`${p.key}-dropdown-${language}`}
+                    aria-expanded={isOpen}
                     className="cursor-pointer overflow-hidden"
                     initial={{ opacity: 0, height: 0 }}
                     onClick={() => setOpenIndex(isOpen ? null : i)}
@@ -398,7 +407,7 @@ export const Projects = () => {
                             e.stopPropagation();
                             scroll(p.key, "left");
                           }}
-                          className="p-2 rounded shadow bg-secondary/20 text-text mr-2 transition-colors duration-200 hover:bg-secondary/40 hover:shadow-md dark:hover:bg-neutral select-none cursor-pointer"
+                          className="p-2 rounded shadow bg-secondary/20 text-text mx-2 transition-colors duration-200 hover:bg-secondary/40 hover:shadow-md dark:hover:bg-neutral select-none cursor-pointer"
                         >
                           <ChevronLeft />
                         </button>
@@ -413,8 +422,9 @@ export const Projects = () => {
                               key={idx}
                             >
                               <motion.button
-                                type="button"
-                                whileHover={{ scale: 1.25 }}
+                                aria-label={`View image ${idx + 1}`}
+                                whileHover={{ scale: 1.15 }}
+                                whileFocus={{ scale: 1.15 }}
                                 transition={{ duration: 0.3 }}
                                 className="group relative w-full h-full cursor-pointer"
                                 onClick={(e) => {
@@ -440,7 +450,7 @@ export const Projects = () => {
                             e.stopPropagation();
                             scroll(p.key, "right");
                           }}
-                          className="p-2 rounded shadow bg-secondary/20 text-text ml-2 transition-colors duration-200 hover:bg-secondary/40 hover:shadow-md dark:hover:bg-neutral select-none cursor-pointer"
+                          className="p-2 rounded shadow bg-secondary/20 text-text mx-2 transition-colors duration-200 hover:bg-secondary/40 hover:shadow-md dark:hover:bg-neutral select-none cursor-pointer"
                         >
                           <ChevronRight />
                         </button>

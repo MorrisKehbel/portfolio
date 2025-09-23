@@ -20,6 +20,8 @@ export const Settings = () => {
     <div className="h-full grid grid-cols-2 xl:grid-cols-1 gap-4">
       {/* DarkMode */}
       <motion.button
+        aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+        aria-pressed={darkMode}
         onClick={toggleDarkMode}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -46,11 +48,15 @@ export const Settings = () => {
       </motion.button>
 
       {/* Language Switch */}
-      <div className="flex flex-col rounded-xl bg-neutral/20 dark:bg-neutral/70 p-1 overflow-hidden shadow-inner border border-white/10">
+      <div
+        aria-label="Language selector"
+        className="flex flex-col rounded-xl bg-neutral/20 dark:bg-neutral/70 p-1 overflow-hidden shadow-inner border border-white/10"
+      >
         {languages.map((lang) => (
           <button
             key={lang.code}
             onClick={() => setLanguage(lang.code)}
+            aria-pressed={language === lang.code}
             className={`group relative flex-1 flex items-center py-2 justify-center transition-all duration-200 select-none ${
               language !== lang.code && "cursor-pointer"
             }`}
