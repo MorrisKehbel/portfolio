@@ -72,7 +72,7 @@ export const GridLayout = () => {
         animate={showAll ? "visible" : "hidden"}
       >
         <motion.section
-          aria-labelledby="settings"
+          aria-label="settings"
           layout
           className="super:col-span-1 super:row-span-3 md:col-span-2 xl:order-2 xl:col-span-1"
           variants={cardVariants}
@@ -113,7 +113,7 @@ export const GridLayout = () => {
             <Card className="relative aspect-square border-2 border-white/5 overflow-hidden flex justify-center items-end">
               <div className="absolute inset-4 rounded-xl border-5 border-text/10 pointer-events-none"></div>
 
-              <Image
+              {/* <Image
                 src="/me.png"
                 alt="My Portrait"
                 width={1500}
@@ -121,22 +121,26 @@ export const GridLayout = () => {
                 sizes="(max-width: 1024px) 90vw, 50vw"
                 priority
                 className="hidden 2xl:flex object-cover filter grayscale-20 scale-160 hover:scale-180 translate-y-[-20%] transition-all duration-1300 delay-300 select-none dark:brightness-85"
-              />
+              /> */}
 
               <Image
                 src="/me.png"
                 alt="My Portrait"
                 fill
-                sizes="(max-width: 1024px) 90vw, 50vw"
+                sizes="(max-width: 768px) 90vw, 
+         (max-width: 1280px) 45vw, 
+         (max-width: 1536px) 30vw, 
+         15vw"
                 priority
-                className="2xl:hidden object-cover filter grayscale-20 scale-110 hover:scale-115 translate-y-[-5%] transition-all duration-1300 delay-300 select-none dark:brightness-85"
+                fetchPriority="high"
+                className="object-cover filter grayscale-20 scale-110 hover:scale-115 translate-y-[-5%] translate-x-[1%] transition-all duration-1300 delay-300 select-none dark:brightness-85"
               />
             </Card>
           </motion.div>
         </motion.section>
 
         <motion.section
-          aria-labelledby="about-me"
+          aria-label="about-me"
           layout
           className={`${
             gridShift ? "super:col-span-5" : "super:col-span-3"
@@ -149,7 +153,7 @@ export const GridLayout = () => {
         </motion.section>
 
         <motion.section
-          aria-labelledby="projects-portfolio"
+          aria-label="projects-portfolio"
           layout
           className={` ${
             gridShift ? "super:col-span-5" : "super:col-span-7"
@@ -172,7 +176,7 @@ export const GridLayout = () => {
         </motion.section>
 
         <motion.section
-          aria-labelledby="social-links"
+          aria-label="social-links"
           className="super:col-span-1 super:row-span-5 md:order-7 md:col-span-2 xl:col-span-1 xl:order-3 super:order-6"
           variants={cardVariants}
         >

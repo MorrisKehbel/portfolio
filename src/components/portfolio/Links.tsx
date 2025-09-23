@@ -19,6 +19,7 @@ export const Links = () => {
       {socialLinks.map((link) => {
         return (
           <a
+            aria-label={`My ${link.name} Profile`}
             key={link.name}
             href={link.href}
             target="_blank"

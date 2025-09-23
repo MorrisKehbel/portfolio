@@ -12,6 +12,7 @@ export const About = () => {
     <div className="w-full h-full flex flex-col justify-between items-center p-2 rounded-xl ultra:rounded-2xl border border-text/40">
       <AnimatedText
         id={language}
+        as="span"
         className="text-4xl xl:text-5xl text-text/40 font-mono select-none self-start"
       >
         {`<${messages.aboutHi}>`}

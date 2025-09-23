@@ -57,6 +57,8 @@ export const Contact = () => {
         </AnimatedText>
         <AnimatedText
           id={language}
+          ariaLabelledBy="contact-me"
+          as="h2"
           className="mt-2 mb-1 text-3xl ultra:text-4xl text-text font-serif"
         >
           {messages.contact2()}
@@ -71,6 +73,7 @@ export const Contact = () => {
           type="text"
           id="firstName"
           name="firstName"
+          aria-label={messages.contactName}
           autoComplete="given-name"
           placeholder={messages.contactName}
           value={firstName}
@@ -83,6 +86,7 @@ export const Contact = () => {
           type="text"
           id="lastName"
           name="lastName"
+          aria-label={messages.contactName2}
           autoComplete="family-name"
           placeholder={messages.contactName2}
           value={lastName}
@@ -95,6 +99,7 @@ export const Contact = () => {
           type="email"
           id="email"
           name="email"
+          aria-label={messages.contactMail}
           autoComplete="email"
           placeholder={messages.contactMail}
           value={email}
@@ -108,6 +113,7 @@ export const Contact = () => {
           type="text"
           id="company"
           name="company"
+          aria-label={messages.contactCompany}
           autoComplete="organization"
           placeholder={messages.contactCompany}
           value={company}
@@ -119,6 +125,7 @@ export const Contact = () => {
         <textarea
           id="message"
           name="message"
+          aria-label={messages.contactMsg}
           autoComplete="off"
           placeholder={messages.contactMsg}
           value={message}

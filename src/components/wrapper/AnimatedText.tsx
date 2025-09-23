@@ -1,30 +1,48 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, MotionProps } from "framer-motion";
+import React from "react";
 
 type AnimatedTextProps = {
   id: string;
+  as?: "p" | "h1" | "h2" | "h3" | "span";
   className?: string;
   children: React.ReactNode;
-};
+  ariaLabelledBy?: string;
+} & MotionProps;
 
 export const AnimatedText = ({
-  children,
   id,
+  as = "p",
   className,
+  children,
+  ariaLabelledBy,
+  ...motionProps
 }: AnimatedTextProps) => {
+  const ComponentMap = {
+    p: motion.p,
+    h1: motion.h1,
+    h2: motion.h2,
+    h3: motion.h3,
+    span: motion.span,
+  } as const;
+
+  const Component = ComponentMap[as];
+
   return (
     <AnimatePresence mode="wait">
-      <motion.p
+      <Component
         key={id}
+        id={ariaLabelledBy}
         className={className}
         initial={{ opacity: 0, y: 5 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -5 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
+        {...motionProps}
       >
         {children}
-      </motion.p>
+      </Component>
     </AnimatePresence>
   );
 };
