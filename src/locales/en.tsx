@@ -76,5 +76,17 @@ export const enMessages = {
       details:
         "An interactive Pokémon battle game developed as a group project in the WBS training program. The frontend was built with React.js (Vite), React Router, and Tailwind CSS, while the backend uses Node.js with Express. MongoDB Atlas with Mongoose handles persistent data, and Pokémon data is provided via the PokeAPI. Players can select six Pokémon for their team, battle random opponents, and track their progress on the leaderboard. A RESTful API ensures communication between frontend and backend, and structured state management supports strategic battles.",
     },
+    travelagency: {
+      title: "Travel Agency Website: Explore Destinations Worldwide",
+      description: "React.js, Tailwind, Express.js and PostgreSQL (sequelize)",
+      details:
+        "A travel agency website built in a very short timeframe to showcase a clean and intuitive travel browsing experience. Users can search for destinations via a search field, which leads them to an overview page with curated travel locations. All location data is served from a custom API connected to a PostgreSQL database hosted on NeonDB. The goal of the project was to create a functional, user-friendly prototype that delivers quick access to travel inspiration and essential information.",
+    },
+    shop: {
+      title: "Shop Website: Online Store",
+      description: "React.js and Tailwind",
+      details:
+        "A shop website with essential e-commerce features. Products are fetched from the FakeStoreAPI, sorted into categories, and displayed in a clear product gallery. The integrated search bar allows users to quickly find items, while products can be added directly to the shopping cart. The cart provides an organized overview of all selected items with options to adjust or remove them. The project was created in a short time as a functional demo application.",
+    },
   },
 };
