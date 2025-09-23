@@ -1,11 +1,7 @@
 import { useLanguage } from "@/context/LanguageContext";
 import { AnimatedText } from "@/components/wrapper/AnimatedText";
 
-interface HeadlinerProps {
-  setGridShift: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export const Headliner = ({ setGridShift }: HeadlinerProps) => {
+export const Headliner = () => {
   const { messages, language } = useLanguage();
 
   return (
@@ -14,24 +10,10 @@ export const Headliner = ({ setGridShift }: HeadlinerProps) => {
         id={language}
         ariaLabelledBy="headline"
         as="h1"
-        className="text-3xl text-text leading-[1.05] font-serif md:text-4xl lg:text-5xl 2xl:text-[clamp(2.7rem,2.2vw,3.2rem)]"
+        className="text-4xl text-text leading-[1.05] font-serif lg:text-5xl 2xl:text-[clamp(2.7rem,2.2vw,3.2rem)]"
       >
         {messages.headline()}
       </AnimatedText>
-
-      {/* <button
-        onClick={() => setGridShift((prev) => !prev)}
-        className="hidden super:flex h-14 w-14 items-center justify-center rounded-full border border-text/20 cursor-pointer"
-      >
-        <svg viewBox="0 0 24 24" className="h-6 w-6 text-text" aria-hidden>
-          <path
-            d="M8 7l-5 5 5 5M16 7l5 5-5 5"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            fill="none"
-          />
-        </svg>
-      </button> */}
     </div>
   );
 };
