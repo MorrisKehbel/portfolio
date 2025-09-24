@@ -65,7 +65,7 @@ export const GridLayout = () => {
         transition={Slide}
       />
       <motion.div
-        className="grid grid-cols-1 gap-4 ultra:gap-6 md:grid-cols-2 xl:grid-cols-4 super:grid-cols-12 super:[repeat(12,minmax(0,1fr))] mx-auto p-2 ultra:p-4 min-h-screen super:grid-rows-[auto_1fr_auto]"
+        className="grid grid-cols-1 gap-4 ultra:gap-6 md:grid-cols-2 xl:grid-cols-4 super:grid-cols-12 super:[repeat(12,minmax(0,1fr))] mx-auto p-2 ultra:p-4 min-h-screen super:grid-rows-[1fr_auto_1fr]"
         variants={containerVariants}
         initial="hidden"
         animate={showAll ? "visible" : "hidden"}
