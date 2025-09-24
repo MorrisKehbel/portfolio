@@ -190,23 +190,6 @@ export const Projects = () => {
     }
   }, [language]);
 
-  // escape key to close image modal
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setSelectedImageIndex(null);
-      }
-    };
-
-    if (selectedImageIndex !== null) {
-      window.addEventListener("keydown", handleKeyDown);
-    }
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [selectedImageIndex]);
-
   useEffect(() => {
     if (selectedImageIndex !== null) {
       // Modal prevent background scroll
@@ -221,12 +204,62 @@ export const Projects = () => {
     };
   }, [selectedImageIndex]);
 
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (selectedImageIndex !== null && modalRef.current) {
+      const focusableElements = modalRef.current?.querySelectorAll<
+        | HTMLButtonElement
+        | HTMLInputElement
+        | HTMLSelectElement
+        | HTMLTextAreaElement
+        | HTMLAnchorElement
+      >(
+        'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
+      );
+
+      const firstElement = focusableElements?.[0];
+      const lastElement = focusableElements?.[focusableElements.length - 1];
+
+      firstElement?.focus();
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setSelectedImageIndex(null);
+        }
+
+        if (e.key === "Tab") {
+          if (!focusableElements) return;
+
+          if (e.shiftKey) {
+            // Shift + Tab
+            if (document.activeElement === firstElement) {
+              e.preventDefault();
+              lastElement?.focus();
+            }
+          } else {
+            // Tab
+            if (document.activeElement === lastElement) {
+              e.preventDefault();
+              firstElement?.focus();
+            }
+          }
+        }
+      };
+
+      document.addEventListener("keydown", handleKeyDown);
+      return () => document.removeEventListener("keydown", handleKeyDown);
+    }
+  }, [selectedImageIndex]);
+
   return (
     <>
       <AnimatePresence>
         {selectedImageIndex !== null && (
           <motion.div
-            className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
+            ref={modalRef}
+            tabIndex={-1}
+            className="fixed inset-0 bg-black/95 flex items-center justify-center z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -240,9 +273,9 @@ export const Projects = () => {
             {/* close button */}
             <button
               onClick={() => setSelectedImageIndex(null)}
-              className="absolute top-4 right-4 text-white hover:text-gray-300 cursor-pointer"
+              className="absolute top-4 right-4 text-white hover:text-gray-300 cursor-pointer z-50 p-6"
             >
-              <X className="h-12 w-12" />
+              <X className="h-12 w-12 bg-black/40 rounded-xl" />
             </button>
 
             {/* left button */}
@@ -253,9 +286,10 @@ export const Projects = () => {
                   prev === 0 ? currentImages.length - 1 : prev! - 1
                 );
               }}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 cursor-pointer z-50"
+              disabled={selectedImageIndex === null}
+              className="absolute left-8 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 cursor-pointer z-50 p-6"
             >
-              <ChevronLeft className="h-10 w-10" />
+              <ChevronLeft className="h-10 w-10 bg-black/40 rounded-xl" />
             </button>
 
             {/* right button */}
@@ -266,22 +300,55 @@ export const Projects = () => {
                   prev === currentImages.length - 1 ? 0 : prev! + 1
                 );
               }}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 cursor-pointer z-50"
+              disabled={selectedImageIndex === null}
+              className="absolute right-8 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 cursor-pointer z-50 p-6"
             >
-              <ChevronRight className="h-10 w-10" />
+              <ChevronRight className="h-10 w-10 bg-black/40 rounded-xl" />
             </button>
 
-            <motion.img
+            <motion.div
               key={currentImages[selectedImageIndex!]}
-              src={currentImages[selectedImageIndex!]}
-              alt={`Image ${selectedImageIndex}`}
-              className="max-h-[90%] max-w-[90%] rounded-lg shadow-lg select-none"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
-            />
+              className="flex items-center justify-center"
+            >
+              <Image
+                src={currentImages[selectedImageIndex!]}
+                alt={`Image ${selectedImageIndex}`}
+                width={1920}
+                height={1080}
+                className="object-contain max-w-[85vw] max-h-[90vh] w-auto h-auto rounded-xl select-none"
+                priority
+              />
+
+              {/* Preload next/prev */}
+              <Image
+                src={
+                  currentImages[
+                    (selectedImageIndex! + 1) % currentImages.length
+                  ]
+                }
+                alt=""
+                width={1}
+                height={1}
+                className="hidden"
+              />
+              <Image
+                src={
+                  currentImages[
+                    (selectedImageIndex! - 1 + currentImages.length) %
+                      currentImages.length
+                  ]
+                }
+                alt=""
+                width={1}
+                height={1}
+                className="hidden"
+              />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -306,7 +373,7 @@ export const Projects = () => {
           overflowAnchor: "none",
           scrollbarGutter: "stable",
         }}
-        className="super:max-h-[375px] ultra:max-h-[590px] overflow-auto scrollbar-custom mt-4 px-2"
+        className="super:min-h-[375px] super:max-h-[36vh] ultra:min-h-[590px] ultra:max-h-[44vh] overflow-auto scrollbar-custom mt-4 px-2"
       >
         {PROJECTS.map((p, i) => {
           const isOpen = i === openIndex;
@@ -441,35 +508,31 @@ export const Projects = () => {
                         </button>
 
                         <div
-                          className="flex gap-3 overflow-x-auto overflow-y-hidden scrollbar-custom"
+                          className="flex gap-3 overflow-x-auto overflow-y-hidden scrollbar-custom p-2"
                           ref={setContainerRef(p.key)}
                         >
                           {p.images.map((src, idx) => (
-                            <div
-                              className="relative w-[150px] h-[96px] flex-shrink-0 rounded-lg overflow-hidden mb-1"
+                            <motion.button
+                              aria-label={`View image ${idx + 1}`}
+                              className="relative flex-shrink-0 w-[150px] h-[96px] rounded-lg mb-1 cursor-pointer overflow-hidden focus:outline-auto focus:outline-offset-2"
+                              whileHover={{ scale: 1.15 }}
+                              whileFocus={{ scale: 1.05 }}
+                              transition={{ duration: 0.3 }}
                               key={idx}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setCurrentImages(p.images!);
+                                setSelectedImageIndex(idx);
+                              }}
                             >
-                              <motion.button
-                                aria-label={`View image ${idx + 1}`}
-                                whileHover={{ scale: 1.15 }}
-                                whileFocus={{ scale: 1.15 }}
-                                transition={{ duration: 0.3 }}
-                                className="group relative w-full h-full cursor-pointer"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setCurrentImages(p.images!);
-                                  setSelectedImageIndex(idx);
-                                }}
-                              >
-                                <Image
-                                  src={src}
-                                  alt={`Image ${idx}`}
-                                  fill
-                                  sizes="(max-width: 640px) 150px, 200px"
-                                  className="object-cover select-none"
-                                />
-                              </motion.button>
-                            </div>
+                              <Image
+                                src={src}
+                                alt={`Image ${idx}`}
+                                fill
+                                sizes="(max-width: 640px) 150px, 200px"
+                                className="object-cover select-none rounded-lg"
+                              />
+                            </motion.button>
                           ))}
                         </div>
 
