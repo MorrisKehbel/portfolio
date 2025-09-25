@@ -62,12 +62,12 @@ export const TechStack = () => {
   const { messages, language } = useLanguage();
 
   return (
-    <div className="h-full flex flex-col gap-6">
+    <div className="h-full flex flex-col justify-evenly gap-2 ultra:gap-4">
       <AnimatedText
         id={language}
         ariaLabelledBy="techstack"
         as="h2"
-        className="text-3xl ultra:text-4xl text-text font-serif mt-4 text-center"
+        className="text-3xl ultra:text-4xl text-text font-serif text-center"
       >
         {messages.technologies()}
       </AnimatedText>

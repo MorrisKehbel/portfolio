@@ -59,7 +59,7 @@ export const Contact = () => {
           id={language}
           ariaLabelledBy="contact-me"
           as="h2"
-          className="mt-2 mb-1 text-3xl ultra:text-4xl text-text font-serif"
+          className="mt-2 text-3xl ultra:text-4xl text-text font-serif"
         >
           {messages.contact2()}
         </AnimatedText>
