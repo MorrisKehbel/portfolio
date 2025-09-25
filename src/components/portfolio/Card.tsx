@@ -6,7 +6,7 @@ interface CardProps {
 export const Card = ({ className, children }: CardProps) => {
   return (
     <div
-      className={`${className} h-full w-full rounded-xl ultra:rounded-2xl bg-gradient-to-tr from-primary to-[#e6dbd0] dark:to-[#2a2a2c] p-3 ultra:p-4 overflow-hidden transition-all duration-400 outline outline-gray-700/10 shadow-lg shadow-black/20`}
+      className={`${className} h-full w-full rounded-xl ultra:rounded-2xl bg-gradient-to-tr from-primary to-[#e6dbd2] dark:to-[#2a2a2e] p-3 ultra:p-4 overflow-hidden transition-all duration-400 outline outline-gray-700/10 shadow-lg shadow-black/20`}
     >
       {children}
     </div>

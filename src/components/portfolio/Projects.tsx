@@ -35,16 +35,16 @@ export const PROJECTS_DATA = [
     href: "https://moodsync-w23y.onrender.com/",
     github: "https://github.com/MorrisKehbel/MoodSync",
     images: [
-      "/projects/moodsync/moodsync-1.png",
-      "/projects/moodsync/moodsync-2.png",
-      "/projects/moodsync/moodsync-3.png",
-      "/projects/moodsync/moodsync-4.png",
-      "/projects/moodsync/moodsync-5.png",
-      "/projects/moodsync/moodsync-6.png",
-      "/projects/moodsync/moodsync-7.png",
-      "/projects/moodsync/moodsync-8.png",
-      "/projects/moodsync/moodsync-9.png",
-      "/projects/moodsync/moodsync-10.png",
+      "/projects/moodsync/moodsync-1.webp",
+      "/projects/moodsync/moodsync-2.webp",
+      "/projects/moodsync/moodsync-3.webp",
+      "/projects/moodsync/moodsync-4.webp",
+      "/projects/moodsync/moodsync-5.webp",
+      "/projects/moodsync/moodsync-6.webp",
+      "/projects/moodsync/moodsync-7.webp",
+      "/projects/moodsync/moodsync-8.webp",
+      "/projects/moodsync/moodsync-9.webp",
+      "/projects/moodsync/moodsync-10.webp",
     ],
   },
   {
@@ -52,25 +52,25 @@ export const PROJECTS_DATA = [
     href: "https://pokemon-battlegame-frontend.onrender.com/",
     github: "https://github.com/MorrisKehbel/pokemon_battlegame_frontend",
     images: [
-      "/projects/pokemon/pokemon-1.png",
-      "/projects/pokemon/pokemon-2.png",
-      "/projects/pokemon/pokemon-3.png",
-      "/projects/pokemon/pokemon-4.png",
-      "/projects/pokemon/pokemon-5.png",
-      "/projects/pokemon/pokemon-6.png",
-      "/projects/pokemon/pokemon-7.png",
+      "/projects/pokemon/pokemon-1.webp",
+      "/projects/pokemon/pokemon-2.webp",
+      "/projects/pokemon/pokemon-3.webp",
+      "/projects/pokemon/pokemon-4.webp",
+      "/projects/pokemon/pokemon-5.webp",
+      "/projects/pokemon/pokemon-6.webp",
+      "/projects/pokemon/pokemon-7.webp",
     ],
   },
   {
     key: "travelagency",
     github: "https://github.com/MorrisKehbel/Travel-Agency-Website",
     images: [
-      "/projects/travelagency/travelagency-1.png",
-      "/projects/travelagency/travelagency-2.png",
-      "/projects/travelagency/travelagency-3.png",
-      "/projects/travelagency/travelagency-4.png",
-      "/projects/travelagency/travelagency-5.png",
-      "/projects/travelagency/travelagency-6.png",
+      "/projects/travelagency/travelagency-1.webp",
+      "/projects/travelagency/travelagency-2.webp",
+      "/projects/travelagency/travelagency-3.webp",
+      "/projects/travelagency/travelagency-4.webp",
+      "/projects/travelagency/travelagency-5.webp",
+      "/projects/travelagency/travelagency-6.webp",
     ],
   },
   {
@@ -78,12 +78,12 @@ export const PROJECTS_DATA = [
     href: "https://react-tailwind-shop.onrender.com/",
     github: "https://github.com/MorrisKehbel/react-tailwind-shop/tree/main",
     images: [
-      "/projects/shop/shop-1.png",
-      "/projects/shop/shop-2.png",
-      "/projects/shop/shop-3.png",
-      "/projects/shop/shop-4.png",
-      "/projects/shop/shop-5.png",
-      "/projects/shop/shop-6.png",
+      "/projects/shop/shop-1.webp",
+      "/projects/shop/shop-2.webp",
+      "/projects/shop/shop-3.webp",
+      "/projects/shop/shop-4.webp",
+      "/projects/shop/shop-5.webp",
+      "/projects/shop/shop-6.webp",
     ],
   },
 ];
@@ -318,7 +318,7 @@ export const Projects = () => {
               <Image
                 src={currentImages[selectedImageIndex!]}
                 alt={`Image ${selectedImageIndex}`}
-                width={1920}
+                width={2560}
                 height={1080}
                 className="object-contain max-w-[85vw] max-h-[90vh] w-auto h-auto rounded-xl select-none"
                 priority
@@ -372,8 +372,8 @@ export const Projects = () => {
         style={{
           overflowAnchor: "none",
           scrollbarGutter: "stable",
-        }}
-        className="super:min-h-[375px] super:max-h-[36vh] ultra:min-h-[590px] ultra:max-h-[44vh] overflow-auto scrollbar-custom mt-4 px-2"
+        }} // 46
+        className="super:min-h-[450px] super:max-h-[41vh] ultra:min-h-[590px] ultra:max-h-[46vh] overflow-auto scrollbar-custom mt-4 px-2"
       >
         {PROJECTS.map((p, i) => {
           const isOpen = i === openIndex;
@@ -496,7 +496,10 @@ export const Projects = () => {
                       </AnimatedText>
                     )}
                     {p.images && (
-                      <div className="relative flex items-center">
+                      <div
+                        onClick={(e) => e.stopPropagation()}
+                        className="relative flex items-center"
+                      >
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
