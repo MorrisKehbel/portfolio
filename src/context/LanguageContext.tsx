@@ -34,6 +34,9 @@ interface Messages {
   contactCompany: string;
   contactMsg: string;
   contactError: string;
+  contactError2: string;
+  contactErrorEmail: string;
+  contactErrorMsg: string;
   contactSnd: string;
   contactLoading: string;
   contactSuccess: string;

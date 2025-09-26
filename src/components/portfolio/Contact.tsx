@@ -15,10 +15,34 @@ export const Contact = () => {
   const [company, setCompany] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "loading">("idle");
+  const [errors, setErrors] = useState({ email: false, message: false });
+
+  const validate = () => {
+    const newErrors = { email: false, message: false };
+
+    if (!email || !/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = true;
+    }
+
+    if (!message.trim()) {
+      newErrors.message = true;
+    }
+
+    setErrors(newErrors);
+    return !newErrors.email && !newErrors.message;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
+
+    if (!validate()) {
+      setStatus("idle");
+      toast.error(messages.contactError2);
+      return;
+    }
+
+    setErrors({ email: false, message: false });
 
     try {
       const res = await fetch("/api/contact", {
@@ -51,7 +75,7 @@ export const Contact = () => {
 
   return (
     <div className="h-full flex flex-col justify-evenly gap-2 ultra:gap-4">
-      <div className="ml-1">
+      <div className="ml-1 mb-4">
         <AnimatedText id={language} className="text-sm text-text opacity-70">
           {messages.contact}
         </AnimatedText>
@@ -59,7 +83,7 @@ export const Contact = () => {
           id={language}
           ariaLabelledBy="contact-me"
           as="h2"
-          className="mt-2 text-3xl ultra:text-4xl text-text font-serif"
+          className="mt-2 text-3xl md:text-4xl text-text font-serif"
         >
           {messages.contact2()}
         </AnimatedText>
@@ -101,11 +125,16 @@ export const Contact = () => {
           name="email"
           aria-label={messages.contactMail}
           autoComplete="email"
-          placeholder={messages.contactMail}
+          placeholder={
+            errors.email ? messages.contactErrorEmail : messages.contactMail
+          }
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
-          className="p-4 rounded-lg h-10 ultra:h-13 bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base text-text shadow-inner border border-white/30 dark:border-white/10 transition w-full placeholder-text/50"
+          className={`p-4 rounded-lg h-10 ultra:h-13 bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base text-text shadow-inner transition w-full ${
+            errors.email && !/\S+@\S+\.\S+/.test(email)
+              ? "border-2 border-red-400/50 animate-pulse placeholder-red-400"
+              : "border border-white/30 dark:border-white/10 placeholder-text/50"
+          }   `}
         />
 
         {/* Company Name */}
@@ -127,11 +156,16 @@ export const Contact = () => {
           name="message"
           aria-label={messages.contactMsg}
           autoComplete="off"
-          placeholder={messages.contactMsg}
+          placeholder={
+            errors.message ? messages.contactErrorMsg : messages.contactMsg
+          }
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          required
-          className="sm:col-span-2 p-4 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base text-text resize-none h-30 ultra:h-40 shadow-inner border border-white/30 dark:border-white/10 transition w-full placeholder-text/50"
+          className={`sm:col-span-2 p-4 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base text-text resize-none h-30 ultra:h-40 shadow-inner transition w-full ${
+            errors.message && !message.trim()
+              ? "border-2 border-red-400/50 animate-pulse placeholder-red-400"
+              : "border border-white/30 dark:border-white/10 placeholder-text/50"
+          }   `}
         />
 
         {/* Submit Button */}

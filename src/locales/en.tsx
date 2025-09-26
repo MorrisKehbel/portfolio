@@ -33,6 +33,9 @@ export const enMessages = {
   contactMsg: "Your Message",
   contactError:
     "There was a problem sending your message. Please check your internet connection or try again later.",
+  contactError2: "Please enter a valid email and message.",
+  contactErrorEmail: "Please enter a valid email address.",
+  contactErrorMsg: "Please enter a message.",
 
   contactSnd: "Send Message",
   contactLoading: "Sending...",
