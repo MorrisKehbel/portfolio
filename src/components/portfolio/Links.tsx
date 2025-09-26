@@ -26,7 +26,7 @@ export const Links = () => {
             rel="noopener noreferrer"
             className="flex super:flex-col items-center justify-center gap-2 rounded-xl bg-secondary/20 p-4 text-text text-sm font-medium transition-colors duration-200 hover:bg-neutral hover:text-primary dark:hover:text-text select-none"
           >
-            <link.icon className="h-4 w-4" />
+            <link.icon className="h-4 w-4 super:h-6 super:w-6" />
             <p>{link.name}</p>
           </a>
         );

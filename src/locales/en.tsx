@@ -64,7 +64,7 @@ export const enMessages = {
       description:
         "Next.js, TypeScript, Tailwind and Framer Motion animated sections.",
       details:
-        "This project is my personal portfolio website, built with TypeScript and Next.js. It features a responsive grid system with animated sections using Framer Motion, a dark/light mode and language switch via Context API, as well as a contact form powered by Next.js API Routes for server-side handling. The goal was to create a clear, user-friendly website where all content is available at a glance and users can quickly access the information they need.",
+        "This project is my personal portfolio website, built with Next.js and TypeScript. It features a responsive grid system with animated sections using Framer Motion, a dark/light mode and language switch via Context API, as well as a contact form powered by Next.js API Routes for server-side handling. The goal was to create a clear, user-friendly website where all content is available at a glance and users can quickly access the information they need.",
     },
     moodsync: {
       title: "MoodSync: Smart Mental Wellness Web App",
@@ -89,7 +89,7 @@ export const enMessages = {
       title: "Shop Website: Online Store",
       description: "React.js and Tailwind",
       details:
-        "A shop website with essential e-commerce features. Products are fetched from the FakeStoreAPI, sorted into categories, and displayed in a clear product gallery. The integrated search bar allows users to quickly find items, while products can be added directly to the shopping cart. The cart provides an organized overview of all selected items with options to adjust or remove them. The project was created in a short time as a functional demo application.",
+        "A shop website with essential e-commerce features. Products are fetched from the FakeStoreAPI, sorted into categories, and displayed in a clear product gallery. The integrated search bar allows users to quickly find items, while products can be added directly to the shopping cart. The cart provides an organized overview of all selected items with options to adjust or remove them. The project was created in a short time as a demo application.",
     },
   },
 };

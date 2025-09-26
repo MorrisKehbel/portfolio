@@ -65,7 +65,7 @@ export const deMessages = {
       description:
         "Next.js, TypeScript, Tailwind und Framer Motion animierte Sektionen.",
       details:
-        "Dieses Projekt ist meine persönliche Portfolio-Website, entwickelt mit TypeScript und Next.js. Sie verfügt über ein responsives Grid-System mit animierten Sektionen dank Framer Motion, einen Dark/Light Mode sowie Sprachwechsel via Context API und ein Kontaktformular, das serverseitig über Next.js API Routes verarbeitet wird. Ziel war es, eine übersichtliche, benutzerfreundliche Website zu schaffen, auf der alle Inhalte auf einen Blick verfügbar sind und Nutzer schnell zu den gewünschten Informationen gelangen.",
+        "Dieses Projekt ist meine persönliche Portfolio-Website, entwickelt mit Next.js und TypeScript. Sie verfügt über ein responsives Grid-System mit animierten Sektionen dank Framer Motion, einen Dark/Light Mode sowie Sprachwechsel via Context API und ein Kontaktformular, das serverseitig über Next.js API Routes verarbeitet wird. Ziel war es, eine übersichtliche, benutzerfreundliche Website zu schaffen, auf der alle Inhalte auf einen Blick verfügbar sind und Nutzer schnell zu den gewünschten Informationen gelangen.",
     },
     moodsync: {
       title: "MoodSync: Smarte Web-App für mentales Wohlbefinden",
@@ -84,13 +84,13 @@ export const deMessages = {
       title: "Reise Agentur Webseite: Entdecke Reiseziele weltweit",
       description: "React.js, Tailwind, Express.js und PostgreSQL (sequelize)",
       details:
-        "Eine Reise-Agentur-Website, die in sehr kurzer Zeit entwickelt wurde, um eine einfache und benutzerfreundliche Reisesuche zu ermöglichen. Nutzer können über ein Suchfeld nach Reisezielen suchen, was sie zu einer Übersichtsseite mit kuratierten Destinationen führt. Alle Standortdaten werden über eine eigene API aus einer PostgreSQL-Datenbank (gehostet auf NeonDB) bereitgestellt. Das Ziel des Projekts war es, einen funktionalen und benutzerfreundlichen Prototypen zu schaffen, der schnellen Zugang zu Reiseinspiration und wichtigen Informationen ermöglicht.",
+        "Eine Reise-Agentur-Website, die in sehr kurzer Zeit entwickelt wurde, um eine einfache und benutzerfreundliche Reisesuche zu ermöglichen. Nutzer können über ein Suchfeld nach Reisezielen suchen, was sie zu einer Übersichtsseite führt. Alle Standortdaten werden über eine eigene API aus einer PostgreSQL-Datenbank (gehostet auf NeonDB) bereitgestellt. Das Ziel des Projekts war es, einen funktionalen und benutzerfreundlichen Prototypen zu schaffen, der schnellen Zugang zu Reiseinspiration und wichtigen Informationen ermöglicht.",
     },
     shop: {
       title: "Shop Webseite: Online-Shop",
       description: "React.js und Tailwind",
       details:
-        "Eine Shop-Webseite mit grundlegenden E-Commerce-Funktionen. Die Produkte werden über die FakeStoreAPI geladen, nach Kategorien sortiert und in einer übersichtlichen Produktgalerie dargestellt. Über die integrierte Suchleiste lassen sich Artikel schnell finden, während Nutzer Produkte direkt in den Warenkorb legen können. Der Warenkorb bietet eine klare Übersicht aller ausgewählten Items mit der Möglichkeit, diese anzupassen oder zu entfernen. Das Projekt entstand in kurzer Zeit als funktionsfähige Demo-Anwendung.",
+        "Eine Shop-Webseite mit grundlegenden E-Commerce-Funktionen. Die Produkte werden über die FakeStoreAPI geladen, nach Kategorien sortiert und in einer übersichtlichen Produktgalerie dargestellt. Über die integrierte Suchleiste lassen sich Artikel schnell finden, während Nutzer Produkte direkt in den Warenkorb legen können. Der Warenkorb bietet eine klare Übersicht aller ausgewählten Items mit der Möglichkeit, diese anzupassen oder zu entfernen. Das Projekt entstand in kurzer Zeit als Demo-Anwendung.",
     },
   },
 };

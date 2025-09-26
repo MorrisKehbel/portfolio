@@ -69,7 +69,7 @@ export const Settings = () => {
               />
             )}
             <span
-              className={`font-bold text-sm relative z-10 transition-all duration-200 ${
+              className={`font-bold text-sm lg:text-base relative z-10 transition-all duration-200 ${
                 language === lang.code
                   ? "text-text"
                   : "text-text/50 group-hover:text-text/70 group-hover:scale-105"
