@@ -4,6 +4,10 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        source: "/:path*.(png|jpg|jpeg|gif|webp)",
+        headers: [{ key: "X-Content-Type-Options", value: "" }],
+      },
+      {
         source: "/(.*)",
         headers: [
           // -----------------------

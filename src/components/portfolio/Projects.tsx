@@ -352,28 +352,29 @@ export const Projects = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      <AnimatedText
-        id={language}
-        ariaLabelledBy="projects-portfolio"
-        as="h2"
-        className="mt-2 text-3xl md:text-4xl text-text font-serif text-center"
-      >
-        {messages.projectTitle()}
-      </AnimatedText>
-      <AnimatedText
-        id={language}
-        className="mt-1 text-sm text-text opacity-70 m-2 text-center"
-      >
-        {messages.projectSubTitle}
-      </AnimatedText>
-
+      <div className="mb-4">
+        <AnimatedText
+          id={language}
+          ariaLabelledBy="projects-portfolio"
+          as="h2"
+          className="mt-2 text-3xl md:text-4xl text-text font-serif text-center"
+        >
+          {messages.projectTitle()}
+        </AnimatedText>
+        <AnimatedText
+          id={language}
+          className="mt-1 text-sm text-text opacity-70 m-2 text-center"
+        >
+          {messages.projectSubTitle}
+        </AnimatedText>
+      </div>
       <div
         ref={scrollContainerRef}
         style={{
           overflowAnchor: "none",
           scrollbarGutter: "stable",
         }} // 46
-        className="super:min-h-[450px] super:max-h-[41vh] ultra:min-h-[590px] ultra:max-h-[46vh] overflow-auto scrollbar-custom mt-4 px-2"
+        className="super:min-h-[450px] super:max-h-[41vh] ultra:min-h-[590px] ultra:max-h-[46vh] overflow-auto scrollbar-custom px-2"
       >
         {PROJECTS.map((p, i) => {
           const isOpen = i === openIndex;
@@ -498,14 +499,14 @@ export const Projects = () => {
                     {p.images && (
                       <div
                         onClick={(e) => e.stopPropagation()}
-                        className="relative flex items-center"
+                        className="relative flex items-center cursor-default"
                       >
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
                             scroll(p.key, "left");
                           }}
-                          className="p-2 rounded shadow bg-secondary/20 text-text mx-2 transition-colors duration-200 hover:bg-secondary/40 hover:shadow-md dark:hover:bg-neutral select-none cursor-pointer"
+                          className="p-2 rounded shadow bg-secondary/20 text-text mx-2 transition-colors duration-200 hover:bg-secondary/40 dark:hover:bg-neutral select-none cursor-pointer"
                         >
                           <ChevronLeft />
                         </button>
@@ -544,7 +545,7 @@ export const Projects = () => {
                             e.stopPropagation();
                             scroll(p.key, "right");
                           }}
-                          className="p-2 rounded shadow bg-secondary/20 text-text mx-2 transition-colors duration-200 hover:bg-secondary/40 hover:shadow-md dark:hover:bg-neutral select-none cursor-pointer"
+                          className="p-2 rounded shadow bg-secondary/20 text-text mx-2 transition-colors duration-200 hover:bg-secondary/40 dark:hover:bg-neutral select-none cursor-pointer"
                         >
                           <ChevronRight />
                         </button>

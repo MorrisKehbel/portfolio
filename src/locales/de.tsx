@@ -34,6 +34,9 @@ export const deMessages = {
   contactMsg: "Deine Nachricht",
   contactError:
     "Es gab ein Problem beim Senden deiner Nachricht. Überprüfe bitte deine Internetverbindung oder versuche es später erneut.",
+  contactError2: "Bitte gültige E-Mail und Nachricht eingeben.",
+  contactErrorEmail: "Bitte gültige E-Mail-Adresse eingeben.",
+  contactErrorMsg: "Bitte Nachricht eingeben.",
 
   contactSnd: "Nachricht senden",
   contactLoading: "Senden...",
