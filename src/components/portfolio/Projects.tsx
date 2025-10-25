@@ -470,7 +470,6 @@ export const Projects = () => {
                               >
                                 <video
                                   src={src}
-                                  controls
                                   loop
                                   muted
                                   autoPlay
