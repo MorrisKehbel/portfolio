@@ -3,8 +3,6 @@ import Script from "next/script";
 import "./globals.css";
 
 import { Providers } from "@/context/Providers";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Morris Kehbel | Portfolio",
@@ -55,8 +53,6 @@ export default function RootLayout({
           `}
         </Script>
         <Providers>{children}</Providers>
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );
