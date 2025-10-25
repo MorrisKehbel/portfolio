@@ -59,6 +59,13 @@ export const enMessages = {
     "A selection of recent work showcasing my skills and creativity.",
 
   projects: {
+    bottshackathon2025: {
+      title: "Hackathon Project: “BÄR BUDDY” – Battle of the Tech Schools 2025",
+      description:
+        "React.js, TypeScript, Tailwind und Framer Motion animierte Sektionen.",
+      details:
+        "As part of the “Battle of the Tech Schools” hackathon, I had the opportunity to represent WBS Coding School as a web developer. The challenge was issued by Berlin Partner: many newcomers in Berlin face difficulties accessing economic opportunities. The goal was to create a digital solution that helps newcomers discover local economic and technological resources, connect with others, and integrate more quickly into the city. Our team (3x Data Science, 1x UI/UX, 1x Web Dev) developed “BÄR BUDDY”, an all-in-one chatbot that can be integrated into websites. The project's core features included an intelligent, multilingual chat that displays local events, job offers, and programs from scraped data sources (with OpenAI integration as a fallback), an interactive map with personalized recommendations and a signup/signin system with a QR code concept for easy networking between companies and users. After four days of hard work, we secured 3rd place out of 10 teams. A huge thanks to my team, collaborating with you was simply amazing.",
+    },
     portfolio: {
       title: "Personal Portfolio: Web Showcase",
       description:
