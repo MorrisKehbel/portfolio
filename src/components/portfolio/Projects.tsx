@@ -14,7 +14,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { useLanguage } from "@/context/LanguageContext";
 import { AnimatedText } from "@/components/wrapper/AnimatedText";
-
+import { PROJECTS_DATA } from "@/data/projects";
 interface Project {
   key: string;
   title: string;
@@ -23,77 +23,22 @@ interface Project {
   href?: string;
   github?: string;
   images?: string[];
+  videos?: string[];
 }
 
-export const PROJECTS_DATA = [
-  {
-    key: "portfolio",
-    github: "https://github.com/MorrisKehbel/portfolio",
-  },
-  {
-    key: "moodsync",
-    href: "https://moodsync-w23y.onrender.com/",
-    github: "https://github.com/MorrisKehbel/MoodSync",
-    images: [
-      "/projects/moodsync/moodsync-1.webp",
-      "/projects/moodsync/moodsync-2.webp",
-      "/projects/moodsync/moodsync-3.webp",
-      "/projects/moodsync/moodsync-4.webp",
-      "/projects/moodsync/moodsync-5.webp",
-      "/projects/moodsync/moodsync-6.webp",
-      "/projects/moodsync/moodsync-7.webp",
-      "/projects/moodsync/moodsync-8.webp",
-      "/projects/moodsync/moodsync-9.webp",
-      "/projects/moodsync/moodsync-10.webp",
-    ],
-  },
-  {
-    key: "pokemon",
-    href: "https://pokemon-battlegame-frontend.onrender.com/",
-    github: "https://github.com/MorrisKehbel/pokemon_battlegame_frontend",
-    images: [
-      "/projects/pokemon/pokemon-1.webp",
-      "/projects/pokemon/pokemon-2.webp",
-      "/projects/pokemon/pokemon-3.webp",
-      "/projects/pokemon/pokemon-4.webp",
-      "/projects/pokemon/pokemon-5.webp",
-      "/projects/pokemon/pokemon-6.webp",
-      "/projects/pokemon/pokemon-7.webp",
-    ],
-  },
-  {
-    key: "travelagency",
-    github: "https://github.com/MorrisKehbel/Travel-Agency-Website",
-    images: [
-      "/projects/travelagency/travelagency-1.webp",
-      "/projects/travelagency/travelagency-2.webp",
-      "/projects/travelagency/travelagency-3.webp",
-      "/projects/travelagency/travelagency-4.webp",
-      "/projects/travelagency/travelagency-5.webp",
-      "/projects/travelagency/travelagency-6.webp",
-    ],
-  },
-  {
-    key: "shop",
-    href: "https://react-tailwind-shop.onrender.com/",
-    github: "https://github.com/MorrisKehbel/react-tailwind-shop/tree/main",
-    images: [
-      "/projects/shop/shop-1.webp",
-      "/projects/shop/shop-2.webp",
-      "/projects/shop/shop-3.webp",
-      "/projects/shop/shop-4.webp",
-      "/projects/shop/shop-5.webp",
-      "/projects/shop/shop-6.webp",
-    ],
-  },
-];
+type Media = { src: string; type: "image" | "video" };
+type MediaItem = {
+  src: string;
+  type: "image" | "video";
+};
 
 export const Projects = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
+
+  const [selectedMediaIndex, setSelectedMediaIndex] = useState<number | null>(
     null
   );
-  const [currentImages, setCurrentImages] = useState<string[]>([]);
+  const [currentMedia, setCurrentMedia] = useState<Media[]>([]);
   const { messages, language } = useLanguage();
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const wheelHandlers = useRef<Record<string, (e: WheelEvent) => void>>({});
@@ -155,10 +100,11 @@ export const Projects = () => {
 
   // useEffect(() => {
   //   const timer = setTimeout(() => {
-  //     const moodsyncIndex = PROJECTS.findIndex((p) => p.key === "moodsync");
-  //     if (moodsyncIndex !== -1) {
-  //       setOpenIndex(moodsyncIndex);
-  //     }
+  //     // const moodsyncIndex = PROJECTS.findIndex((p) => p.key === "moodsync");
+  //     // if (moodsyncIndex !== -1) {
+  //     //   setOpenIndex(moodsyncIndex);
+  //     // }
+  //     setOpenIndex(0);
   //   }, 600);
 
   //   return () => clearTimeout(timer);
@@ -191,7 +137,7 @@ export const Projects = () => {
   }, [language]);
 
   useEffect(() => {
-    if (selectedImageIndex !== null) {
+    if (selectedMediaIndex !== null) {
       // Modal prevent background scroll
       document.body.style.overflow = "hidden";
     } else {
@@ -202,12 +148,12 @@ export const Projects = () => {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [selectedImageIndex]);
+  }, [selectedMediaIndex]);
 
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (selectedImageIndex !== null && modalRef.current) {
+    if (selectedMediaIndex !== null && modalRef.current) {
       const focusableElements = modalRef.current?.querySelectorAll<
         | HTMLButtonElement
         | HTMLInputElement
@@ -225,7 +171,7 @@ export const Projects = () => {
 
       const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === "Escape") {
-          setSelectedImageIndex(null);
+          setSelectedMediaIndex(null);
         }
 
         if (e.key === "Tab") {
@@ -250,12 +196,12 @@ export const Projects = () => {
       document.addEventListener("keydown", handleKeyDown);
       return () => document.removeEventListener("keydown", handleKeyDown);
     }
-  }, [selectedImageIndex]);
+  }, [selectedMediaIndex]);
 
   return (
     <>
       <AnimatePresence>
-        {selectedImageIndex !== null && (
+        {selectedMediaIndex !== null && currentMedia[selectedMediaIndex] && (
           <motion.div
             ref={modalRef}
             tabIndex={-1}
@@ -263,16 +209,11 @@ export const Projects = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setSelectedImageIndex(null)}
-            onKeyDown={(e) => {
-              if (e.key === "Escape") {
-                setSelectedImageIndex(null);
-              }
-            }}
+            onClick={() => setSelectedMediaIndex(null)}
           >
             {/* close button */}
             <button
-              onClick={() => setSelectedImageIndex(null)}
+              onClick={() => setSelectedMediaIndex(null)}
               className="absolute top-4 right-4 text-white hover:text-gray-300 cursor-pointer z-50 p-6"
             >
               <X className="h-12 w-12 bg-black/40 rounded-xl" />
@@ -282,11 +223,11 @@ export const Projects = () => {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                setSelectedImageIndex((prev) =>
-                  prev === 0 ? currentImages.length - 1 : prev! - 1
+                setSelectedMediaIndex((prev) =>
+                  prev === 0 ? currentMedia.length - 1 : prev! - 1
                 );
               }}
-              disabled={selectedImageIndex === null}
+              disabled={selectedMediaIndex === null}
               className="absolute left-8 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 cursor-pointer z-50 p-6"
             >
               <ChevronLeft className="h-10 w-10 bg-black/40 rounded-xl" />
@@ -296,18 +237,18 @@ export const Projects = () => {
             <button
               onClick={(e) => {
                 e.stopPropagation();
-                setSelectedImageIndex((prev) =>
-                  prev === currentImages.length - 1 ? 0 : prev! + 1
+                setSelectedMediaIndex((prev) =>
+                  prev === currentMedia.length - 1 ? 0 : prev! + 1
                 );
               }}
-              disabled={selectedImageIndex === null}
+              disabled={selectedMediaIndex === null}
               className="absolute right-8 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 cursor-pointer z-50 p-6"
             >
               <ChevronRight className="h-10 w-10 bg-black/40 rounded-xl" />
             </button>
 
             <motion.div
-              key={currentImages[selectedImageIndex!]}
+              key={currentMedia[selectedMediaIndex].src}
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
@@ -315,39 +256,25 @@ export const Projects = () => {
               onClick={(e) => e.stopPropagation()}
               className="flex items-center justify-center"
             >
-              <Image
-                src={currentImages[selectedImageIndex!]}
-                alt={`Image ${selectedImageIndex}`}
-                width={2560}
-                height={1080}
-                className="object-contain max-w-[85vw] max-h-[90vh] w-auto h-auto rounded-xl select-none"
-                priority
-              />
-
-              {/* Preload next/prev */}
-              <Image
-                src={
-                  currentImages[
-                    (selectedImageIndex! + 1) % currentImages.length
-                  ]
-                }
-                alt=""
-                width={1}
-                height={1}
-                className="hidden"
-              />
-              <Image
-                src={
-                  currentImages[
-                    (selectedImageIndex! - 1 + currentImages.length) %
-                      currentImages.length
-                  ]
-                }
-                alt=""
-                width={1}
-                height={1}
-                className="hidden"
-              />
+              {currentMedia[selectedMediaIndex].type === "video" ? (
+                <video
+                  src={currentMedia[selectedMediaIndex].src}
+                  controls
+                  autoPlay
+                  loop
+                  playsInline
+                  className="max-w-[85vw] max-h-[90vh] rounded-xl shadow-lg"
+                />
+              ) : (
+                <Image
+                  src={currentMedia[selectedMediaIndex].src}
+                  alt={`Media ${selectedMediaIndex}`}
+                  width={2560}
+                  height={1080}
+                  className="object-contain max-w-[85vw] max-h-[90vh] w-auto h-auto rounded-xl select-none"
+                  priority
+                />
+              )}
             </motion.div>
           </motion.div>
         )}
@@ -515,6 +442,43 @@ export const Projects = () => {
                           className="flex gap-3 overflow-x-auto overflow-y-hidden scrollbar-custom p-2"
                           ref={setContainerRef(p.key)}
                         >
+                          {(p.videos?.length ?? 0) > 0 &&
+                            p.videos!.map((src, idx) => (
+                              <motion.button
+                                key={`video-${idx}`}
+                                aria-label={`View video ${idx + 1}`}
+                                className="relative flex-shrink-0 w-[150px] h-[96px] rounded-lg mb-1 cursor-pointer overflow-hidden focus:outline-auto focus:outline-offset-2"
+                                whileHover={{ scale: 1.15 }}
+                                whileFocus={{ scale: 1.05 }}
+                                transition={{ duration: 0.3 }}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  const mediaArray: MediaItem[] = [
+                                    ...(p.videos?.map((v) => ({
+                                      src: v,
+                                      type: "video" as const,
+                                    })) ?? []),
+                                    ...(p.images?.map((img) => ({
+                                      src: img,
+                                      type: "image" as const,
+                                    })) ?? []),
+                                  ];
+
+                                  setCurrentMedia(mediaArray);
+                                  setSelectedMediaIndex(idx);
+                                }}
+                              >
+                                <video
+                                  src={src}
+                                  controls
+                                  loop
+                                  muted
+                                  autoPlay
+                                  playsInline
+                                  className="object-cover w-full h-full rounded-lg select-none"
+                                />
+                              </motion.button>
+                            ))}
                           {p.images.map((src, idx) => (
                             <motion.button
                               aria-label={`View image ${idx + 1}`}
@@ -525,8 +489,19 @@ export const Projects = () => {
                               key={idx}
                               onClick={(e) => {
                                 e.stopPropagation();
-                                setCurrentImages(p.images!);
-                                setSelectedImageIndex(idx);
+                                const videoCount = p.videos?.length ?? 0;
+                                const mediaArray: MediaItem[] = [
+                                  ...(p.videos?.map((v) => ({
+                                    src: v,
+                                    type: "video" as const,
+                                  })) ?? []),
+                                  ...(p.images?.map((img) => ({
+                                    src: img,
+                                    type: "image" as const,
+                                  })) ?? []),
+                                ];
+                                setCurrentMedia(mediaArray);
+                                setSelectedMediaIndex(videoCount + idx);
                               }}
                             >
                               <Image
