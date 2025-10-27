@@ -64,7 +64,7 @@ export const enMessages = {
 
   projects: {
     bottshackathon2025: {
-      title: "Hackathon Project: “BÄR BUDDY” - Battle of the Tech Schools 2025",
+      title: "Hackathon Project: “BÄR BUDDY”",
       description:
         "React.js, TypeScript, Tailwind, OpenAI API Integration, Framer Motion",
       details:

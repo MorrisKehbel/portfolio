@@ -12,19 +12,19 @@ export const deMessages = {
   aboutText: () => (
     <>
       Ich bin <strong>Morris</strong> und liebe es, Ideen zum Leben zu erwecken.
-      Deshalb entwickle ich moderne, skalierbare Webanwendungen, die sauberen
-      Code, starke Performance und ein durchdachtes Design verbinden. Besonders
-      wichtig sind mir dabei die kleinen Details, der natürliche Flow einer
-      Oberfläche, das Gefühl einer Interaktion oder die Logik im Hintergrund.
-      Wenn es darum geht, mit neuen Technologien wie KI zu experimentieren, die
-      Leistung zu perfektionieren oder etwas zu entwerfen, das sich einfach
-      richtig anfühlt, bin ich mit ganzem Herzen bei der Sache. Lange nächtliche
-      Coding-Sessions? Ich bin dabei.
+      Deshalb entwickle ich moderne, skalierbare Webanwendungen mit sauberem
+      Code, starker Performance und durchdachtem Design. Besonders wichtig sind
+      mir dabei die kleinen Details, der natürliche Flow einer Oberfläche, das
+      Gefühl einer Interaktion oder die Logik im Hintergrund. Wenn es darum
+      geht, mit neuen Technologien wie KI zu experimentieren, die Leistung zu
+      perfektionieren oder etwas zu entwerfen, das sich einfach richtig anfühlt,
+      bin ich mit ganzem Herzen bei der Sache. Lange nächtliche Coding-Sessions?
+      Ich bin dabei.
     </>
   ),
 
   aboutSubText:
-    "Momentan liegt mein Fokus auf Next.js, Server Actions mit KI-Integration, TypeScript, Flutter Apps sowie nutzerfreundlichen und optisch ansprechenden UI/UX-Systemen.",
+    "Aktuell fokussiere ich mich auf Next.js, Server Actions mit KI, TypeScript, Flutter-Apps und zugängliche UI-Systeme.",
 
   contact: "Noch Fragen?",
   contact2: () => (
@@ -66,7 +66,7 @@ export const deMessages = {
 
   projects: {
     bottshackathon2025: {
-      title: "Hackathon Projekt: “BÄR BUDDY” - Battle of the Tech Schools 2025",
+      title: "Hackathon Projekt: “BÄR BUDDY”",
       description:
         "React.js, TypeScript, Tailwind, OpenAI API Integration, Framer Motion",
       details:
