@@ -13,29 +13,32 @@ export const About = () => {
       <AnimatedText
         id={language}
         as="span"
-        className="text-4xl xl:text-5xl text-text/40 font-mono select-none self-start"
+        className="text-3xl xl:text-4xl ultra:text-5xl text-text/40 font-mono select-none self-start"
       >
         {`<${messages.aboutHi}>`}
       </AnimatedText>
 
-      <div className="text-left xl:text-center text-text p-2">
-        <AnimatedText id={language} className="my-4 text-base ultra:text-lg">
-          {messages.aboutText()}
-        </AnimatedText>
+      <AnimatedText
+        id={language}
+        className="text-base text-text ultra:text-lg text-justify ultra:text-center"
+      >
+        {messages.aboutText()}
+      </AnimatedText>
+
+      <div>
         <AnimatedText
           id={language}
-          className="italic text-xs lg:text-sm ultra:text-base font-semibold text-gray-500 dark:text-gray-300"
+          className="italic text-xs lg:text-sm ultra:text-base text-center font-semibold text-gray-600 dark:text-gray-400"
         >
           {messages.aboutSubText}
         </AnimatedText>
+        <motion.div
+          className="mx-auto mb-2 mt-3 w-30 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 1, delay: 0.7 }}
+        />
       </div>
-
-      <motion.div
-        className="mx-auto my-4 w-30 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: 1 }}
-        transition={{ duration: 1, delay: 0.7 }}
-      />
     </div>
   );
 };

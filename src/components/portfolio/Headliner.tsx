@@ -10,7 +10,7 @@ export const Headliner = () => {
         id={language}
         ariaLabelledBy="headline"
         as="h1"
-        className="text-4xl text-text leading-[1.05] font-serif lg:text-5xl 2xl:text-[clamp(2.7rem,2.2vw,3.2rem)]"
+        className="text-3xl text-text leading-[1.05] font-serif lg:text-5xl 2xl:text-[clamp(2.7rem,2.2vw,3.2rem)]"
       >
         {messages.headline()}
       </AnimatedText>
