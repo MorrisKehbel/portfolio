@@ -10,15 +10,19 @@ export const enMessages = {
   aboutHi: "Hey",
   aboutText: () => (
     <>
-      I’m <strong>Morris Kehbel</strong> and I develop modern, scalable web
-      applications that combine clean code, performance, and thoughtful design.
-      Always learning and exploring new technologies and implementing AI
-      features to enhance user experiences.
+      I’m <strong>Morris</strong>, and I love bringing ideas to life. That’s why
+      I develop modern, scalable web applications that combine clean code,
+      performance, and a thoughtful design. I’m passionate about the little
+      details, from the flow of an interface to the feel of interactions or the
+      structure behind the scenes. When it comes to experimenting with new tech
+      like AI, perfecting performance, or designing something that just feels
+      right, I’m all in. Late-night coding sessions that go way too long? Count
+      me in.
     </>
   ),
 
   aboutSubText:
-    "Currently focused on Next.js, server actions with AI integration, TypeScript, Flutter Apps and accessible UI systems.",
+    "Currently focused on Next.js, Server Actions with AI integration, TypeScript, Flutter apps and accessible UI systems.",
 
   contact: "Have some questions?",
   contact2: () => (
@@ -28,7 +32,7 @@ export const enMessages = {
   ),
   contactName: "First Name",
   contactName2: "Last Name",
-  contactMail: "E-Mail Address",
+  contactMail: "Email Address",
   contactCompany: "Company Name",
   contactMsg: "Your Message",
   contactError:
@@ -60,43 +64,42 @@ export const enMessages = {
 
   projects: {
     bottshackathon2025: {
-      title: "Hackathon Project: “BÄR BUDDY” – Battle of the Tech Schools 2025",
+      title: "Hackathon Project: “BÄR BUDDY” - Battle of the Tech Schools 2025",
       description:
-        "React.js, TypeScript, Tailwind und Framer Motion animierte Sektionen.",
+        "React.js, TypeScript, Tailwind, OpenAI API Integration, Framer Motion",
       details:
-        "As part of the “Battle of the Tech Schools” hackathon, I had the opportunity to represent WBS Coding School as a web developer. The challenge was issued by Berlin Partner: many newcomers in Berlin face difficulties accessing economic opportunities. The goal was to create a digital solution that helps newcomers discover local economic and technological resources, connect with others, and integrate more quickly into the city. Our team (3x Data Science, 1x UI/UX, 1x Web Dev) developed “BÄR BUDDY”, an all-in-one chatbot that can be integrated into websites. The project's core features included an intelligent, multilingual chat that displays local events, job offers, and programs from scraped data sources (with OpenAI integration as a fallback), an interactive map with personalized recommendations and a signup/signin system with a QR code concept for easy networking between companies and users. After four days of hard work, we secured 3rd place out of 10 teams. A huge thanks to my team, collaborating with you was simply amazing.",
+        "As part of the “Battle of the Tech Schools” hackathon, I had the opportunity to represent WBS Coding School as a web developer. The challenge was issued by Berlin Partner: many newcomers in Berlin face difficulties accessing economic opportunities. The goal was to create a digital solution that helps newcomers discover local economic and technological resources, connect with others, and integrate more quickly into the city. Our team (3x Data Science, 1x UI/UX, 1x Web Dev) designed and prototyped “BÄR BUDDY”, an all-in-one chatbot that can be integrated into websites. The project's core features included an intelligent, multilingual chat that displays local events, job offers, and programs from scraped data sources (with OpenAI integration as a fallback), an interactive map with personalized recommendations and a signup/signin system with a QR code concept for easy networking between companies and users. After four days of hard work, we secured 3rd place out of 10 teams. A huge thanks to my team, collaborating with you was simply amazing.",
     },
     portfolio: {
-      title: "Personal Portfolio: Web Showcase",
-      description:
-        "Next.js, TypeScript, Tailwind and Framer Motion animated sections.",
+      title: "Portfolio Showcase: Personal Website",
+      description: "Next.js, TypeScript, Tailwind, Framer Motion",
       details:
-        "This project is my personal portfolio website, built with Next.js and TypeScript. It features a responsive grid system with animated sections using Framer Motion, a dark/light mode and language switch via Context API, as well as a contact form powered by Next.js API Routes for server-side handling. The goal was to create a clear, user-friendly website where all content is available at a glance and users can quickly access the information they need.",
+        "This is my personal portfolio website, featuring a responsive bento grid system with animated sections, dark/light mode and language switch via Context API, as well as contact form handled directly via Next.js API Routes using Nodemailer. My goal was to create a clear, user-friendly website where all content is available at a glance and visitors can quickly find the information they need.",
     },
     moodsync: {
       title: "MoodSync: Smart Mental Wellness Web App",
       description:
-        "React.js, Tailwind, Express.js, MongoDB (mongoose) and OpenAI API Integration.",
+        "React.js, Tailwind, Express.js, MongoDB (mongoose), OpenAI API Integration",
       details:
-        "A smart mental wellness web app built in just 4 weeks as a final group project for the WBS training program. Through daily journaling, the app uses AI to generate personalized summaries and actionable recommendations that support healthier habits and goal achievement. Its intuitive dashboard not only offers motivational tips and recommendations for daily tasks, but also lets users view a summary of activities by category over the past week, track their mood with monthly overviews, and interact with an AI chatbot for personalized guidance. All designed to promote balance, self-awareness, and meaningful mental well-being.",
+        "A smart mental wellness web app built in just 4 weeks as a final group project for the WBS training program. Through daily journaling, the app uses AI to generate personalized summaries and actionable recommendations to support healthier habits and goal achievement. Its intuitive dashboard not only offers motivational tips and recommendations for daily tasks, but also lets users view a summary of activities by category over the past week, track their mood with monthly overviews, and interact with an AI chatbot for personalized guidance. All designed to explore solutions that promote balance, self-awareness, and meaningful mental well-being. This project was a great opportunity to experiment with AI, design an intuitive dashboard, and learn about creating meaningful user experiences.",
     },
     pokemon: {
       title: "Pokémon Battle Game: Strategic Online Game",
-      description: "React.js, Tailwind, Express.js and MongoDB (mongoose)",
+      description: "React.js, Tailwind, Express.js, MongoDB (mongoose)",
       details:
-        "An interactive Pokémon battle game developed as a group project in the WBS training program. The frontend was built with React.js (Vite), React Router, and Tailwind CSS, while the backend uses Node.js with Express. MongoDB Atlas with Mongoose handles persistent data, and Pokémon data is provided via the PokeAPI. Players can select six Pokémon for their team, battle random opponents, and track their progress on the leaderboard. A RESTful API ensures communication between frontend and backend, and structured state management supports strategic battles.",
+        "An interactive Pokémon battle game developed as a group project in the WBS training program. You can pick six Pokémon for your team, battle random opponents, and track your progress on a leaderboard. We used a RESTful API to connect frontend and backend, PokeAPI for the Pokémon data and a structured state management to support strategic gameplay. Building this game was super fun and taught me a lot about full-stack development and coordinating game logic.",
     },
     travelagency: {
       title: "Travel Agency Website: Explore Destinations Worldwide",
-      description: "React.js, Tailwind, Express.js and PostgreSQL (sequelize)",
+      description: "React.js, Tailwind, Express.js, PostgreSQL (sequelize)",
       details:
-        "A travel agency website built in a very short timeframe to showcase a clean and intuitive travel browsing experience. Users can search for destinations via a search field, which leads them to an overview page with curated travel locations. All location data is served from a custom API connected to a PostgreSQL database hosted on NeonDB. The goal of the project was to create a functional, user-friendly prototype that delivers quick access to travel inspiration and essential information.",
+        "This project was a short-term prototype to showcase a clean and intuitive travel browsing experience. You can search for destinations and view curated travel locations on an overview page. All location data is served via a custom API connected to a PostgreSQL database on NeonDB. It was fun to build a functional prototype with focus on making exploring travel inspiration simple and enjoyable.",
     },
     shop: {
-      title: "Shop Website: Online Store",
-      description: "React.js and Tailwind",
+      title: "Online Store: E-Commerce Web App",
+      description: "React.js, Tailwind",
       details:
-        "A shop website with essential e-commerce features. Products are fetched from the FakeStoreAPI, sorted into categories, and displayed in a clear product gallery. The integrated search bar allows users to quickly find items, while products can be added directly to the shopping cart. The cart provides an organized overview of all selected items with options to adjust or remove them. The project was created in a short time as a demo application.",
+        "I built this shop website as a short demo project to explore core e-commerce interactions. Products are fetched from the FakeStoreAPI, sorted into categories, and displayed in a clean product gallery. You can search for items, add them to a shopping cart, and adjust or remove selections. This project was a fun way to practice building a functional prototype of an online store, focusing on user-friendly features and clear layouts.",
     },
   },
 };
