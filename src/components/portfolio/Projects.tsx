@@ -249,7 +249,7 @@ export const Projects = () => {
 
             <motion.div
               key={currentMedia[selectedMediaIndex].src}
-              initial={{ scale: 0.8, opacity: 0 }}
+              initial={{ scale: 0.7, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.3 }}
@@ -261,9 +261,8 @@ export const Projects = () => {
                   src={currentMedia[selectedMediaIndex].src}
                   controls
                   autoPlay
-                  loop
                   playsInline
-                  className="max-w-[85vw] max-h-[90vh] rounded-xl shadow-lg"
+                  className="object-contain max-w-[85vw] max-h-[90vh] w-auto h-auto rounded-xl select-none"
                 />
               ) : (
                 <Image
@@ -435,13 +434,13 @@ export const Projects = () => {
                               e.stopPropagation();
                               scroll(p.key, "left");
                             }}
-                            className="p-2 rounded-br rounded-tr bg-secondary/20 text-text mr-6 transition-colors duration-200 hover:bg-neutral hover:text-primary dark:hover:text-text select-none cursor-pointer"
+                            className="p-2 rounded-br rounded-tr bg-secondary/20 text-text transition-colors duration-200 hover:bg-neutral hover:text-primary dark:hover:text-text select-none cursor-pointer"
                           >
                             <ChevronLeft />
                           </button>
 
                           <div
-                            className="flex gap-3 overflow-x-auto overflow-y-hidden scrollbar-custom"
+                            className="flex gap-3 overflow-x-auto overflow-y-hidden scrollbar-custom p-4"
                             ref={setContainerRef(p.key)}
                           >
                             {(p.videos?.length ?? 0) > 0 &&
@@ -451,6 +450,8 @@ export const Projects = () => {
                                   aria-label={`View video ${idx + 1}`}
                                   className="relative flex-shrink-0 w-[150px] h-[96px] rounded-lg mb-1 cursor-pointer overflow-hidden focus:outline-auto focus:outline-offset-2"
                                   transition={{ duration: 0.3 }}
+                                  whileHover={{ scale: 1.15 }}
+                                  whileFocus={{ scale: 1.05 }}
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     const mediaArray: MediaItem[] = [
@@ -484,6 +485,8 @@ export const Projects = () => {
                                 className="relative flex-shrink-0 w-[150px] h-[96px] rounded-lg mb-1 cursor-pointer overflow-hidden focus:outline-auto focus:outline-offset-2"
                                 transition={{ duration: 0.3 }}
                                 key={idx}
+                                whileHover={{ scale: 1.15 }}
+                                whileFocus={{ scale: 1.05 }}
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   const videoCount = p.videos?.length ?? 0;
@@ -517,7 +520,7 @@ export const Projects = () => {
                               e.stopPropagation();
                               scroll(p.key, "right");
                             }}
-                            className="p-2 rounded-tl rounded-bl bg-secondary/20 text-text ml-6 transition-colors duration-200 hover:bg-neutral hover:text-primary dark:hover:text-text select-none cursor-pointer"
+                            className="p-2 rounded-tl rounded-bl bg-secondary/20 text-text ml-4 transition-colors duration-200 hover:bg-neutral hover:text-primary dark:hover:text-text select-none cursor-pointer"
                           >
                             <ChevronRight />
                           </button>
