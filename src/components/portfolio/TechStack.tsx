@@ -67,7 +67,7 @@ export const TechStack = () => {
         id={language}
         ariaLabelledBy="techstack"
         as="h2"
-        className="md:text-4xl text-text font-serif text-center mb-4"
+        className="text-3xl md:text-4xl text-text font-serif text-center mt-2 mb-4"
       >
         {messages.technologies()}
       </AnimatedText>
