@@ -20,7 +20,7 @@ export const About = () => {
 
       <AnimatedText
         id={language}
-        className="text-base text-text ultra:text-lg text-left md:text-center super:text-justify ultra:text-center px-2"
+        className="text-base lg:text-xl xl:text-base text-text ultra:text-lg text-left md:text-center super:text-justify ultra:text-center px-2"
       >
         {messages.aboutText()}
       </AnimatedText>
