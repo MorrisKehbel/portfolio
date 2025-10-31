@@ -301,7 +301,7 @@ export const Projects = () => {
           overflowAnchor: "none",
           scrollbarGutter: "stable",
         }} // 46
-        className="super:min-h-[450px] super:max-h-[41vh] ultra:min-h-[590px] ultra:max-h-[46vh] overflow-auto scrollbar-custom px-2"
+        className="super:min-h-[450px] super:max-h-[41vh] ultra:min-h-[590px] ultra:max-h-[46vh] overflow-auto scrollbar-custom pl-2"
       >
         {PROJECTS.map((p, i) => {
           const isOpen = i === openIndex;
@@ -415,44 +415,78 @@ export const Projects = () => {
                       setUserOpened(false);
                     }}
                   >
-                    {p.details && (
-                      <AnimatedText
-                        id={`${language}-${p.key}-details`}
-                        className="text-sm text-text mb-3"
-                      >
-                        {p.details}
-                      </AnimatedText>
-                    )}
-                    {p.images && (
-                      <div
-                        onClick={(e) => e.stopPropagation()}
-                        className="relative flex items-center cursor-default"
-                      >
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            scroll(p.key, "left");
-                          }}
-                          className="p-2 rounded shadow bg-secondary/20 text-text mx-2 transition-colors duration-200 hover:bg-secondary/40 dark:hover:bg-neutral select-none cursor-pointer"
+                    <div className="flex flex-col bg-text/5 rounded-2xl p-4 mt-2 gap-4">
+                      {p.details && (
+                        <AnimatedText
+                          id={`${language}-${p.key}-details`}
+                          className="text-sm text-text/70"
                         >
-                          <ChevronLeft />
-                        </button>
+                          {p.details}
+                        </AnimatedText>
+                      )}
 
+                      {p.images && (
                         <div
-                          className="flex gap-3 overflow-x-auto overflow-y-hidden scrollbar-custom p-2"
-                          ref={setContainerRef(p.key)}
+                          onClick={(e) => e.stopPropagation()}
+                          className="relative flex items-center cursor-default bg-secondary/20 py-4 rounded-2xl"
                         >
-                          {(p.videos?.length ?? 0) > 0 &&
-                            p.videos!.map((src, idx) => (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              scroll(p.key, "left");
+                            }}
+                            className="p-2 rounded-br rounded-tr bg-secondary/20 text-text mr-6 transition-colors duration-200 hover:bg-neutral hover:text-primary dark:hover:text-text select-none cursor-pointer"
+                          >
+                            <ChevronLeft />
+                          </button>
+
+                          <div
+                            className="flex gap-3 overflow-x-auto overflow-y-hidden scrollbar-custom"
+                            ref={setContainerRef(p.key)}
+                          >
+                            {(p.videos?.length ?? 0) > 0 &&
+                              p.videos!.map((src, idx) => (
+                                <motion.button
+                                  key={`video-${idx}`}
+                                  aria-label={`View video ${idx + 1}`}
+                                  className="relative flex-shrink-0 w-[150px] h-[96px] rounded-lg mb-1 cursor-pointer overflow-hidden focus:outline-auto focus:outline-offset-2"
+                                  transition={{ duration: 0.3 }}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    const mediaArray: MediaItem[] = [
+                                      ...(p.videos?.map((v) => ({
+                                        src: v,
+                                        type: "video" as const,
+                                      })) ?? []),
+                                      ...(p.images?.map((img) => ({
+                                        src: img,
+                                        type: "image" as const,
+                                      })) ?? []),
+                                    ];
+
+                                    setCurrentMedia(mediaArray);
+                                    setSelectedMediaIndex(idx);
+                                  }}
+                                >
+                                  <video
+                                    src={src}
+                                    loop
+                                    muted
+                                    autoPlay
+                                    playsInline
+                                    className="object-cover w-full h-full rounded-lg select-none"
+                                  />
+                                </motion.button>
+                              ))}
+                            {p.images.map((src, idx) => (
                               <motion.button
-                                key={`video-${idx}`}
-                                aria-label={`View video ${idx + 1}`}
+                                aria-label={`View image ${idx + 1}`}
                                 className="relative flex-shrink-0 w-[150px] h-[96px] rounded-lg mb-1 cursor-pointer overflow-hidden focus:outline-auto focus:outline-offset-2"
-                                whileHover={{ scale: 1.15 }}
-                                whileFocus={{ scale: 1.05 }}
                                 transition={{ duration: 0.3 }}
+                                key={idx}
                                 onClick={(e) => {
                                   e.stopPropagation();
+                                  const videoCount = p.videos?.length ?? 0;
                                   const mediaArray: MediaItem[] = [
                                     ...(p.videos?.map((v) => ({
                                       src: v,
@@ -463,68 +497,33 @@ export const Projects = () => {
                                       type: "image" as const,
                                     })) ?? []),
                                   ];
-
                                   setCurrentMedia(mediaArray);
-                                  setSelectedMediaIndex(idx);
+                                  setSelectedMediaIndex(videoCount + idx);
                                 }}
                               >
-                                <video
+                                <Image
                                   src={src}
-                                  loop
-                                  muted
-                                  autoPlay
-                                  playsInline
-                                  className="object-cover w-full h-full rounded-lg select-none"
+                                  alt={`Image ${idx}`}
+                                  fill
+                                  sizes="(max-width: 640px) 150px, 200px"
+                                  className="object-cover select-none rounded-lg"
                                 />
                               </motion.button>
                             ))}
-                          {p.images.map((src, idx) => (
-                            <motion.button
-                              aria-label={`View image ${idx + 1}`}
-                              className="relative flex-shrink-0 w-[150px] h-[96px] rounded-lg mb-1 cursor-pointer overflow-hidden focus:outline-auto focus:outline-offset-2"
-                              whileHover={{ scale: 1.15 }}
-                              whileFocus={{ scale: 1.05 }}
-                              transition={{ duration: 0.3 }}
-                              key={idx}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                const videoCount = p.videos?.length ?? 0;
-                                const mediaArray: MediaItem[] = [
-                                  ...(p.videos?.map((v) => ({
-                                    src: v,
-                                    type: "video" as const,
-                                  })) ?? []),
-                                  ...(p.images?.map((img) => ({
-                                    src: img,
-                                    type: "image" as const,
-                                  })) ?? []),
-                                ];
-                                setCurrentMedia(mediaArray);
-                                setSelectedMediaIndex(videoCount + idx);
-                              }}
-                            >
-                              <Image
-                                src={src}
-                                alt={`Image ${idx}`}
-                                fill
-                                sizes="(max-width: 640px) 150px, 200px"
-                                className="object-cover select-none rounded-lg"
-                              />
-                            </motion.button>
-                          ))}
-                        </div>
+                          </div>
 
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            scroll(p.key, "right");
-                          }}
-                          className="p-2 rounded shadow bg-secondary/20 text-text mx-2 transition-colors duration-200 hover:bg-secondary/40 dark:hover:bg-neutral select-none cursor-pointer"
-                        >
-                          <ChevronRight />
-                        </button>
-                      </div>
-                    )}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              scroll(p.key, "right");
+                            }}
+                            className="p-2 rounded-tl rounded-bl bg-secondary/20 text-text ml-6 transition-colors duration-200 hover:bg-neutral hover:text-primary dark:hover:text-text select-none cursor-pointer"
+                          >
+                            <ChevronRight />
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
