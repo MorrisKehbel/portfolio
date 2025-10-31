@@ -346,7 +346,7 @@ export const Projects = () => {
                 <div className="flex flex-col lg:flex-row items-center mx-4 gap-2">
                   {p.href ? (
                     <a
-                      aria-label="Project Website Link"
+                      aria-label={`Project External Link to ${p.title}`}
                       href={p.href}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -361,7 +361,7 @@ export const Projects = () => {
                   )}
                   {p.github ? (
                     <a
-                      aria-label="Project GitHub Link"
+                      aria-label={`Project GitHub Link to ${p.title}`}
                       href={p.github}
                       target="_blank"
                       rel="noopener noreferrer"
