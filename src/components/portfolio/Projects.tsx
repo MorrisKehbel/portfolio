@@ -14,6 +14,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { useLanguage } from "@/context/LanguageContext";
 import { AnimatedText } from "@/components/wrapper/AnimatedText";
+import { MediaModal } from "@/components/modals/MediaModal";
 import { PROJECTS_DATA } from "@/data/projects";
 interface Project {
   key: string;
@@ -136,148 +137,13 @@ export const Projects = () => {
     }
   }, [language]);
 
-  useEffect(() => {
-    if (selectedMediaIndex !== null) {
-      // Modal prevent background scroll
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    // Cleanup
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [selectedMediaIndex]);
-
-  const modalRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (selectedMediaIndex !== null && modalRef.current) {
-      const focusableElements = modalRef.current?.querySelectorAll<
-        | HTMLButtonElement
-        | HTMLInputElement
-        | HTMLSelectElement
-        | HTMLTextAreaElement
-        | HTMLAnchorElement
-      >(
-        'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
-      );
-
-      const firstElement = focusableElements?.[0];
-      const lastElement = focusableElements?.[focusableElements.length - 1];
-
-      firstElement?.focus();
-
-      const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === "Escape") {
-          setSelectedMediaIndex(null);
-        }
-
-        if (e.key === "Tab") {
-          if (!focusableElements) return;
-
-          if (e.shiftKey) {
-            // Shift + Tab
-            if (document.activeElement === firstElement) {
-              e.preventDefault();
-              lastElement?.focus();
-            }
-          } else {
-            // Tab
-            if (document.activeElement === lastElement) {
-              e.preventDefault();
-              firstElement?.focus();
-            }
-          }
-        }
-      };
-
-      document.addEventListener("keydown", handleKeyDown);
-      return () => document.removeEventListener("keydown", handleKeyDown);
-    }
-  }, [selectedMediaIndex]);
-
   return (
     <>
-      <AnimatePresence>
-        {selectedMediaIndex !== null && currentMedia[selectedMediaIndex] && (
-          <motion.div
-            ref={modalRef}
-            tabIndex={-1}
-            className="fixed inset-0 bg-black/95 flex items-center justify-center z-50"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedMediaIndex(null)}
-          >
-            {/* close button */}
-            <button
-              onClick={() => setSelectedMediaIndex(null)}
-              className="absolute top-4 right-4 text-white hover:text-gray-300 cursor-pointer z-50 p-6"
-            >
-              <X className="h-12 w-12 bg-black/40 rounded-xl" />
-            </button>
-
-            {/* left button */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setSelectedMediaIndex((prev) =>
-                  prev === 0 ? currentMedia.length - 1 : prev! - 1
-                );
-              }}
-              disabled={selectedMediaIndex === null}
-              className="absolute left-8 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 cursor-pointer z-50 p-6"
-            >
-              <ChevronLeft className="h-10 w-10 bg-black/40 rounded-xl" />
-            </button>
-
-            {/* right button */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setSelectedMediaIndex((prev) =>
-                  prev === currentMedia.length - 1 ? 0 : prev! + 1
-                );
-              }}
-              disabled={selectedMediaIndex === null}
-              className="absolute right-8 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 cursor-pointer z-50 p-6"
-            >
-              <ChevronRight className="h-10 w-10 bg-black/40 rounded-xl" />
-            </button>
-
-            <motion.div
-              key={currentMedia[selectedMediaIndex].src}
-              initial={{ scale: 0.7, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              onClick={(e) => e.stopPropagation()}
-              className="flex items-center justify-center"
-            >
-              {currentMedia[selectedMediaIndex].type === "video" ? (
-                <video
-                  src={currentMedia[selectedMediaIndex].src}
-                  controls
-                  autoPlay
-                  playsInline
-                  className="object-contain max-w-[85vw] max-h-[90vh] w-auto h-auto rounded-xl select-none"
-                />
-              ) : (
-                <Image
-                  src={currentMedia[selectedMediaIndex].src}
-                  alt={`Media ${selectedMediaIndex}`}
-                  width={2560}
-                  height={1080}
-                  className="object-contain max-w-[85vw] max-h-[90vh] w-auto h-auto rounded-xl select-none"
-                  priority
-                />
-              )}
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <MediaModal
+        selectedMediaIndex={selectedMediaIndex}
+        setSelectedMediaIndex={setSelectedMediaIndex}
+        currentMedia={currentMedia}
+      />
       <div className="mb-4">
         <AnimatedText
           id={language}
