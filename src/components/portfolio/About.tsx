@@ -9,7 +9,7 @@ export const About = () => {
   const { messages, language } = useLanguage();
 
   return (
-    <div className="w-full h-full flex flex-col justify-between items-center p-2 rounded-xl ultra:rounded-2xl border border-text/40">
+    <div className="w-full h-full flex flex-col justify-between items-center p-2 rounded-xl ultra:rounded-2xl border border-text/40 gap-4 lg:gap-0">
       <AnimatedText
         id={language}
         as="span"
@@ -20,7 +20,7 @@ export const About = () => {
 
       <AnimatedText
         id={language}
-        className="text-base lg:text-xl xl:text-base text-text ultra:text-lg text-left md:text-center super:text-justify ultra:text-center px-2"
+        className="text-base lg:text-xl xl:text-base text-text ultra:text-lg text-left lg:text-center super:text-justify ultra:text-center px-2"
       >
         {messages.aboutText()}
       </AnimatedText>
