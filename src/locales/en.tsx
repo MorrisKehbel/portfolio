@@ -68,7 +68,7 @@ export const enMessages = {
       description:
         "React.js, TypeScript, Tailwind, OpenAI API Integration, Framer Motion",
       details:
-        "As part of the “Battle of the Tech Schools” hackathon, I had the opportunity to represent WBS Coding School as a web developer. The challenge was issued by Berlin Partner: many newcomers in Berlin face difficulties accessing economic opportunities. The goal was to create a digital solution that helps newcomers discover local economic and technological resources, connect with others, and integrate more quickly into the city. Our team (3x Data Science, 1x UI/UX, 1x Web Dev) designed and prototyped “BÄR BUDDY”, an all-in-one chatbot that can be integrated into websites. The project's core features included an intelligent, multilingual chat that displays local events, job offers, and programs from scraped data sources (with OpenAI integration as a fallback), an interactive map with personalized recommendations and a signup/signin system with a QR code concept for easy networking between companies and users. After four days of hard work, we secured 3rd place out of 10 teams. A huge thanks to my team, collaborating with you was simply amazing.",
+        "As part of the “Battle of the Tech Schools” hackathon, I had the opportunity to represent WBS Coding School as a web developer. The challenge was issued by Berlin Partner: many newcomers in Berlin face difficulties accessing economic opportunities. The goal was to create a digital solution that helps newcomers discover local economic and technological resources, connect with others, and integrate more quickly into the city. Our team (3x Data Science, 1x UI/UX, 1x Web Dev) designed and prototyped “BÄR BUDDY”, an all-in-one chatbot that can be integrated into websites. The project's core features include an intelligent, multilingual chat that provides up-to-date information on tech job opportunities, local tech events, and German language courses in Berlin, all filterable by topic, district, distance, and keywords, sourced from scraped data with OpenAI integration as a fallback, an interactive map with personalized recommendations and a signup/signin system with a QR code concept for easy networking between companies and users. After four days of hard work, we secured 3rd place out of 10 teams. A huge thanks to my team, collaborating with you was simply amazing.",
     },
     portfolio: {
       title: "Portfolio Showcase: Personal Website",
@@ -77,7 +77,7 @@ export const enMessages = {
         "This is my personal portfolio website, featuring a responsive bento grid system with animated sections, dark/light mode and language switch via Context API, as well as contact form handled directly via Next.js API Routes using Nodemailer. My goal was to create a clear, user-friendly website where all content is available at a glance and visitors can quickly find the information they need.",
     },
     moodsync: {
-      title: "MoodSync: Smart Mental Wellness Web App",
+      title: "MoodSync: Smart Mental Health Web App",
       description:
         "React.js, Tailwind, Express.js, MongoDB (mongoose), OpenAI API Integration",
       details:
@@ -90,7 +90,7 @@ export const enMessages = {
         "An interactive Pokémon battle game developed as a group project in the WBS training program. You can pick six Pokémon for your team, battle random opponents, and track your progress on a leaderboard. We used a RESTful API to connect frontend and backend, PokeAPI for the Pokémon data and a structured state management to support strategic gameplay. Building this game was super fun and taught me a lot about full-stack development and coordinating game logic.",
     },
     travelagency: {
-      title: "Travel Agency Website: Explore Destinations Worldwide",
+      title: "Travel Agency Website: Explore Destinations",
       description: "React.js, Tailwind, Express.js, PostgreSQL (sequelize)",
       details:
         "This project was a short-term prototype to showcase a clean and intuitive travel browsing experience. You can search for destinations and view curated travel locations on an overview page. All location data is served via a custom API connected to a PostgreSQL database on NeonDB. It was fun to build a functional prototype with focus on making exploring travel inspiration simple and enjoyable.",
