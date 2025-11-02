@@ -11,15 +11,13 @@ export const deMessages = {
 
   aboutText: () => (
     <>
-      Ich bin <strong>Morris</strong> und liebe es, Ideen zum Leben zu erwecken.
-      Deshalb entwickle ich moderne, skalierbare Webanwendungen mit sauberem
-      Code, starker Performance und durchdachtem Design. Besonders wichtig sind
-      mir dabei die kleinen Details, der natürliche Flow einer Oberfläche, das
-      Gefühl einer Interaktion oder die Logik im Hintergrund. Wenn es darum
-      geht, mit neuen Technologien wie KI zu experimentieren, die Leistung zu
-      perfektionieren oder etwas zu entwerfen, das sich einfach richtig anfühlt,
-      bin ich mit ganzem Herzen bei der Sache. Lange nächtliche Coding-Sessions?
-      Ich bin dabei.
+      Ich bin <strong>Morris</strong> und liebe es, Ideen in moderne,
+      skalierbare Webanwendungen mit durchdachtem Design, sauberem Code und
+      starker Performance umzusetzen. Besonders wichtig sind mir dabei die
+      feinen Details, wie den natürlichen Flow einer Oberfläche, und in der
+      Logik im Hintergrund. Ob beim Experimentieren mit neuen Technologien wie
+      KI, beim Performance-Tuning oder in langen nächtlichen Coding-Sessions,
+      ich bin dabei!
     </>
   ),
 
@@ -70,7 +68,7 @@ export const deMessages = {
       description:
         "React.js, TypeScript, Tailwind, OpenAI API Integration, Framer Motion",
       details:
-        "Als Teil des Hackathons „Battle of the Tech Schools“ durfte ich die WBS Coding School als Webentwickler vertreten. Die Aufgabe kam von Berlin Partner: Viele Neuankömmlinge in Berlin haben Schwierigkeiten, Zugang zu wirtschaftlichen Chancen zu finden. Gesucht war eine digitale Lösung, die Newcomern hilft, lokale wirtschaftliche und technologische Angebote zu entdecken, sich zu vernetzen und sich schneller einzuleben. Unser Team (3x Data Science, 1x UI/UX, 1x Web Dev) entwickelte „BÄR BUDDY“, einen All-in-One Chatbot, der auf Webseiten integriert werden kann. Die Hauptfunktionen des Projekts umfassten einen intelligenten, multilingualen Chat, der lokale Events, Jobangebote und Deutschkurse bereitstellt, filterbar nach Thema, Bezirk, Entfernung und Schlüsselwörtern, basierend auf gescrapten Daten mit einer OpenAI-Integration als Fallback, eine interaktive Karte mit personalisierten Empfehlungen, ein Signup-/Signin-System inklusive QR-Code-Konzept zur einfachen Vernetzung von Unternehmen und Nutzern. Nach vier Tagen harter Arbeit sicherten wir uns den 3. Platz von 10 Teams. Ein großes Dankeschön an mein Team, die Zusammenarbeit war einfach großartig.",
+        "Als Teil des Hackathons „Battle of the Tech Schools“ durfte ich die WBS Coding School als Webentwickler vertreten. Die Aufgabe kam von Berlin Partner: Viele Neuankömmlinge in Berlin haben Schwierigkeiten, Zugang zu wirtschaftlichen Chancen zu finden. Gesucht war eine digitale Lösung, die Newcomern hilft, lokale wirtschaftliche und technologische Angebote zu entdecken, sich zu vernetzen und sich schneller einzuleben. Unser Team (3x Data Science, 1x UI/UX, 1x Web Dev) entwickelte „BÄR BUDDY“, einen All-in-One Chatbot, der auf Webseiten integriert werden kann. Die Hauptfunktionen des Projekts umfassten einen intelligenten, multilingualen Chat, der lokale Events, Jobangebote und Deutschkurse aus gescrapten Daten bereitstellt, mit einer OpenAI-Integration als Fallback. Eine interaktive Karte liefert Empfehlungen, während ein Signup-/Signin-System mit QR-Code-Konzept die Vernetzung zwischen Unternehmen und Nutzer*innen erleichtert. Nach vier Tagen harter Arbeit sicherten wir uns den 3. Platz von 10 Teams. Ein großes Dankeschön an mein Team, die Zusammenarbeit war einfach großartig.",
     },
     portfolio: {
       title: "Portfolio-Übersicht: Persönliche Website",
@@ -79,7 +77,7 @@ export const deMessages = {
         "Das ist meine persönliche Portfolio-Website mit einem animierten Bento-Grid-System, einem Dark/Light-Modus und Sprachwechsel via Context API. Das Kontaktformular läuft direkt über Next.js API Routes mit Nodemailer. Ich wollte eine übersichtliche Website bauen, auf der man alle Inhalte auf einen Blick sieht und Besucher schnell die benötigten Infos finden können.",
     },
     moodsync: {
-      title: "MoodSync: Smarte Web-App für mentales Wohlbefinden",
+      title: "MoodSync: Smarte Web-App für mentale Gesundheit",
       description:
         "React.js, Tailwind, Express.js, MongoDB (mongoose), OpenAI API Integration",
       details:
@@ -89,7 +87,7 @@ export const deMessages = {
       title: "Pokémon Battle Game: Strategisches Online-Spiel",
       description: "React.js, Tailwind, Express.js, MongoDB (mongoose)",
       details:
-        "Als Gruppenprojekt bei WBS haben wir ein interaktives Pokémon-Battle-Game entwickelt. Du kannst ein Team aus sechs Pokémon zusammenstellen, gegen zufällige Gegner kämpfen und deinen Fortschritt auf einem Leaderboard verfolgen. Wir haben eine RESTful API für die Kommunikation zwischen Front- und Backend genutzt, Pokémon-Daten von der PokeAPI eingebunden und ein strukturiertes State-Management implementiert, damit die Kämpfe strategisch bleiben. Die Entwicklung dieses Spiels hat mir viel Spaß gemacht und mir viel über Full-Stack-Entwicklung und die Koordination von Spielelogik beigebracht.",
+        "Als Gruppenprojekt bei WBS haben wir ein interaktives Pokémon-Battle-Game entwickelt. Du kannst ein Team aus sechs Pokémon zusammenstellen, gegen zufällige Gegner kämpfen und deinen Fortschritt auf einem Leaderboard verfolgen. Wir haben eine RESTful API mit MongoDB zur Verwaltung von Benutzern und Leaderboard-Daten genutzt, Pokémon-Daten von der PokeAPI eingebunden und ein strukturiertes State-Management implementiert, damit die Kämpfe strategisch bleiben. Die Entwicklung dieses Spiels hat mir nicht nur viel Spaß gemacht, sondern mir auch wertvolle Erfahrungen in der Full-Stack-Entwicklung und in der Koordination komplexer Spielelogik vermittelt.",
     },
     travelagency: {
       title: "Reise Agentur Webseite: Entdecke Reiseziele",

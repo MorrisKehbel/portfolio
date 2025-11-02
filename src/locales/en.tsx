@@ -10,14 +10,12 @@ export const enMessages = {
   aboutHi: "Hey",
   aboutText: () => (
     <>
-      I’m <strong>Morris</strong>, and I love bringing ideas to life. That’s why
-      I develop modern, scalable web applications that combine clean code,
-      performance, and a thoughtful design. I’m passionate about the little
-      details, from the flow of an interface to the feel of interactions or the
-      structure behind the scenes. When it comes to experimenting with new tech
-      like AI, perfecting performance, or designing something that just feels
-      right, I’m all in. Late-night coding sessions that go way too long? Count
-      me in.
+      I’m <strong>Morris</strong>, and I love turning ideas into modern,
+      scalable web applications with thoughtful design, clean code, and strong
+      performance. I’m passionate about the fine details, like the natural flow
+      of an interface, and the logic working behind the scenes. Whether I’m
+      experimenting with new technologies like AI, fine-tuning performance, or
+      tackling long late-night coding sessions, I’m all in!
     </>
   ),
 
@@ -68,7 +66,7 @@ export const enMessages = {
       description:
         "React.js, TypeScript, Tailwind, OpenAI API Integration, Framer Motion",
       details:
-        "As part of the “Battle of the Tech Schools” hackathon, I had the opportunity to represent WBS Coding School as a web developer. The challenge was issued by Berlin Partner: many newcomers in Berlin face difficulties accessing economic opportunities. The goal was to create a digital solution that helps newcomers discover local economic and technological resources, connect with others, and integrate more quickly into the city. Our team (3x Data Science, 1x UI/UX, 1x Web Dev) designed and prototyped “BÄR BUDDY”, an all-in-one chatbot that can be integrated into websites. The project's core features include an intelligent, multilingual chat that provides up-to-date information on tech job opportunities, local tech events, and German language courses in Berlin, all filterable by topic, district, distance, and keywords, sourced from scraped data with OpenAI integration as a fallback, an interactive map with personalized recommendations and a signup/signin system with a QR code concept for easy networking between companies and users. After four days of hard work, we secured 3rd place out of 10 teams. A huge thanks to my team, collaborating with you was simply amazing.",
+        "As part of the “Battle of the Tech Schools” hackathon, I had the opportunity to represent WBS Coding School as a web developer. The challenge was issued by Berlin Partner: many newcomers in Berlin face difficulties accessing economic opportunities. The goal was to create a digital solution that helps newcomers discover local economic and technological resources, connect with others, and integrate more quickly into the city. Our team (3x Data Science, 1x UI/UX, 1x Web Dev) designed and prototyped “BÄR BUDDY”, an all-in-one chatbot that can be integrated into websites. The project's core features include an intelligent, multilingual chat that provides up-to-date information on local events, job opportunities, and German language courses in Berlin. The data is sourced from web scraping, with OpenAI integration as a fallback for additional responses. An interactive map offers recommendations, while a separate signup/signin system with a QR code concept enables easy networking between companies and users. After four days of hard work, we secured 3rd place out of 10 teams. A huge thanks to my team, collaborating with you was simply amazing.",
     },
     portfolio: {
       title: "Portfolio Showcase: Personal Website",
@@ -87,7 +85,7 @@ export const enMessages = {
       title: "Pokémon Battle Game: Strategic Online Game",
       description: "React.js, Tailwind, Express.js, MongoDB (mongoose)",
       details:
-        "An interactive Pokémon battle game developed as a group project in the WBS training program. You can pick six Pokémon for your team, battle random opponents, and track your progress on a leaderboard. We used a RESTful API to connect frontend and backend, PokeAPI for the Pokémon data and a structured state management to support strategic gameplay. Building this game was super fun and taught me a lot about full-stack development and coordinating game logic.",
+        "An interactive Pokémon battle game developed as a group project in the WBS training program. You can pick six Pokémon for your team, battle random opponents, and track your progress on a leaderboard. We used a RESTful API with MongoDB to handle user authentication and leaderboard data, PokeAPI for the Pokémon data and a structured state management to support strategic gameplay. Building this game was super fun and taught me a lot about full-stack development and coordinating complex game logic.",
     },
     travelagency: {
       title: "Travel Agency Website: Explore Destinations",
