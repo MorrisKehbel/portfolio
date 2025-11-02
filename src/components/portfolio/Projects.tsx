@@ -166,7 +166,7 @@ export const Projects = () => {
           overflowAnchor: "none",
           scrollbarGutter: "stable",
         }} // 46
-        className="super:min-h-[450px] super:max-h-[41vh] ultra:min-h-[590px] ultra:max-h-[46vh] overflow-auto scrollbar-custom pl-2"
+        className="super:min-h-[370px] super:max-h-[41vh] ultra:min-h-[590px] ultra:max-h-[44vh] overflow-auto scrollbar-custom pl-2"
       >
         {PROJECTS.map((p, i) => {
           const isOpen = i === openIndex;
@@ -176,7 +176,9 @@ export const Projects = () => {
             <div
               data-project-key={p.key}
               key={p.key}
-              className={`py-4 ${!isLast ? "border-b border-text/40 " : ""}`}
+              className={`py-2 lg:py-5 ${
+                !isLast ? "border-b border-text/40 " : ""
+              }`}
             >
               {/* Header */}
               <div

@@ -65,7 +65,7 @@ export const GridLayout = () => {
         transition={Slide}
       />
       <motion.div
-        className="grid grid-cols-1 gap-4 ultra:gap-6 md:grid-cols-2 xl:grid-cols-4 super:grid-cols-12 super:[repeat(12,minmax(0,1fr))] mx-auto p-2 ultra:p-4 min-h-screen super:grid-rows-[1fr_1fr_1fr_auto_auto_1fr_1fr_1fr_1fr_1fr]"
+        className="grid grid-cols-1 gap-4 ultra:gap-6 md:grid-cols-2 xl:grid-cols-4 super:grid-cols-12 super:[repeat(12,minmax(0,1fr))] mx-auto p-2 ultra:p-4 min-h-screen super:auto-rows-auto ultra:grid-rows-[1fr_1fr_1fr_auto_auto_1fr_1fr_1fr_1fr_1fr]"
         variants={containerVariants}
         initial="hidden"
         animate={showAll ? "visible" : "hidden"}
@@ -94,7 +94,7 @@ export const GridLayout = () => {
 
         <motion.section
           layout
-          className="super:col-span-2 super:row-span-2 md:col-span-1 md:order-4 xl:order-5 xl:col-span-1 super:order-5"
+          className="super:col-span-2 ultra:row-span-2 md:col-span-1 md:order-4 xl:order-5 xl:col-span-1 super:order-5"
         >
           <motion.div
             initial={{ scale: 1.25, opacity: 0 }}
@@ -128,7 +128,7 @@ export const GridLayout = () => {
         <motion.section
           aria-label="about-me"
           layout
-          className="super:col-span-5 super:row-span-2 md:col-span-1 md:order-3 xl:order-4 xl:col-span-2 2xl:col-span-2"
+          className="super:col-span-5 ultra:row-span-2 md:col-span-1 md:order-3 xl:order-4 xl:col-span-2 2xl:col-span-2"
           variants={cardVariants}
         >
           <Card>
@@ -139,7 +139,7 @@ export const GridLayout = () => {
         <motion.section
           aria-label="projects-portfolio"
           layout
-          className="super:col-span-5 super:row-span-5 md:order-5 md:col-span-2 md:row-span-2 xl:col-span-2 super:order-3"
+          className="super:col-span-5 super:row-span-4 ultra:row-span-5 md:order-5 md:col-span-2 md:row-span-2 xl:col-span-2 super:order-3"
           variants={cardVariants}
         >
           <Card>
