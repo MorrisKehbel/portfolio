@@ -166,7 +166,7 @@ export const Projects = () => {
           overflowAnchor: "none",
           scrollbarGutter: "stable",
         }} // 46
-        className="super:min-h-[370px] super:max-h-[41vh] ultra:min-h-[590px] ultra:max-h-[44vh] overflow-auto scrollbar-custom pl-2"
+        className="xl:min-h-[840px] xl:max-h-[66vh] super:min-h-[370px] super:max-h-[41vh] ultra:min-h-[590px] ultra:max-h-[44vh] overflow-auto scrollbar-custom pl-2"
       >
         {PROJECTS.map((p, i) => {
           const isOpen = i === openIndex;
