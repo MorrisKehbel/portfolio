@@ -18,17 +18,19 @@ import {
 } from "@/components/portfolio";
 
 export const GridLayout = () => {
-  const [startScale, setStartScale] = useState(false);
   const [showAll, setShowAll] = useState(false);
 
+  const isMobile = window.innerWidth < 768;
+
   useEffect(() => {
+    const delay = isMobile ? 200 : 100;
+
     const timer = setTimeout(() => {
       setShowAll(true);
-      setStartScale(true);
-    }, 100);
+    }, delay);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [isMobile]);
 
   const containerVariants = {
     hidden: {},
@@ -43,6 +45,20 @@ export const GridLayout = () => {
   const cardVariants: Variants = {
     hidden: { opacity: 0, y: -50 },
     visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 120, damping: 20 },
+    },
+  };
+
+  const portraitVariants: Variants = {
+    hidden: {
+      scale: isMobile ? 1 : 1.25,
+      opacity: isMobile ? 0 : 0,
+      y: isMobile ? -50 : 0,
+    },
+    visible: {
+      scale: 1,
       opacity: 1,
       y: 0,
       transition: { type: "spring", stiffness: 120, damping: 20 },
@@ -72,7 +88,6 @@ export const GridLayout = () => {
       >
         <motion.section
           aria-label="settings"
-          layout
           className="super:col-span-1 super:row-span-3 md:col-span-2 xl:order-2 xl:col-span-1"
           variants={cardVariants}
         >
@@ -83,7 +98,6 @@ export const GridLayout = () => {
 
         <motion.section
           aria-labelledby="headline"
-          layout
           className="super:col-span-6 super:row-span-3 md:col-span-2 xl:order-1 xl:col-span-3"
           variants={cardVariants}
         >
@@ -93,41 +107,36 @@ export const GridLayout = () => {
         </motion.section>
 
         <motion.section
-          layout
+          {...(isMobile
+            ? {
+                variants: portraitVariants,
+              }
+            : {
+                initial: { scale: 1.25, opacity: 0 },
+                animate: { scale: showAll ? 1 : 1.25, opacity: 1 },
+                transition: { type: "spring", stiffness: 120, damping: 20 },
+              })}
           className="super:col-span-2 ultra:row-span-2 md:col-span-1 md:order-4 xl:order-5 xl:col-span-1 super:order-5"
         >
-          <motion.div
-            initial={{ scale: 1.25, opacity: 0 }}
-            animate={{ scale: startScale ? 1 : 1.25, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 120, damping: 20 }}
-            style={{
-              transformStyle: "preserve-3d",
-              willChange: "transform",
-              height: "100%",
-              width: "100%",
-            }}
-          >
-            <Card className="relative aspect-square border-2 border-white/5 overflow-hidden flex justify-center items-end">
-              <div className="absolute inset-4 rounded-xl border-5 border-text/10 pointer-events-none"></div>
-              <Image
-                src="/me.png"
-                alt="My Portrait"
-                fill
-                sizes="(max-width: 768px) 90vw, 
+          <Card className="relative aspect-square border-2 border-white/5 overflow-hidden flex justify-center items-end">
+            <div className="absolute inset-4 rounded-xl border-5 border-text/10 pointer-events-none"></div>
+            <Image
+              src="/me.png"
+              alt="My Portrait"
+              fill
+              sizes="(max-width: 768px) 90vw, 
          (max-width: 1280px) 75vw, 
          (max-width: 1536px) 45vw, 
          35vw"
-                priority
-                fetchPriority="high"
-                className="object-cover filter grayscale-20 scale-110 hover:scale-115 translate-y-[-5%] translate-x-[1%] transition-all duration-1300 delay-300 select-none dark:brightness-85"
-              />
-            </Card>
-          </motion.div>
+              priority
+              fetchPriority="high"
+              className="object-cover filter grayscale-20 scale-110 translate-y-[-5%] translate-x-[1%] transition-all duration-1300 delay-300 select-none dark:brightness-85"
+            />
+          </Card>
         </motion.section>
 
         <motion.section
           aria-label="about-me"
-          layout
           className="super:col-span-5 ultra:row-span-2 md:col-span-1 md:order-3 xl:order-4 xl:col-span-2 2xl:col-span-2"
           variants={cardVariants}
         >
@@ -138,7 +147,6 @@ export const GridLayout = () => {
 
         <motion.section
           aria-label="projects-portfolio"
-          layout
           className="super:col-span-5 super:row-span-4 ultra:row-span-5 md:order-5 md:col-span-2 md:row-span-2 xl:col-span-2 super:order-3"
           variants={cardVariants}
         >
