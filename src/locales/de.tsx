@@ -93,7 +93,7 @@ export const deMessages = {
       title: "Reise Agentur Webseite: Entdecke Reiseziele",
       description: "React.js, Tailwind, Express.js, PostgreSQL (sequelize)",
       details:
-        "Bei diesem Projekt handelte es sich um einen in kurzer Zeit entwickelten Prototyp, um ein übersichtliches und intuitives Browsing-Erlebnis für Reisen zu präsentieren. Du kannst nach Reisezielen suchen und dir auf einer Übersichtsseite zusammengestellte Orte ansehen. Alle Standortdaten kommen von einer selbst entwickelten API, die mit einer PostgreSQL-Datenbank auf NeonDB verbunden ist.",
+        "Dieses Projekt ist ein in kurzer Zeit entwickelter Prototyp, der ein übersichtliches und intuitives Browsing-Erlebnis für Reisen bietet. Du kannst nach Reisezielen suchen und dir auf einer Übersichtsseite zusammengestellte Orte ansehen. Alle Standortdaten kommen von einer selbst entwickelten API, die mit einer PostgreSQL-Datenbank auf NeonDB verbunden ist.",
     },
     shop: {
       title: "Online-Shop: E-Commerce Web App",

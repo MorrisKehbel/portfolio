@@ -1,11 +1,9 @@
 "use client";
 
 import Image from "next/image";
-
 import { motion, Variants } from "framer-motion";
 import { useState, useEffect } from "react";
 import { ToastContainer, Slide } from "react-toastify";
-
 import {
   Card,
   Headliner,
@@ -19,8 +17,7 @@ import {
 
 export const GridLayout = () => {
   const [showAll, setShowAll] = useState(false);
-
-  const isMobile = window.innerWidth < 768;
+  const isMobile = window.innerWidth <= 1727;
 
   useEffect(() => {
     const delay = isMobile ? 200 : 100;
@@ -116,6 +113,7 @@ export const GridLayout = () => {
                 animate: { scale: showAll ? 1 : 1.25, opacity: 1 },
                 transition: { type: "spring", stiffness: 120, damping: 20 },
               })}
+          aria-label="portrait-picture"
           className="super:col-span-2 ultra:row-span-2 md:col-span-1 md:order-4 xl:order-5 xl:col-span-1 super:order-5"
         >
           <Card className="relative aspect-square border-2 border-white/5 overflow-hidden flex justify-center items-end">
@@ -130,7 +128,7 @@ export const GridLayout = () => {
          35vw"
               priority
               fetchPriority="high"
-              className="object-cover filter grayscale-20 scale-110 translate-y-[-5%] translate-x-[1%] transition-all duration-1300 delay-300 select-none dark:brightness-85"
+              className="object-cover filter grayscale-20 scale-110 translate-y-[-5%] translate-x-[1%] transition-all duration-1300 delay-300 select-none dark:brightness-75"
             />
           </Card>
         </motion.section>
@@ -146,7 +144,7 @@ export const GridLayout = () => {
         </motion.section>
 
         <motion.section
-          aria-label="projects-portfolio"
+          aria-labelledby="projects-portfolio"
           className="super:col-span-5 super:row-span-4 ultra:row-span-5 md:order-5 md:col-span-2 md:row-span-2 xl:col-span-2 super:order-3"
           variants={cardVariants}
         >
