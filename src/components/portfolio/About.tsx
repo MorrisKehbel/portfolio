@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-
 import { useLanguage } from "@/context/LanguageContext";
 import { AnimatedText } from "@/components/wrapper/AnimatedText";
 
