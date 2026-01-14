@@ -1,5 +1,20 @@
 export const PROJECTS_DATA = [
   {
+    key: "fairRentalPredictor",
+    href: "https://fair-rent-ai.vercel.app/",
+    github: "https://github.com/MorrisKehbel/fair-rent-ai",
+    images: [
+      "/projects/rental_predictor/rental-1.webp",
+      "/projects/rental_predictor/rental-2.webp",
+      "/projects/rental_predictor/rental-3.webp",
+      "/projects/rental_predictor/rental-4.webp",
+      "/projects/rental_predictor/rental-5.webp",
+      "/projects/rental_predictor/rental-6.webp",
+      "/projects/rental_predictor/rental-7.webp",
+      "/projects/rental_predictor/rental-8.webp",
+    ],
+  },
+  {
     key: "bottshackathon2025",
     href: "https://hackathon-kiez-chatbot.onrender.com/",
     github: "https://github.com/MorrisKehbel/hackathon-kiez-chatbot",
