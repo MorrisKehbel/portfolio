@@ -63,6 +63,13 @@ export const deMessages = {
     "Eine Auswahl aktueller Arbeiten, die meine Fähigkeiten und Kreativität präsentieren.",
 
   projects: {
+    fairRentalPredictor: {
+      title: "Machine Learning: Mietpreisprognose",
+      description:
+        "Next.js, TypeScript, Tailwind, Python (FastAPI), Docker, Scikit-Learn, MLflow, Make",
+      details:
+        "Zum Abschluss meines KI Kompakt-Kurses habe ich ein End-to-End Machine Learning System zur Vorhersage von Mietpreisen auf Basis von echten Immobiliendaten entwickelt. Das Projekt umfasste den gesamten Lebenszyklus: von der Datenbereinigung und -validierung bis hin zum Feature Engineering wichtiger Attribute wie Lage und Ausstattung. Mithilfe von MLflow wurden verschiedene Modelle trainiert, evaluiert und versioniert (Champion-Challenger-Setup). Die Leistung wurde dabei über Metriken wie R², MAE, RMSE, and MAPE bewertet und durch Residuenanalysen sowie Visualisierungen der Feature Importance ergänzt. Die finale Lösung wurde über ein FastAPI-Backend bereitgestellt und mit einem Next.js-Frontend verbunden, was Echtzeit-Vorhersagen für Endnutzer ermöglichte. Dieses Projekt spiegelt meine Leidenschaft wieder, die Lücke zwischen angewandtem Machine Learning und Full-Stack-Entwicklung zu schließen und datengestützte Modelle in funktionale, nutzerorientierte Anwendungen zu verwandeln.",
+    },
     bottshackathon2025: {
       title: "Hackathon Projekt: “BÄR BUDDY”",
       description:
