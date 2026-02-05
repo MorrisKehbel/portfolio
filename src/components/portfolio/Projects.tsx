@@ -13,6 +13,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 
 import { useLanguage } from "@/context/LanguageContext";
+import { useProjectTech } from "@/context/ProjectTechContext";
 import { AnimatedText } from "@/components/wrapper/AnimatedText";
 import { MediaModal } from "@/components/modals/MediaModal";
 import { PROJECTS_DATA } from "@/data/projects";
@@ -25,6 +26,7 @@ interface Project {
   github?: string;
   images?: string[];
   videos?: string[];
+  techStack?: string[];
 }
 
 type Media = { src: string; type: "image" | "video" };
@@ -37,10 +39,16 @@ export const Projects = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const [selectedMediaIndex, setSelectedMediaIndex] = useState<number | null>(
-    null
+    null,
   );
   const [currentMedia, setCurrentMedia] = useState<Media[]>([]);
   const { messages, language } = useLanguage();
+  const {
+    selectedProjectKey,
+    setSelectedProjectKey,
+    hoveredTech,
+    setHoveredTech,
+  } = useProjectTech();
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const wheelHandlers = useRef<Record<string, (e: WheelEvent) => void>>({});
   const [userOpened, setUserOpened] = useState(false);
@@ -54,9 +62,11 @@ export const Projects = () => {
     }),
   }));
 
-  const handleOpen = (i: number) => {
+  const handleOpen = (i: number, projectKey: string) => {
     setUserOpened(true);
-    setOpenIndex(openIndex === i ? null : i);
+    const isClosing = openIndex === i;
+    setOpenIndex(isClosing ? null : i);
+    setSelectedProjectKey(isClosing ? null : projectKey);
   };
 
   const setContainerRef = (key: string) => (el: HTMLDivElement | null) => {
@@ -167,29 +177,35 @@ export const Projects = () => {
           scrollbarGutter: "stable",
         }} // 46
         className="xl:min-h-[840px] xl:max-h-[66vh] super:min-h-[370px] super:max-h-[41vh] ultra:min-h-[590px] ultra:max-h-[44vh] overflow-auto scrollbar-custom pl-2"
+        onMouseEnter={() => setHoveredTech(null)}
       >
         {PROJECTS.map((p, i) => {
           const isOpen = i === openIndex;
           const isLast = i === PROJECTS.length - 1;
+          const projectTechs = p.techStack || [];
+          const isHighlighted =
+            !selectedProjectKey &&
+            hoveredTech &&
+            projectTechs.includes(hoveredTech);
 
           return (
             <div
               data-project-key={p.key}
               key={p.key}
-              className={`py-2 lg:py-5 ${
+              className={`py-2 lg:py-5 transition-all duration-300 ${
                 !isLast ? "border-b border-text/40 " : ""
-              }`}
+              } ${isHighlighted ? "bg-linear-to-r from-transparent via-white/10 dark:via-white/6 to-white/20 dark:to-white/8 rounded-r px-2" : ""}`}
             >
               {/* Header */}
               <div
-                onClick={() => handleOpen(i)}
+                onClick={() => handleOpen(i, p.key)}
                 role="button"
                 aria-expanded={isOpen}
                 aria-controls={`project-${i}-content dropdown`}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
-                    handleOpen(i);
+                    handleOpen(i, p.key);
                   }
                 }}
                 className="flex justify-between items-center cursor-pointer"
@@ -260,7 +276,10 @@ export const Projects = () => {
                     aria-expanded={isOpen}
                     className="cursor-pointer overflow-hidden"
                     initial={{ opacity: 0, height: 0 }}
-                    onClick={() => setOpenIndex(isOpen ? null : i)}
+                    onClick={() => {
+                      setOpenIndex(isOpen ? null : i);
+                      setSelectedProjectKey(isOpen ? null : p.key);
+                    }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -269,7 +288,7 @@ export const Projects = () => {
 
                       if (scrollContainerRef.current && openIndex === i) {
                         const itemEl = scrollContainerRef.current.querySelector(
-                          `[data-project-key="${p.key}"]`
+                          `[data-project-key="${p.key}"]`,
                         ) as HTMLElement | null;
                         if (itemEl) {
                           itemEl.scrollIntoView({
