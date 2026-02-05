@@ -4,39 +4,56 @@ import { motion, Variants } from "framer-motion";
 import StackIcon from "tech-stack-icons";
 
 import { useLanguage } from "@/context/LanguageContext";
+import { useProjectTech } from "@/context/ProjectTechContext";
 import { AnimatedText } from "@/components/wrapper/AnimatedText";
+import { PROJECTS_DATA } from "@/data/projects";
 
 const tech = [
+  // --- Languages (Die Basis) ---
   { name: "html5", label: "HTML5" },
   { name: "css3", label: "CSS3" },
   { name: "js", label: "JavaScript" },
-  { name: "typescript", label: "TypeScript", new: true },
+  { name: "typescript", label: "TypeScript" },
+  { name: "python", label: "Python" },
+  { name: "ruby", label: "Ruby" },
   { name: "json", label: "JSON" },
 
+  // --- Frameworks & Libraries (Frontend & Styling) ---
   { name: "react", label: "React.js" },
-  { name: "nextjs", label: "Next.js", new: true },
+  { name: "nextjs", label: "Next.js" },
   { name: "tailwindcss", label: "Tailwind" },
-  { name: "expressjs", label: "Express.js" },
+  { name: "bootstrap5", label: "Bootstrap" },
   { name: "vitejs", label: "Vite.js" },
+
+  // --- Backend, Runtime & Auth/Validation ---
+  { name: "nodejs", label: "Node.js" },
+  { name: "expressjs", label: "Express.js" },
+  { name: "rails", label: "Rails" },
   { name: "zod", label: "Zod" },
 
-  { name: "nodejs", label: "Node.js" },
+  // --- Database & Storage ---
   { name: "postgresql", label: "PostgreSQL" },
   { name: "mongodb", label: "MongoDB" },
   { name: "cloudinary", label: "Cloudinary" },
 
+  // --- Tools & Environment ---
+  { name: "vscode", label: "VSCode" },
+  { name: "cursor", label: "Cursor" },
+
+  // --- DevOps, Deployment & Workflow ---
   { name: "git", label: "Git" },
   { name: "github", label: "GitHub" },
   { name: "npm", label: "NPM" },
+  { name: "docker", label: "Docker", new: true },
   { name: "vercel", label: "Vercel" },
   { name: "render", label: "Render" },
-  { name: "postman", label: "Postman" },
-  { name: "vscode", label: "VSCode" },
+  { name: "make", label: "Make", new: true },
+  { name: "n8n", label: "n8n", new: true },
   { name: "bash", label: "Bash" },
-  { name: "slack", label: "Slack" },
 
+  // --- AI & Design ---
   { name: "openai", label: "OpenAI" },
-  { name: "gemini", label: "Gemini" },
+  { name: "claude", label: "Claude" },
   { name: "figma", label: "Figma" },
 ];
 
@@ -60,46 +77,73 @@ const item: Variants = {
 
 export const TechStack = () => {
   const { messages, language } = useLanguage();
+  const { selectedProjectKey, setHoveredTech } = useProjectTech();
 
   return (
-    <div className="h-full flex flex-col justify-evenly gap-2 ultra:gap-4">
+    <div
+      className="h-full flex flex-col justify-evenly gap-2 ultra:gap-4"
+      onMouseLeave={() => setHoveredTech(null)}
+    >
       <AnimatedText
         id={language}
         ariaLabelledBy="techstack"
         as="h2"
-        className="text-3xl md:text-4xl text-text font-serif text-center mt-2 mb-4"
+        className="text-2xl sm:text-3xl md:text-4xl text-text font-serif text-center mt-1 sm:mt-2 mb-2 sm:mb-3 md:mb-4"
       >
         {messages.technologies()}
       </AnimatedText>
 
       <motion.div
-        className="grid grid-cols-[repeat(auto-fit,minmax(70px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(80px,1fr))] gap-4"
+        className="grid grid-cols-[repeat(auto-fit,minmax(70px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(80px,1fr))] gap-1 sm:gap-2 ultra:gap-4"
         variants={container}
         initial="hidden"
         animate="show"
       >
-        {tech.map((itemData) => (
-          <motion.div
-            key={itemData.name}
-            className="group relative flex flex-col items-center justify-center rounded-2xl p-3 ultra:p-4 bg-black/5 dark:bg-white/5 hover:bg-black/4 dark:hover:bg-white/6 shadow-md cursor-default"
-            variants={item}
-            whileHover={{ scale: 1.1 }}
-          >
-            {itemData.new && (
-              <span className="absolute -top-3 ultra:-top-2 left-1/2 -translate-x-1/2 rounded-full bg-blue-500 dark:bg-blue-700 px-2 py-0.5 text-xs font-bold text-white shadow-md select-none">
-                {messages.techNew}
-              </span>
-            )}
-            <StackIcon
-              name={itemData.name}
-              className="h-6 w-6 ultra:h-8 ultra:w-8 grayscale-50 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
-              variant="light"
-            />
-            <p className="mt-3 text-sm text-text/50 font-medium group-hover:text-text/100 transition-colors duration-400">
-              {itemData.label}
-            </p>
-          </motion.div>
-        ))}
+        {tech.map((itemData) => {
+          const selectedProject = selectedProjectKey
+            ? PROJECTS_DATA.find((p) => p.key === selectedProjectKey)
+            : null;
+          const projectTechs = selectedProject?.techStack || [];
+          const isHighlighted =
+            selectedProjectKey && projectTechs.includes(itemData.name);
+
+          return (
+            <motion.div
+              key={itemData.name}
+              className={`group relative flex flex-col items-center justify-center rounded-sm sm:rounded-md md:rounded-lg lg:rounded-xl p-2 md:p-3 ultra:p-4 cursor-default transition-all duration-300 ease-out bg-linear-to-br from-white/42 via-white/24 to-white/2 dark:from-white/16 dark:via-white/6 dark:to-white/2
+            active:border-blue-500/60 active:shadow-[0_0_0_2px_rgba(59,130,246,0.3),0_0_20px_rgba(59,130,246,0.2)] active:scale-95
+            md:active:border-white/10 md:active:shadow-[0_12px_40px_-28px_rgba(0,0,0,0.4)] md:active:scale-100
+            focus:outline-none focus:border-blue-500/60 focus:shadow-[0_0_0_2px_rgba(59,130,246,0.3)]
+            md:focus:border-white/10 md:focus:shadow-[0_12px_40px_-28px_rgba(0,0,0,0.4)]
+            ${
+              isHighlighted
+                ? "border border-white/30 dark:border-white/15 shadow-[0_12px_40px_-27px_rgba(0,0,0,0.8)]"
+                : "border border-white/10 dark:border-white/5 shadow-[0_12px_40px_-28px_rgba(0,0,0,0.4)]"
+            }`}
+              variants={item}
+              whileHover={{ scale: 1.1 }}
+              onMouseEnter={() => setHoveredTech(itemData.name)}
+              onMouseLeave={() => setHoveredTech(null)}
+              tabIndex={0}
+            >
+              {itemData.new && (
+                <span className="hidden md:block absolute sm:-top-2 md:-top-2 ultra:-top-2 left-1/2 -translate-x-1/2 rounded-full bg-blue-500 dark:bg-blue-700 px-1 sm:px-1.5 md:px-2 py-0.5 text-[8px] sm:text-[10px] ultra:text-xs font-bold text-white shadow-md select-none">
+                  {messages.techNew}
+                </span>
+              )}
+              <StackIcon
+                name={itemData.name}
+                className={`h-5 w-5 md:h-6 md:w-6 lg:h-7 lg:w-7 ultra:h-8 ultra:w-8 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300 ${isHighlighted ? "grayscale-0 scale-105" : "grayscale-80 scale-100"}`}
+                variant="light"
+              />
+              <p
+                className={`mt-1 sm:mt-2 md:mt-3 text-[10px] sm:text-xs md:text-sm font-medium group-hover:text-text transition-colors duration-400 text-center ${isHighlighted ? "dark:text-blue-400 text-blue-500" : "text-text/40"}`}
+              >
+                {itemData.label}
+              </p>
+            </motion.div>
+          );
+        })}
       </motion.div>
     </div>
   );
