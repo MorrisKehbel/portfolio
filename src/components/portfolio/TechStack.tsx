@@ -115,19 +115,21 @@ export const TechStack = () => {
           const isHighlightedByProject =
             selectedProjectKey && projectTechs.includes(itemData.name);
           const isActive = selectedTech === itemData.name;
-          const isHighlighted = isHighlightedByProject || isActive;
+          const isHighlighted = selectedProjectKey
+            ? isHighlightedByProject
+            : isActive;
 
           return (
             <motion.button
               key={itemData.name}
               className={`group relative flex flex-col items-center justify-center rounded-sm sm:rounded-md md:rounded-lg lg:rounded-xl p-2 md:p-2 ultra:p-4 cursor-pointer transition-all duration-300 ease-out bg-linear-to-br from-white/42 via-white/24 to-white/2 dark:from-white/16 dark:via-white/6 dark:to-white/2 focus:outline-none border border-white/10 dark:border-white/5
             ${
-              isActive || isHighlightedByProject
-                ? "shadow-[0_0_0_2px_rgba(59,155,255,0.2),0_0_15px_rgba(59,130,246,0.1),0_12px_40px_-28px_rgba(0,0,0,0.6)]"
+              isHighlighted
+                ? "ring md:ring-2 ring-blue-500/20 dark:ring-blue-700/40 shadow-[0_15px_30px_-28px_rgba(0,0,0,0.8)]"
                 : "shadow-[0_12px_40px_-28px_rgba(0,0,0,0.4)]"
             }`}
               variants={item}
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.05 }}
               onMouseEnter={() => {
                 if (!selectedTech) setHoveredTech(itemData.name);
               }}
@@ -156,7 +158,11 @@ export const TechStack = () => {
                 variant="light"
               />
               <p
-                className={`mt-1 sm:mt-2 md:mt-3 text-[10px] sm:text-xs ultra:text-sm font-medium group-hover:text-text transition-colors duration-400 text-center ${isActive ? "dark:text-blue-400 text-blue-500" : isHighlightedByProject ? "dark:text-blue-400 text-blue-500" : "text-text/40"}`}
+                className={`mt-1 sm:mt-2 md:mt-3 text-[10px] sm:text-xs ultra:text-sm font-medium group-hover:text-text transition-colors duration-400 text-center ${
+                  isHighlighted
+                    ? "dark:text-blue-400 text-blue-500"
+                    : "text-text/40"
+                }`}
               >
                 {itemData.label}
               </p>

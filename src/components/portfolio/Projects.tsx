@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import {
   Github,
@@ -49,11 +49,81 @@ export const Projects = () => {
     hoveredTech,
     setHoveredTech,
     selectedTech,
-    setSelectedTech,
   } = useProjectTech();
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const scrollAnimationRef = useRef<number | null>(null);
   const wheelHandlers = useRef<Record<string, (e: WheelEvent) => void>>({});
-  const [userOpened, setUserOpened] = useState(false);
+
+  const smoothScrollTo = useCallback(
+    (container: HTMLElement, targetTop: number, duration = 250) => {
+      if (scrollAnimationRef.current) {
+        cancelAnimationFrame(scrollAnimationRef.current);
+      }
+
+      const startTop = container.scrollTop;
+      const distance = targetTop - startTop;
+      if (Math.abs(distance) < 1) return;
+
+      const startTime = performance.now();
+      const easeInOutCubic = (t: number) =>
+        t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+      const step = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        container.scrollTop = startTop + distance * easeInOutCubic(progress);
+
+        if (progress < 1) {
+          scrollAnimationRef.current = requestAnimationFrame(step);
+        } else {
+          scrollAnimationRef.current = null;
+        }
+      };
+
+      scrollAnimationRef.current = requestAnimationFrame(step);
+    },
+    [],
+  );
+
+  const stabilizeScrollOnClose = useCallback((projectKey: string) => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const itemEl = container.querySelector(
+      `[data-project-key="${projectKey}"]`,
+    ) as HTMLElement | null;
+    if (!itemEl) return;
+
+    const dropdownEl = itemEl.querySelector(
+      ".overflow-hidden",
+    ) as HTMLElement | null;
+    if (!dropdownEl) return;
+
+    const dropdownHeight = dropdownEl.getBoundingClientRect().height;
+    if (dropdownHeight <= 0) return;
+
+    // Only needed if closing would cause scroll clamping
+    const futureMaxScroll =
+      container.scrollHeight - dropdownHeight - container.clientHeight;
+    if (container.scrollTop <= futureMaxScroll + 1) return;
+
+    // Add bottom padding to keep scrollable area stable during exit animation
+    container.style.transition = "none";
+    container.style.paddingBottom = `${dropdownHeight}px`;
+    // Force reflow so padding applies before transition
+    void container.offsetHeight;
+
+    // After exit animation, smoothly transition padding out
+    setTimeout(() => {
+      container.style.transition = "padding-bottom 200ms ease-out";
+      container.style.paddingBottom = "0px";
+
+      setTimeout(() => {
+        container.style.transition = "";
+        container.style.paddingBottom = "";
+      }, 210);
+    }, 250);
+  }, []);
 
   const PROJECTS: Project[] = PROJECTS_DATA.map((p) => ({
     ...p,
@@ -65,11 +135,38 @@ export const Projects = () => {
   }));
 
   const handleOpen = (i: number, projectKey: string) => {
-    setUserOpened(true);
     const isClosing = openIndex === i;
+    if (isClosing) {
+      stabilizeScrollOnClose(projectKey);
+    } else {
+      // Scroll into view mid-animation instead of waiting for it to finish
+      setTimeout(() => {
+        const container = scrollContainerRef.current;
+        if (!container) return;
+        const itemEl = container.querySelector(
+          `[data-project-key="${projectKey}"]`,
+        ) as HTMLElement | null;
+        if (!itemEl) return;
+        const containerRect = container.getBoundingClientRect();
+        const itemRect = itemEl.getBoundingClientRect();
+
+        if (itemRect.bottom > containerRect.bottom) {
+          const scrollToShowBottom =
+            container.scrollTop + (itemRect.bottom - containerRect.bottom) + 16;
+          // Don't scroll past the point where the title leaves the viewport
+          const maxScroll =
+            container.scrollTop + (itemRect.top - containerRect.top) + 16;
+          smoothScrollTo(container, Math.min(scrollToShowBottom, maxScroll));
+        } else if (itemRect.top < containerRect.top) {
+          smoothScrollTo(
+            container,
+            container.scrollTop - (containerRect.top - itemRect.top) - 16,
+          );
+        }
+      }, 250);
+    }
     setOpenIndex(isClosing ? null : i);
     setSelectedProjectKey(isClosing ? null : projectKey);
-    setSelectedTech(null);
   };
 
   const setContainerRef = (key: string) => (el: HTMLDivElement | null) => {
@@ -140,13 +237,31 @@ export const Projects = () => {
   const [forceCloseDropdown, setForceCloseDropdown] = useState(false);
 
   useEffect(() => {
+    if (!selectedProjectKey && openIndex !== null) {
+      const closingKey = PROJECTS[openIndex]?.key;
+      if (closingKey) stabilizeScrollOnClose(closingKey);
+      setOpenIndex(null);
+    }
+  }, [selectedProjectKey]);
+
+  useEffect(() => {
     if (openIndex !== null) {
+      const savedScroll = scrollContainerRef.current?.scrollTop ?? 0;
       // close dropdown on language change
       setForceCloseDropdown(true);
       const timer = setTimeout(() => {
         setForceCloseDropdown(false);
       }, 600);
-      return () => clearTimeout(timer);
+      // restore scroll position after dropdown reopens
+      const scrollTimer = setTimeout(() => {
+        const container = scrollContainerRef.current;
+        if (!container) return;
+        smoothScrollTo(container, savedScroll);
+      }, 750);
+      return () => {
+        clearTimeout(timer);
+        clearTimeout(scrollTimer);
+      };
     }
   }, [language]);
 
@@ -177,9 +292,8 @@ export const Projects = () => {
         ref={scrollContainerRef}
         style={{
           overflowAnchor: "none",
-          scrollbarGutter: "stable",
-        }} // 46
-        className="xl:min-h-[840px] xl:max-h-[66vh] super:min-h-[370px] super:max-h-[41vh] ultra:min-h-[590px] ultra:max-h-[44vh] overflow-auto scrollbar-custom pl-2"
+        }}
+        className="xl:min-h-210 xl:max-h-[66vh] super:min-h-92.5 super:max-h-[41vh] ultra:min-h-147.5 ultra:max-h-[44vh] overflow-auto scrollbar-custom pl-2"
         onMouseEnter={() => setHoveredTech(null)}
       >
         {PROJECTS.map((p, i) => {
@@ -196,12 +310,12 @@ export const Projects = () => {
             <div
               data-project-key={p.key}
               key={p.key}
-              className={`py-2 lg:py-5 relative ${
+              className={`py-2 lg:py-3 ultra:py-5 relative rounded ${
                 !isLast ? "border-b border-text/40 " : ""
               }`}
             >
               <motion.div
-                className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 dark:via-white/6 to-white/20 dark:to-white/8 pointer-events-none"
+                className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 dark:via-white/6 to-white/20 dark:to-white/8 pointer-events-none rounded"
                 animate={{ opacity: isHighlighted ? 1 : 0 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
               />
@@ -221,7 +335,7 @@ export const Projects = () => {
               >
                 <div className="flex justify-center items-center">
                   <motion.span
-                    className="h-1.5 rounded-full bg-blue-500"
+                    className="size-1.5 shrink-0 rounded-full bg-blue-500"
                     animate={{
                       width: isHighlighted ? 6 : 0,
                       marginRight: isHighlighted ? 12 : 0,
@@ -297,29 +411,13 @@ export const Projects = () => {
                     className="cursor-pointer overflow-hidden"
                     initial={{ opacity: 0, height: 0 }}
                     onClick={() => {
+                      if (isOpen) stabilizeScrollOnClose(p.key);
                       setOpenIndex(isOpen ? null : i);
                       setSelectedProjectKey(isOpen ? null : p.key);
                     }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                    onAnimationComplete={() => {
-                      if (!userOpened) return;
-
-                      if (scrollContainerRef.current && openIndex === i) {
-                        const itemEl = scrollContainerRef.current.querySelector(
-                          `[data-project-key="${p.key}"]`,
-                        ) as HTMLElement | null;
-                        if (itemEl) {
-                          itemEl.scrollIntoView({
-                            behavior: "smooth",
-                            block: "nearest",
-                          });
-                        }
-                      }
-
-                      setUserOpened(false);
-                    }}
                   >
                     <div className="flex flex-col bg-text/5 rounded-2xl p-4 mt-2 gap-4">
                       {p.details && (
@@ -334,7 +432,7 @@ export const Projects = () => {
                       {p.images && (
                         <div
                           onClick={(e) => e.stopPropagation()}
-                          className="relative flex items-center cursor-default bg-secondary/20 py-4 rounded-2xl"
+                          className="relative flex items-center cursor-default bg-secondary/20 rounded-2xl"
                         >
                           <button
                             onClick={(e) => {
@@ -355,9 +453,9 @@ export const Projects = () => {
                                 <motion.button
                                   key={`video-${idx}`}
                                   aria-label={`View video ${idx + 1}`}
-                                  className="relative flex-shrink-0 w-[150px] h-[96px] rounded-lg mb-1 cursor-pointer overflow-hidden focus:outline-auto focus:outline-offset-2"
+                                  className="relative shrink-0 w-37.5 h-24 rounded-lg cursor-pointer overflow-hidden focus:outline-auto focus:outline-offset-2"
                                   transition={{ duration: 0.3 }}
-                                  whileHover={{ scale: 1.15 }}
+                                  whileHover={{ scale: 1.1 }}
                                   whileFocus={{ scale: 1.05 }}
                                   onClick={(e) => {
                                     e.stopPropagation();
@@ -389,10 +487,10 @@ export const Projects = () => {
                             {p.images.map((src, idx) => (
                               <motion.button
                                 aria-label={`View image ${idx + 1}`}
-                                className="relative flex-shrink-0 w-[150px] h-[96px] rounded-lg mb-1 cursor-pointer overflow-hidden focus:outline-auto focus:outline-offset-2"
+                                className="relative shrink-0 w-37.5 h-24 rounded-lg cursor-pointer overflow-hidden focus:outline-auto focus:outline-offset-2"
                                 transition={{ duration: 0.3 }}
                                 key={idx}
-                                whileHover={{ scale: 1.15 }}
+                                whileHover={{ scale: 1.1 }}
                                 whileFocus={{ scale: 1.05 }}
                                 onClick={(e) => {
                                   e.stopPropagation();
