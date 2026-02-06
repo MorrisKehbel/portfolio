@@ -61,6 +61,12 @@ export const enMessages = {
     "A selection of recent work showcasing my skills and creativity.",
 
   projects: {
+    imageTool: {
+      title: "Image Tool: Black & White Processing",
+      description: "Ruby on Rails, JavaScript, Bootstrap, Chart.js",
+      details:
+        "A Rails application for black-and-white image processing with drag-and-drop uploads. All uploads are handled temporarily in memory and discarded immediately after processing. For fast and resource-efficient image conversion, libvips is used via the image_processing gem. In addition, the application provides an interactive brightness histogram to visualize processing effects. The interface is fully responsive and allows direct downloads of the processed images. This project reflects my approach to combining performance, clean architecture, and user-focused frontends, even in small, clearly scoped tools.",
+    },
     fairRentalPredictor: {
       title: "Machine Learning: Rental Price Prediction",
       description:
