@@ -77,12 +77,20 @@ const item: Variants = {
 
 export const TechStack = () => {
   const { messages, language } = useLanguage();
-  const { selectedProjectKey, setHoveredTech } = useProjectTech();
+  const {
+    selectedProjectKey,
+    setSelectedProjectKey,
+    setHoveredTech,
+    selectedTech,
+    setSelectedTech,
+  } = useProjectTech();
 
   return (
     <div
       className="h-full flex flex-col justify-evenly gap-2 ultra:gap-4"
-      onMouseLeave={() => setHoveredTech(null)}
+      onMouseLeave={() => {
+        if (!selectedTech) setHoveredTech(null);
+      }}
     >
       <AnimatedText
         id={language}
@@ -94,7 +102,7 @@ export const TechStack = () => {
       </AnimatedText>
 
       <motion.div
-        className="grid grid-cols-[repeat(auto-fit,minmax(70px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(80px,1fr))] gap-1 sm:gap-2 ultra:gap-4"
+        className="grid grid-cols-[repeat(auto-fit,minmax(70px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(75px,1fr))] ultra:grid-cols-[repeat(auto-fit,minmax(80px,1fr))] gap-1 sm:gap-2 ultra:gap-4"
         variants={container}
         initial="hidden"
         animate="show"
@@ -104,30 +112,41 @@ export const TechStack = () => {
             ? PROJECTS_DATA.find((p) => p.key === selectedProjectKey)
             : null;
           const projectTechs = selectedProject?.techStack || [];
-          const isHighlighted =
+          const isHighlightedByProject =
             selectedProjectKey && projectTechs.includes(itemData.name);
+          const isActive = selectedTech === itemData.name;
+          const isHighlighted = isHighlightedByProject || isActive;
 
           return (
-            <motion.div
+            <motion.button
               key={itemData.name}
-              className={`group relative flex flex-col items-center justify-center rounded-sm sm:rounded-md md:rounded-lg lg:rounded-xl p-2 md:p-3 ultra:p-4 cursor-default transition-all duration-300 ease-out bg-linear-to-br from-white/42 via-white/24 to-white/2 dark:from-white/16 dark:via-white/6 dark:to-white/2
-            active:border-blue-500/60 active:shadow-[0_0_0_2px_rgba(59,130,246,0.3),0_0_20px_rgba(59,130,246,0.2)] active:scale-95
-            md:active:border-white/10 md:active:shadow-[0_12px_40px_-28px_rgba(0,0,0,0.4)] md:active:scale-100
-            focus:outline-none focus:border-blue-500/60 focus:shadow-[0_0_0_2px_rgba(59,130,246,0.3)]
-            md:focus:border-white/10 md:focus:shadow-[0_12px_40px_-28px_rgba(0,0,0,0.4)]
+              className={`group relative flex flex-col items-center justify-center rounded-sm sm:rounded-md md:rounded-lg lg:rounded-xl p-2 md:p-2 ultra:p-4 cursor-pointer transition-all duration-300 ease-out bg-linear-to-br from-white/42 via-white/24 to-white/2 dark:from-white/16 dark:via-white/6 dark:to-white/2 focus:outline-none border border-white/10 dark:border-white/5
             ${
-              isHighlighted
-                ? "border border-white/30 dark:border-white/15 shadow-[0_12px_40px_-27px_rgba(0,0,0,0.8)]"
-                : "border border-white/10 dark:border-white/5 shadow-[0_12px_40px_-28px_rgba(0,0,0,0.4)]"
+              isActive || isHighlightedByProject
+                ? "shadow-[0_0_0_2px_rgba(59,155,255,0.2),0_0_15px_rgba(59,130,246,0.1),0_12px_40px_-28px_rgba(0,0,0,0.6)]"
+                : "shadow-[0_12px_40px_-28px_rgba(0,0,0,0.4)]"
             }`}
               variants={item}
               whileHover={{ scale: 1.1 }}
-              onMouseEnter={() => setHoveredTech(itemData.name)}
-              onMouseLeave={() => setHoveredTech(null)}
-              tabIndex={0}
+              onMouseEnter={() => {
+                if (!selectedTech) setHoveredTech(itemData.name);
+              }}
+              onMouseLeave={() => {
+                if (!selectedTech) setHoveredTech(null);
+              }}
+              onClick={() => {
+                if (isActive) {
+                  setSelectedTech(null);
+                  setHoveredTech(null);
+                } else {
+                  setSelectedTech(itemData.name);
+                  setHoveredTech(itemData.name);
+                  setSelectedProjectKey(null);
+                }
+              }}
             >
               {itemData.new && (
-                <span className="hidden md:block absolute sm:-top-2 md:-top-2 ultra:-top-2 left-1/2 -translate-x-1/2 rounded-full bg-blue-500 dark:bg-blue-700 px-1 sm:px-1.5 md:px-2 py-0.5 text-[8px] sm:text-[10px] ultra:text-xs font-bold text-white shadow-md select-none">
+                <span className="hidden md:block absolute sm:-top-2 md:-top-1 ultra:-top-2 left-1/2 -translate-x-1/2 rounded-full bg-blue-500 dark:bg-blue-700 px-1 sm:px-1.5 md:px-2 py-0.4 ultra:py-0.5 text-[8px] sm:text-[10px] ultra:text-xs font-bold text-white shadow-md select-none">
                   {messages.techNew}
                 </span>
               )}
@@ -137,11 +156,11 @@ export const TechStack = () => {
                 variant="light"
               />
               <p
-                className={`mt-1 sm:mt-2 md:mt-3 text-[10px] sm:text-xs md:text-sm font-medium group-hover:text-text transition-colors duration-400 text-center ${isHighlighted ? "dark:text-blue-400 text-blue-500" : "text-text/40"}`}
+                className={`mt-1 sm:mt-2 md:mt-3 text-[10px] sm:text-xs ultra:text-sm font-medium group-hover:text-text transition-colors duration-400 text-center ${isActive ? "dark:text-blue-400 text-blue-500" : isHighlightedByProject ? "dark:text-blue-400 text-blue-500" : "text-text/40"}`}
               >
                 {itemData.label}
               </p>
-            </motion.div>
+            </motion.button>
           );
         })}
       </motion.div>

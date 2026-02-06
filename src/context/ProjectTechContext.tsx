@@ -14,6 +14,8 @@ interface ProjectTechContextType {
   setSelectedProjectKey: (key: string | null) => void;
   hoveredTech: string | null;
   setHoveredTech: (tech: string | null) => void;
+  selectedTech: string | null;
+  setSelectedTech: (tech: string | null) => void;
 }
 
 const ProjectTechContext = createContext<ProjectTechContextType | undefined>(
@@ -25,6 +27,7 @@ export const ProjectTechProvider = ({ children }: { children: ReactNode }) => {
     null
   );
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
+  const [selectedTech, setSelectedTech] = useState<string | null>(null);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const setHoveredTechWithTimeout = useCallback((tech: string | null) => {
@@ -52,6 +55,8 @@ export const ProjectTechProvider = ({ children }: { children: ReactNode }) => {
         setSelectedProjectKey,
         hoveredTech,
         setHoveredTech: setHoveredTechWithTimeout,
+        selectedTech,
+        setSelectedTech,
       }}
     >
       {children}

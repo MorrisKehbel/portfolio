@@ -63,6 +63,12 @@ export const deMessages = {
     "Eine Auswahl aktueller Arbeiten, die meine Fähigkeiten und Kreativität präsentieren.",
 
   projects: {
+    imageTool: {
+      title: "Bildverarbeitungstool: Schwarz-Weiß-Filter",
+      description: "Ruby on Rails, JavaScript, Bootstrap, Chart.js",
+      details:
+        "Eine Rails-Anwendung zur Schwarz-Weiß-Konvertierung von Bildern per Drag & Drop. Alle Uploads werden nur temporär im Arbeitsspeicher verarbeitet und anschließend verworfen. Für eine schnelle und ressourcenschonende Verarbeitung kommt libvips zum Einsatz, angebunden über das image_processing-Gem. Ergänzend bietet die Anwendung eine interaktive Helligkeitsvisualisierung in Form eines Histogramms. Das Interface ist vollständig responsive und ermöglicht den direkten Download der verarbeiteten Bilder. Das Projekt zeigt meinen Ansatz, Performance, saubere Architektur und nutzerzentrierte Frontends auch bei klar fokussierten Tools miteinander zu verbinden.",
+    },
     fairRentalPredictor: {
       title: "Machine Learning: Mietpreisprognose",
       description:

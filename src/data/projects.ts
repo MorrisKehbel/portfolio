@@ -60,6 +60,31 @@ export const PROJECTS_DATA = [
       "vscode",
       "openai",
       "vitejs",
+      "zod",
+      "figma",
+    ],
+  },
+  {
+    key: "imageTool",
+    href: "https://image-tool-1.onrender.com/",
+    github: "https://github.com/MorrisKehbel/image_tool",
+    images: [
+      "/projects/image_tool/image_tool-1.webp",
+      "/projects/image_tool/image_tool-2.webp",
+      "/projects/image_tool/image_tool-3.webp",
+    ],
+    techStack: [
+      "html5",
+      "css3",
+      "ruby",
+      "rails",
+      "js",
+      "bootstrap5",
+      "git",
+      "github",
+      "npm",
+      "vscode",
+      "bash",
     ],
   },
   {
@@ -181,7 +206,6 @@ export const PROJECTS_DATA = [
   },
   {
     key: "shop",
-    href: "https://react-tailwind-shop.onrender.com/",
     github: "https://github.com/MorrisKehbel/react-tailwind-shop/tree/main",
     images: [
       "/projects/shop/shop-1.webp",

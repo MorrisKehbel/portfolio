@@ -48,6 +48,8 @@ export const Projects = () => {
     setSelectedProjectKey,
     hoveredTech,
     setHoveredTech,
+    selectedTech,
+    setSelectedTech,
   } = useProjectTech();
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const wheelHandlers = useRef<Record<string, (e: WheelEvent) => void>>({});
@@ -67,6 +69,7 @@ export const Projects = () => {
     const isClosing = openIndex === i;
     setOpenIndex(isClosing ? null : i);
     setSelectedProjectKey(isClosing ? null : projectKey);
+    setSelectedTech(null);
   };
 
   const setContainerRef = (key: string) => (el: HTMLDivElement | null) => {
@@ -185,17 +188,23 @@ export const Projects = () => {
           const projectTechs = p.techStack || [];
           const isHighlighted =
             !selectedProjectKey &&
-            hoveredTech &&
-            projectTechs.includes(hoveredTech);
+            (selectedTech
+              ? projectTechs.includes(selectedTech)
+              : hoveredTech && projectTechs.includes(hoveredTech));
 
           return (
             <div
               data-project-key={p.key}
               key={p.key}
-              className={`py-2 lg:py-5 transition-all duration-300 ${
+              className={`py-2 lg:py-5 relative ${
                 !isLast ? "border-b border-text/40 " : ""
-              } ${isHighlighted ? "bg-linear-to-r from-transparent via-white/10 dark:via-white/6 to-white/20 dark:to-white/8 rounded-r px-2" : ""}`}
+              }`}
             >
+              <motion.div
+                className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 dark:via-white/6 to-white/20 dark:to-white/8 pointer-events-none"
+                animate={{ opacity: isHighlighted ? 1 : 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              />
               {/* Header */}
               <div
                 onClick={() => handleOpen(i, p.key)}
@@ -210,20 +219,31 @@ export const Projects = () => {
                 }}
                 className="flex justify-between items-center cursor-pointer"
               >
-                <div className="flex flex-col">
-                  <AnimatedText
-                    id={`${language}-${p.key}-title`}
-                    as="h3"
-                    className="text-xl text-text font-serif"
-                  >
-                    {p.title}
-                  </AnimatedText>
-                  <AnimatedText
-                    id={`${language}-${p.key}-desc`}
-                    className="mt-1 text-sm text-text/70"
-                  >
-                    {p.description}
-                  </AnimatedText>
+                <div className="flex justify-center items-center">
+                  <motion.span
+                    className="h-1.5 rounded-full bg-blue-500"
+                    animate={{
+                      width: isHighlighted ? 6 : 0,
+                      marginRight: isHighlighted ? 12 : 0,
+                      opacity: isHighlighted ? 1 : 0,
+                    }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  />
+                  <div className="flex flex-col">
+                    <AnimatedText
+                      id={`${language}-${p.key}-title`}
+                      as="h3"
+                      className="text-xl text-text font-serif"
+                    >
+                      {p.title}
+                    </AnimatedText>
+                    <AnimatedText
+                      id={`${language}-${p.key}-desc`}
+                      className="mt-1 text-sm text-text/70"
+                    >
+                      {p.description}
+                    </AnimatedText>
+                  </div>
                 </div>
 
                 <div className="flex flex-col lg:flex-row items-center mx-4 gap-2">
@@ -327,7 +347,7 @@ export const Projects = () => {
                           </button>
 
                           <div
-                            className="flex gap-3 overflow-x-auto overflow-y-hidden scrollbar-custom p-4"
+                            className="flex-1 min-w-0 flex gap-3 overflow-x-auto overflow-y-hidden scrollbar-custom p-4"
                             ref={setContainerRef(p.key)}
                           >
                             {(p.videos?.length ?? 0) > 0 &&
