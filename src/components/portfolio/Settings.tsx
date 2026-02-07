@@ -17,7 +17,7 @@ export const Settings = () => {
   ];
 
   return (
-    <div className="h-full grid grid-cols-2 xl:grid-cols-1 gap-4">
+    <div className="h-full grid grid-cols-2 super:grid-cols-1 gap-3">
       {/* DarkMode */}
       <motion.button
         aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
@@ -27,7 +27,7 @@ export const Settings = () => {
         whileTap={{ scale: 0.95 }}
         onHoverStart={() => iconControls.start({ rotate: 45 })}
         onHoverEnd={() => iconControls.start({ rotate: 0 })}
-        className="w-full flex items-center justify-center bg-secondary/20 cursor-pointer rounded-xl "
+        className="w-full flex items-center justify-center bg-secondary/20 cursor-pointer rounded-xl active:outline-none"
       >
         <motion.div
           animate={{ rotate: 380 }}
@@ -39,9 +39,9 @@ export const Settings = () => {
             transition={{ ease: "easeInOut", duration: 0.5 }}
           >
             {darkMode ? (
-              <Moon className="text-text transition duration-200" size={34} />
+              <Moon className="text-text transition duration-200 h-8 w-8 ultra:h-10 ultra:w-10" />
             ) : (
-              <Sun className="text-text transition duration-200" size={34} />
+              <Sun className="text-text transition duration-200 h-8 w-8 ultra:h-10 ultra:w-10" />
             )}
           </motion.div>
         </motion.div>

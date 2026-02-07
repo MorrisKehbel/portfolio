@@ -102,7 +102,7 @@ export const Contact = () => {
           placeholder={messages.contactName}
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
-          className="p-4 rounded-lg h-10 ultra:h-13 bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base focus:outline-none focus:ring focus:bg-neutral/15 dark:focus:bg-neutral/55 focus:ring-text/40 focus:[&::placeholder]:opacity-80 dark:focus:ring-text/10 text-text shadow-inner border border-white/30 dark:border-white/10 transition-all w-full placeholder-text/50"
+          className="p-4 rounded-lg h-10 ultra:h-13 bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base focus:outline-none focus:ring focus:bg-neutral/15 dark:focus:bg-neutral/50 focus:ring-text/40 focus:placeholder:opacity-60 dark:focus:ring-text/20 text-text shadow-inner border border-white/30 dark:border-white/10 transition-all w-full placeholder-text/50"
         />
 
         {/* Last Name */}
@@ -115,7 +115,7 @@ export const Contact = () => {
           placeholder={messages.contactName2}
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
-          className="p-4 rounded-lg h-10 ultra:h-13 bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base focus:outline-none focus:ring focus:bg-neutral/15 dark:focus:bg-neutral/55 focus:ring-text/40 focus:[&::placeholder]:opacity-80 dark:focus:ring-text/10 text-text shadow-inner border border-white/30 dark:border-white/10 transition w-full placeholder-text/50"
+          className="p-4 rounded-lg h-10 ultra:h-13 bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base focus:outline-none focus:ring focus:bg-neutral/15 dark:focus:bg-neutral/50 focus:ring-text/40 focus:placeholder:opacity-60 dark:focus:ring-text/20 text-text shadow-inner border border-white/30 dark:border-white/10 transition w-full placeholder-text/50"
         />
 
         {/* Email Address */}
@@ -130,7 +130,7 @@ export const Contact = () => {
           }
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className={`p-4 rounded-lg h-10 ultra:h-13 bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base focus:outline-none focus:ring focus:bg-neutral/15 dark:focus:bg-neutral/55 focus:ring-text/40 focus:[&::placeholder]:opacity-80 dark:focus:ring-text/10 text-text shadow-inner transition w-full ${
+          className={`p-4 rounded-lg h-10 ultra:h-13 bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base focus:outline-none focus:ring focus:bg-neutral/15 dark:focus:bg-neutral/50 focus:ring-text/40 focus:placeholder:opacity-60 dark:focus:ring-text/20 text-text shadow-inner transition w-full ${
             errors.email && !/\S+@\S+\.\S+/.test(email)
               ? "border-2 border-red-600/50 animate-pulse placeholder-red-600 dark:border-red-400-50 dark:placeholder-red-400 dark:border-red-400/50"
               : "border border-white/30 dark:border-white/10 placeholder-text/50"
@@ -147,7 +147,7 @@ export const Contact = () => {
           placeholder={messages.contactCompany}
           value={company}
           onChange={(e) => setCompany(e.target.value)}
-          className="p-4 rounded-lg h-10 ultra:h-13 bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base focus:outline-none focus:ring focus:bg-neutral/15 dark:focus:bg-neutral/55 focus:ring-text/40 focus:[&::placeholder]:opacity-80 dark:focus:ring-text/10 text-text shadow-inner border border-white/30 dark:border-white/10 transition w-full placeholder-text/50"
+          className="p-4 rounded-lg h-10 ultra:h-13 bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base focus:outline-none focus:ring focus:bg-neutral/15 dark:focus:bg-neutral/50 focus:ring-text/40 focus:placeholder:opacity-60 dark:focus:ring-text/20 text-text shadow-inner border border-white/30 dark:border-white/10 transition w-full placeholder-text/50"
         />
 
         {/* Message */}
@@ -161,7 +161,7 @@ export const Contact = () => {
           }
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className={`sm:col-span-2 p-4 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base focus:outline-none focus:ring focus:bg-neutral/15 dark:focus:bg-neutral/55 focus:ring-text/40 dark:focus:ring-text/10 focus:[&::placeholder]:opacity-80 text-text resize-none h-30 ultra:h-40 shadow-inner transition w-full ${
+          className={`sm:col-span-2 p-4 rounded-lg bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base focus:outline-none focus:ring focus:bg-neutral/15 dark:focus:bg-neutral/50 focus:ring-text/40 dark:focus:ring-text/20 focus:placeholder:opacity-60 text-text resize-none h-30 ultra:h-40 shadow-inner transition w-full ${
             errors.message && !message.trim()
               ? "border-2 border-red-600/50 animate-pulse placeholder-red-600 dark:border-red-400-50 dark:placeholder-red-400 dark:border-red-400/50"
               : "border border-white/30 dark:border-white/10 placeholder-text/50"
@@ -173,7 +173,7 @@ export const Contact = () => {
           type="submit"
           id="submit"
           name="submit"
-          className="sm:col-span-2 bg-secondary/20  text-text rounded-lg p-2 ultra:p-3 mt-2 hover:shadow-md hover:bg-neutral hover:text-primary dark:hover:text-text transition font-semibold w-full cursor-pointer select-none"
+          className="sm:col-span-2 bg-secondary/20  text-text rounded-lg p-2 ultra:p-3 mt-2 hover:shadow-md hover:bg-neutral hover:text-primary dark:hover:text-text transition font-semibold w-full cursor-pointer select-none focus:outline-none focus:ring focus:ring-text dark:focus:ring-text"
           disabled={status === "loading"}
         >
           <AnimatedText id={language}>

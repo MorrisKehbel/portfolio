@@ -310,7 +310,7 @@ export const Projects = () => {
             <div
               data-project-key={p.key}
               key={p.key}
-              className={`py-2 lg:py-3 ultra:py-5 relative rounded ${
+              className={`py-2 lg:py-6 super:py-3 ultra:py-5 relative rounded ${
                 !isLast ? "border-b border-text/40 " : ""
               }`}
             >
@@ -360,7 +360,7 @@ export const Projects = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col lg:flex-row items-center mx-4 gap-2">
+                <div className="flex flex-col lg:flex-row items-center mx-4 gap-0.5 md:gap-2">
                   {p.href ? (
                     <a
                       aria-label={`Project External Link to ${p.title}`}

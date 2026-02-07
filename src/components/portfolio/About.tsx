@@ -32,7 +32,7 @@ export const About = () => {
           {messages.aboutSubText}
         </AnimatedText>
         <motion.div
-          className="mx-auto mb-2 mt-3 w-30 h-1 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"
+          className="mx-auto mb-2 mt-3 w-30 h-1 bg-linear-to-r from-purple-500 to-blue-500 rounded-full"
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 1, delay: 0.7 }}

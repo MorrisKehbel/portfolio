@@ -78,7 +78,7 @@ export const GridLayout = () => {
         transition={Slide}
       />
       <motion.div
-        className="grid grid-cols-1 gap-4 ultra:gap-6 md:grid-cols-2 xl:grid-cols-4 super:grid-cols-12 super:[repeat(12,minmax(0,1fr))] mx-auto p-2 ultra:p-4 min-h-screen super:auto-rows-auto ultra:grid-rows-[1fr_1fr_1fr_auto_auto_1fr_1fr_1fr_1fr_1fr]"
+        className="grid grid-cols-1 gap-4 ultra:gap-6 md:grid-cols-2 xl:grid-cols-4 super:grid-cols-12 super:[repeat(12,minmax(0,1fr))] mx-auto p-2.5 ultra:p-4 min-h-screen super:auto-rows-auto ultra:grid-rows-[1fr_1fr_1fr_auto_auto_1fr_1fr_1fr_1fr_1fr]"
         variants={containerVariants}
         initial="hidden"
         animate={showAll ? "visible" : "hidden"}
@@ -114,7 +114,7 @@ export const GridLayout = () => {
                 transition: { type: "spring", stiffness: 120, damping: 20 },
               })}
           aria-label="portrait-picture"
-          className="super:col-span-2 ultra:row-span-2 md:col-span-1 md:order-4 xl:order-5 xl:col-span-1 super:order-5"
+          className="sm:hidden md:block super:col-span-2 ultra:row-span-2 md:col-span-1 md:order-4 xl:order-5 xl:col-span-1 super:order-5"
         >
           <Card className="relative aspect-square border-2 border-white/5 overflow-hidden flex justify-center items-end">
             <div className="absolute inset-4 rounded-xl border-5 border-text/10 pointer-events-none"></div>
