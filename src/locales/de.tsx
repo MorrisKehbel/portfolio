@@ -22,7 +22,7 @@ export const deMessages = {
   ),
 
   aboutSubText:
-    "Aktuell fokussiere ich mich auf Next.js, Server Actions mit KI, TypeScript, Flutter-Apps und zugängliche UI-Systeme.",
+    "Aktuell fokussiere ich mich auf Next.js, MERN Stack, TypeScript, KI-Integrationen, Flutter/Kotlin-Apps.",
 
   contact: "Noch Fragen?",
   contact2: () => (
@@ -74,14 +74,14 @@ export const deMessages = {
       description:
         "Next.js, TypeScript, Tailwind, Python (FastAPI), Docker, Scikit-Learn, MLflow, Make",
       details:
-        "Zum Abschluss meines KI Kompakt-Kurses habe ich ein End-to-End Machine Learning System zur Vorhersage von Mietpreisen auf Basis von echten Immobiliendaten entwickelt. Das Projekt umfasste den gesamten Lebenszyklus: von der Datenbereinigung und -validierung bis hin zum Feature Engineering wichtiger Attribute wie Lage und Ausstattung. Mithilfe von MLflow wurden verschiedene Modelle trainiert, evaluiert und versioniert (Champion-Challenger-Setup). Die Leistung wurde dabei über Metriken wie R², MAE, RMSE, and MAPE bewertet und durch Residuenanalysen sowie Visualisierungen der Feature Importance ergänzt. Die finale Lösung wurde über ein FastAPI-Backend bereitgestellt und mit einem Next.js-Frontend verbunden, was Echtzeit-Vorhersagen für Endnutzer ermöglichte. Dieses Projekt spiegelt meine Leidenschaft wieder, die Lücke zwischen angewandtem Machine Learning und Full-Stack-Entwicklung zu schließen und datengestützte Modelle in funktionale, nutzerorientierte Anwendungen zu verwandeln.",
+        "Als Abschlussprojekt im KI Kompakt Kurs entwickelte ich ein End-to-End ML-System zur Mietpreisvorhersage. Das Projekt deckte den gesamten Lebenszyklus ab, von Data Cleaning, Validierung und Feature Engineering bis hin zu Modelltraining, Evaluierung und Versionierung mittels MLflow. Die Performance wurde anhand von Metriken wie R², MAE, RMSE und MAPE bewertet und durch Residuenanalysen sowie Feature-Importance-Visualisierungen ergänzt. Die finale Lösung wurde über ein FastAPI-Backend bereitgestellt und mit einem Next.js-Frontend für Echtzeit-Vorhersagen verbunden. Dieses Projekt spiegelt meine Leidenschaft wieder, die Lücke zwischen angewandtem Machine Learning und Full-Stack-Entwicklung zu schließen und datengestützte Modelle in funktionale, nutzerorientierte Anwendungen zu verwandeln.",
     },
     bottshackathon2025: {
       title: "Hackathon Projekt: “BÄR BUDDY”",
       description:
         "React.js, TypeScript, Tailwind, OpenAI API Integration, Framer Motion",
       details:
-        "Als Teil des Hackathons „Battle of the Tech Schools“ durfte ich die WBS Coding School als Webentwickler vertreten. Die Aufgabe kam von Berlin Partner: Viele Neuankömmlinge in Berlin haben Schwierigkeiten, Zugang zu wirtschaftlichen Chancen zu finden. Gesucht war eine digitale Lösung, die Newcomern hilft, lokale wirtschaftliche und technologische Angebote zu entdecken, sich zu vernetzen und sich schneller einzuleben. Unser Team (3x Data Science, 1x UI/UX, 1x Web Dev) entwickelte „BÄR BUDDY“, einen All-in-One Chatbot, der auf Webseiten integriert werden kann. Die Hauptfunktionen des Projekts umfassten einen intelligenten, multilingualen Chat, der lokale Events, Jobangebote und Deutschkurse aus gescrapten Daten bereitstellt, mit einer OpenAI-Integration als Fallback. Eine interaktive Karte liefert Empfehlungen, während ein Signup-/Signin-System mit QR-Code-Konzept die Vernetzung zwischen Unternehmen und Nutzer*innen erleichtert. Nach vier Tagen harter Arbeit sicherten wir uns den 3. Platz von 10 Teams. Ein großes Dankeschön an mein Team, die Zusammenarbeit war einfach großartig.",
+        "Als Vertreter der WBS CODING SCHOOL beim Hackathon „Battle of the Tech Schools“ entwickelte ich in einem vielfältigen Team eine Lösung für Berlin Partner. Ziel war es, Newcomern den Zugang zu lokalen wirtschaftlichen und technologischen Angeboten zu erleichtern, sie zu vernetzen und ihre Integration in die Stadt zu beschleunigen. Wir entwickelten den Prototypen „BÄR BUDDY“, einen intelligenten, multilingualen Chatbot, der auf aktuellen gescrapten Daten zu lokalen Events und Jobangeboten basiert, wobei OpenAI als Fallback dient. Die Lösung visualisiert diese Echtzeit-Daten zudem auf einer interaktiven Karte, ergänzt durch ein QR-Code-System, das Vernetzung spielerisch fördert. Nach vier Tagen harter Arbeit sicherten wir uns den 3. Platz von 10 Teams. Ein großes Dankeschön an mein Team, die Zusammenarbeit war einfach großartig.",
     },
     portfolio: {
       title: "Portfolio-Übersicht: Persönliche Website",
@@ -90,14 +90,14 @@ export const deMessages = {
         "Das ist meine persönliche Portfolio-Website mit einem animierten Bento-Grid-System, einem Dark/Light-Modus und Sprachwechsel via Context API. Das Kontaktformular läuft direkt über Next.js API Routes mit Nodemailer. Ich wollte eine übersichtliche Website bauen, auf der man alle Inhalte auf einen Blick sieht und Besucher schnell die benötigten Infos finden können.",
     },
     moodsync: {
-      title: "MoodSync: Smarte Web-App für mentale Gesundheit",
+      title: "Tracker für mentale Gesundheit: “MoodSync”",
       description:
         "React.js, Tailwind, Express.js, MongoDB (mongoose), OpenAI API Integration",
       details:
-        "Eine smarte Web-App für mentale Gesundheit, entwickelt in nur 4 Wochen als Gruppen-Abschlussprojekt im WBS-Trainingsprogramm. Die App nutzt tägliches Journaling und KI, um persönliche Zusammenfassungen und praktische Empfehlungen zu erstellen, die gesunde Gewohnheiten fördern und die Zielerreichung unterstützen. Das übersichtliche Dashboard bietet motivierende Tipps, zeigt wöchentliche Zusammenfassungen nach Kategorien, ermöglicht Emotionstracking im Monatsüberblick und lässt Nutzer mit einem KI-Chatbot für individuelle Unterstützung interagieren. Alles darauf ausgelegt, Balance, Selbstreflexion und mentales Wohlbefinden zu fördern. Das Projekt war eine super Gelegenheit, mit KI zu experimentieren, ein intuitives Dashboard zu entwerfen und mehr über die Gestaltung sinnvoller Benutzererfahrungen zu lernen.",
+        "MoodSync ist eine KI-gestützte Web-App für mentale Gesundheit, die als vierwöchiges Abschlussprojekt im Team entwickelt wurde. Basierend auf täglichen Tagebucheinträgen nutzt die App generative KI für personalisierte Zusammenfassungen und praktische Empfehlungen, die gesunde Gewohnheiten fördern sollen. Das intuitive Dashboard bereitet diese Insights visuell auf und nutzt Recharts zur Darstellung wöchentlicher Aktivitätsmuster und monatlicher Stimmungstrends. Ergänzend bietet ein AI-Chatbot individuelles Coaching, wobei sich alle KI-Funktionen über eine Einstellung komplett deaktivieren lassen. Dieses Projekt zeigt meine Fähigkeit, in einem agilen Team sinnvolle Nutzererlebnisse mit skalierbarer Full-Stack-Logik zu verbinden und eine professionelle End-to-End-Lösung bereitzustellen.",
     },
     pokemon: {
-      title: "Pokémon Battle Game: Strategisches Online-Spiel",
+      title: "Strategisches Online-Spiel: Pokémon Battle Game",
       description: "React.js, Tailwind, Express.js, MongoDB (mongoose)",
       details:
         "Als Gruppenprojekt bei WBS haben wir ein interaktives Pokémon-Battle-Game entwickelt. Du kannst ein Team aus sechs Pokémon zusammenstellen, gegen zufällige Gegner kämpfen und deinen Fortschritt auf einem Leaderboard verfolgen. Wir haben eine RESTful API mit MongoDB zur Verwaltung von Benutzern und Leaderboard-Daten genutzt, Pokémon-Daten von der PokeAPI eingebunden und ein strukturiertes State-Management implementiert, damit die Kämpfe strategisch bleiben. Die Entwicklung dieses Spiels hat mir nicht nur viel Spaß gemacht, sondern mir auch wertvolle Erfahrungen in der Full-Stack-Entwicklung und in der Koordination komplexer Spielelogik vermittelt.",

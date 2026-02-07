@@ -7,13 +7,13 @@ export const Links = () => {
   const { darkMode } = useDarkMode();
   const [isGithubHovered, setIsGithubHovered] = useState(false);
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-3 h-full">
+    <div className="grid grid-cols-2 xl:grid-cols-1 gap-3 h-full">
       <a
         aria-label={`My Github Profile`}
         href="https://github.com/morriskehbel"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex super:flex-col items-center justify-center gap-2 rounded-xl bg-secondary/20 p-4 text-text text-sm font-medium transition-colors duration-200 hover:bg-neutral hover:text-primary dark:hover:text-text select-none"
+        className="flex super:flex-col items-center justify-center gap-2 rounded-lg md:rounded-xl bg-secondary/20 p-4 text-text text-sm font-medium transition-colors duration-200 hover:bg-neutral hover:text-primary dark:hover:text-text select-none focus:ring ring-text focus:outline-none"
         onMouseEnter={() => setIsGithubHovered(true)}
         onMouseLeave={() => setIsGithubHovered(false)}
       >
@@ -27,8 +27,8 @@ export const Links = () => {
             filter: darkMode
               ? "invert(10%)"
               : isGithubHovered
-              ? "invert(10%)"
-              : "invert(90%)",
+                ? "invert(10%)"
+                : "invert(90%)",
             transition: "filter 0.2s ease",
           }}
         />
@@ -39,7 +39,7 @@ export const Links = () => {
         href="https://www.linkedin.com/in/morriskehbel/"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex super:flex-col items-center justify-center gap-2 rounded-xl bg-secondary/20 p-4 text-text text-sm font-medium transition-colors duration-200 hover:bg-neutral hover:text-primary dark:hover:text-text select-none"
+        className="flex super:flex-col items-center justify-center gap-2 rounded-lg md:rounded-xl bg-secondary/20 p-4 text-text text-sm font-medium transition-colors duration-200 hover:bg-neutral hover:text-primary dark:hover:text-text select-none focus:ring ring-text focus:outline-none"
       >
         <Lottie
           animationData={linkedinIcon}
