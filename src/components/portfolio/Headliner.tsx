@@ -26,7 +26,7 @@ export const Headliner = () => {
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="overflow-hidden"
       >
-        <div ref={contentRef} className="grid">
+        <div ref={contentRef} className="grid pb-1">
           <AnimatedText
             id={language}
             ariaLabelledBy="headline"

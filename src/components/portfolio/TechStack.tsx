@@ -139,7 +139,7 @@ export const TechStack = () => {
                 if (!selectedTech) setHoveredTech(null);
               }}
               onFocus={() => {
-                if (!selectedTech) setSelectedTech(itemData.name);
+                if (!selectedTech) setHoveredTech(itemData.name);
               }}
               onClick={() => {
                 if (isActive) {
