@@ -124,7 +124,7 @@ export const TechStack = () => {
           return (
             <motion.button
               key={itemData.name}
-              className={`group relative flex flex-col items-center justify-center rounded-sm sm:rounded-md md:rounded-lg lg:rounded-xl p-2 md:p-2 ultra:p-4 cursor-pointer transition-all duration-300 ease-out bg-linear-to-br from-white/42 via-white/24 to-white/2 dark:from-white/16 dark:via-white/6 dark:to-white/2 select-none border border-white/10 dark:border-white/5 focus-visible:ring ring-blue-500/20 dark:ring-blue-700/40 active:scale-[0.97] active:ring active:md:ring-2 active:shadow-[0_15px_30px_-28px_rgba(0,0,0,0.8)]
+              className={`group relative flex flex-col items-center justify-center rounded-sm sm:rounded-md md:rounded-lg lg:rounded-xl p-2 md:p-2 ultra:p-4 cursor-pointer transition-all duration-300 ease-out bg-linear-to-br from-white/42 via-white/24 to-white/2 dark:from-white/16 dark:via-white/6 dark:to-white/2 select-none border border-white/10 dark:border-white/5 focus-visible:ring ring-blue-500/20 dark:ring-sky-700/40 active:scale-[0.97] active:ring active:md:ring-2 active:shadow-[0_15px_30px_-28px_rgba(0,0,0,0.8)]
             ${
               isHighlighted
                 ? "ring md:ring-2 shadow-[0_15px_30px_-28px_rgba(0,0,0,0.8)]"
@@ -141,6 +141,9 @@ export const TechStack = () => {
               onFocus={() => {
                 if (!selectedTech) setHoveredTech(itemData.name);
               }}
+              onBlur={() => {
+                if (!selectedTech) setHoveredTech(null);
+              }}
               onClick={() => {
                 if (isActive) {
                   setSelectedTech(null);
@@ -153,7 +156,7 @@ export const TechStack = () => {
               }}
             >
               {itemData.new && (
-                <span className="hidden md:block absolute sm:-top-2 md:-top-1 ultra:-top-2 left-1/2 -translate-x-1/2 rounded-full bg-blue-500 dark:bg-blue-400 px-1 sm:px-1.5 md:px-2 py-0.4 ultra:py-0.5 text-[8px] sm:text-[10px] ultra:text-xs font-bold text-white shadow-md select-none">
+                <span className="hidden md:block absolute sm:-top-2 md:-top-1 ultra:-top-2 left-1/2 -translate-x-1/2 rounded-full bg-linear-to-r from-cyan-500 via-sky-500 to-blue-400 px-1 sm:px-1.5 md:px-2 py-0.4 ultra:py-0.5 text-[8px] sm:text-[10px] ultra:text-xs font-bold text-white shadow-md select-none">
                   {messages.techNew}
                 </span>
               )}
@@ -165,7 +168,7 @@ export const TechStack = () => {
               <p
                 className={`mt-1 sm:mt-2 md:mt-3 text-[10px] sm:text-xs ultra:text-sm font-medium group-hover:text-text transition-colors duration-400 text-center group-focus-visible:text-blue-500 dark:group-focus-visible:text-blue-400 group-active:text-blue-500 dark:group-active:text-blue-400 ${
                   isHighlighted
-                    ? "dark:text-blue-400 text-blue-500"
+                    ? "dark:text-cyan-400 text-cyan-600"
                     : "text-text/40"
                 }`}
               >

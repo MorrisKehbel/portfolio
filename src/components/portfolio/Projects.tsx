@@ -52,6 +52,7 @@ export const Projects = () => {
   } = useProjectTech();
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const scrollAnimationRef = useRef<number | null>(null);
+  const savedScrollTop = useRef<number | null>(null);
   const wheelHandlers = useRef<Record<string, (e: WheelEvent) => void>>({});
 
   const smoothScrollTo = useCallback(
@@ -138,7 +139,18 @@ export const Projects = () => {
     const isClosing = openIndex === i;
     if (isClosing) {
       stabilizeScrollOnClose(projectKey);
+      // Restore scroll position after close animation
+      const restoreTarget = savedScrollTop.current;
+      if (restoreTarget !== null) {
+        setTimeout(() => {
+          const container = scrollContainerRef.current;
+          if (container) smoothScrollTo(container, restoreTarget);
+          savedScrollTop.current = null;
+        }, 300);
+      }
     } else {
+      // Save scroll position before opening
+      savedScrollTop.current = scrollContainerRef.current?.scrollTop ?? null;
       // Scroll into view mid-animation instead of waiting for it to finish
       setTimeout(() => {
         const container = scrollContainerRef.current;
@@ -240,6 +252,15 @@ export const Projects = () => {
     if (!selectedProjectKey && openIndex !== null) {
       const closingKey = PROJECTS[openIndex]?.key;
       if (closingKey) stabilizeScrollOnClose(closingKey);
+      // Restore scroll position after close animation
+      const restoreTarget = savedScrollTop.current;
+      if (restoreTarget !== null) {
+        setTimeout(() => {
+          const container = scrollContainerRef.current;
+          if (container) smoothScrollTo(container, restoreTarget);
+          savedScrollTop.current = null;
+        }, 300);
+      }
       setOpenIndex(null);
     }
   }, [selectedProjectKey]);
@@ -335,14 +356,49 @@ export const Projects = () => {
               >
                 <div className="flex justify-center items-center">
                   <motion.span
-                    className="size-1.5 shrink-0 rounded-full bg-blue-500"
+                    className="relative shrink-0 flex items-center justify-center"
                     animate={{
-                      width: isHighlighted ? 6 : 0,
+                      width: isHighlighted ? 8 : 0,
+                      height: isHighlighted ? 8 : 0,
                       marginRight: isHighlighted ? 12 : 0,
                       opacity: isHighlighted ? 1 : 0,
                     }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
-                  />
+                  >
+                    {/* Pulsing outer ring */}
+                    <motion.span
+                      className="absolute inset-0 rounded-full border border-teal-400/80 dark:border-teal-400/60"
+                      animate={
+                        isHighlighted
+                          ? {
+                              scale: [1, 1.5, 1],
+                              opacity: [0.6, 0.1, 0.6],
+                            }
+                          : { scale: 1, opacity: 0 }
+                      }
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
+                    {/* Inner glowing dot */}
+                    <motion.span
+                      className="size-1.5 rounded-full bg-radial-[at_50%_75%]  from-sky-400 via-teal-500 dark:via-teal-400 to-blue-500 dark:to-blue-400 to-90% shadow-[0_0_6px_2px_rgba(36,191,251,0.5)]"
+                      animate={
+                        isHighlighted
+                          ? {
+                              scale: [1, 1.2, 1],
+                            }
+                          : { scale: 0 }
+                      }
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                    />
+                  </motion.span>
                   <div className="flex flex-col">
                     <AnimatedText
                       id={`${language}-${p.key}-title`}
