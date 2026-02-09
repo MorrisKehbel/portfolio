@@ -99,8 +99,8 @@ export const deMessages = {
       <p className="mt-2">
         Wenn Sie mich über das Kontaktformular oder per E-Mail kontaktieren,
         werden die von Ihnen eingegebenen Daten ausschließlich zur Bearbeitung
-        Ihrer Anfrage verarbeitet. Die Daten werden über Namecheap Inc.,
-        übertragen, teilweise auf Servern in den USA, unter Einhaltung der
+        Ihrer Anfrage verarbeitet. Die Verarbeitung erfolgt durch Namecheap
+        Inc., teilweise auf Servern in den USA, unter Einhaltung der
         EU-Standardvertragsklauseln. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f
         DSGVO (berechtigtes Interesse). Die Daten werden gelöscht, sobald sie
         für die Bearbeitung Ihrer Anfrage nicht mehr erforderlich sind.
@@ -126,7 +126,8 @@ export const deMessages = {
       <strong className="my-2">Cookies & Tracking</strong>
       <br />
       <p className="mt-2">
-        Diese Website verwendet keine Cookies oder Drittanbieter-Tracking-Tools.
+        Diese Website verwendet keine Cookies und keine Tracking- oder
+        Analyse-Tools.
       </p>
       <br />
       <strong className="my-2">Ihre Rechte</strong>

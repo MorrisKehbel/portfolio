@@ -33,7 +33,6 @@ export const PROJECTS_DATA = [
   },
   {
     key: "bottshackathon2025",
-    href: "https://hackathon-kiez-chatbot.onrender.com/",
     github: "https://github.com/MorrisKehbel/hackathon-kiez-chatbot",
     images: [
       "/projects/botts25/botts25-1.webp",
