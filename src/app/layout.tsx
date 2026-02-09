@@ -49,7 +49,11 @@ export default function RootLayout({
                 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 document.documentElement.setAttribute('data-theme', prefersDark ? "dark" : "light");
               }
-            })()
+            })();
+            window.scrollTo(0, 0);
+            if ('scrollRestoration' in history) {
+              history.scrollRestoration = 'manual';
+            }
           `}
         </Script>
         <Providers>{children}</Providers>
