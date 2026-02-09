@@ -96,11 +96,10 @@ export const enMessages = {
       <br />
       <p className="mt-2">
         When you contact me via the contact form or email, the submitted data is
-        processed solely for handling your request. The data is transmitted via
-        Namecheap Inc., partially stored on servers in the USA, in compliance
-        with the EU Standard Contractual Clauses. The legal basis is Art.
-        6(1)(f) GDPR (legitimate interest). Data is deleted when no longer
-        required.
+        processed solely for handling your request. The data is processed by
+        Namecheap Inc., partially on servers in the USA, in compliance with the
+        EU Standard Contractual Clauses. The legal basis is Art. 6(1)(f) GDPR
+        (legitimate interest). Data is deleted when no longer required.
       </p>
       <br />
       <strong className="my-2">Hosting</strong>
@@ -115,13 +114,13 @@ export const enMessages = {
       <br />
       <p className="mt-2">
         Links to GitHub or LinkedIn redirect you to the respective platforms.
-        The respective platform’s privacy policy applies.
+        Where the respective platform’s privacy policy applies.
       </p>
       <br />
       <strong className="my-2">Cookies & Tracking</strong>
       <br />
       <p className="mt-2">
-        This website does not use cookies or third-party tracking tools.
+        This website does not use cookies, tracking, or analytics tools.
       </p>
       <br />
       <strong className="my-2">Your Rights</strong>
