@@ -62,6 +62,85 @@ export const deMessages = {
   projectSubTitle:
     "Eine Auswahl aktueller Arbeiten, die meine Fähigkeiten und Kreativität präsentieren.",
 
+  footerImprint: "Impressum",
+  footerPrivacy: "Datenschutz",
+
+  imprintNotice: () => (
+    <>
+      <strong>Hinweis</strong>
+      <br />
+      <p className="mt-2">
+        Diese Website ist ein persönliches Portfolio-Projekt, das zu Bildungs-
+        und Selbstdarstellungszwecken erstellt wurde.
+        <br />
+        <br />
+        Die Inhalte dieses Portfolios wurden mit größter Sorgfalt erstellt. Für
+        die Richtigkeit, Vollständigkeit und Aktualität kann jedoch keine Gewähr
+        übernommen werden. Alle Inhalte, Designs und der Code dieser Website
+        wurden vom Betreiber erstellt, sofern nicht anders angegeben. Marken und
+        Logos Dritter bleiben Eigentum ihrer jeweiligen Inhaber.
+        <br />
+        <br />
+        Bei Fragen oder Anliegen können Sie mich jederzeit per E-Mail
+        kontaktieren oder das Kontaktformular auf dieser Website nutzen.
+      </p>
+    </>
+  ),
+
+  imprintText1: "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
+  imprintText2: "Anschrift wie oben",
+  imprintText3: "Angaben gemäß § 5 Digitale-Dienste-Gesetz",
+  imprintContact: "Kontakt",
+
+  privacyText: () => (
+    <>
+      <strong className="my-2">Kontaktformular & E-Mail</strong>
+      <br />
+      <p className="mt-2">
+        Wenn Sie mich über das Kontaktformular oder per E-Mail kontaktieren,
+        werden die von Ihnen eingegebenen Daten ausschließlich zur Bearbeitung
+        Ihrer Anfrage verarbeitet. Die Daten werden über Namecheap Inc.,
+        übertragen, teilweise auf Servern in den USA, unter Einhaltung der
+        EU-Standardvertragsklauseln. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f
+        DSGVO (berechtigtes Interesse). Die Daten werden gelöscht, sobald sie
+        für die Bearbeitung Ihrer Anfrage nicht mehr erforderlich sind.
+      </p>
+      <br />
+      <strong className="my-2">Hosting</strong>
+      <br />
+      <p className="mt-2">
+        Diese Website wird bei Vercel Inc., USA, gehostet. Technisch notwendige
+        Daten (z. B. IP-Adressen) können dort zur Bereitstellung der Website
+        verarbeitet werden. Vercel ist nach dem Data Privacy Framework (DPF)
+        zertifiziert.
+      </p>
+      <br />
+      <strong className="my-2">Externe Links</strong>
+      <br />
+      <p className="mt-2">
+        Links zu GitHub oder LinkedIn leiten Sie zu den jeweiligen Plattformen
+        weiter. Dort gelten die Datenschutzbestimmungen des jeweiligen
+        Anbieters.
+      </p>
+      <br />
+      <strong className="my-2">Cookies & Tracking</strong>
+      <br />
+      <p className="mt-2">
+        Diese Website verwendet keine Cookies oder Drittanbieter-Tracking-Tools.
+      </p>
+      <br />
+      <strong className="my-2">Ihre Rechte</strong>
+      <br />
+      <p className="mt-2">
+        Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung
+        der Verarbeitung, Widerspruch und Datenübertragbarkeit. Wenden Sie sich
+        hierzu jederzeit an die im Impressum angegebenen Kontaktdaten. Zudem
+        steht Ihnen ein Beschwerderecht bei der zuständigen Datenschutzbehörde
+        zu.
+      </p>
+    </>
+  ),
+
   projects: {
     imageTool: {
       title: "Bildverarbeitungstool: Schwarz-Weiß-Filter",

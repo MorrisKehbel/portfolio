@@ -9,6 +9,7 @@ import { Links } from "./Links";
 import { Contact } from "./Contact";
 import { TechStack } from "./TechStack";
 import { Settings } from "./Settings";
+import { Footer } from "./Footer";
 
 export {
   GridLayout,
@@ -20,4 +21,5 @@ export {
   Contact,
   TechStack,
   Settings,
+  Footer,
 };

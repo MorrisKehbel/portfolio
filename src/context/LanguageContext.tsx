@@ -44,11 +44,19 @@ interface Messages {
   techNew: string;
   projectSubTitle: string;
   projectTitle: () => React.ReactNode;
+  footerImprint: string;
+  footerPrivacy: string;
+  imprintNotice: () => React.ReactNode;
+  imprintText1: string;
+  imprintText2: string;
+  imprintText3: string;
+  imprintContact: string;
+  privacyText: () => React.ReactNode;
   projects: Projects;
 }
 
 const LanguageContext = createContext<LanguageContextProps | undefined>(
-  undefined
+  undefined,
 );
 
 export const LanguageProvider = ({
@@ -86,7 +94,7 @@ export const LanguageProvider = ({
       history.replaceState(
         null,
         "",
-        window.location.pathname + window.location.search
+        window.location.pathname + window.location.search,
       );
     }
   };

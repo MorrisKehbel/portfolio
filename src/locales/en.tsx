@@ -60,6 +60,81 @@ export const enMessages = {
   projectSubTitle:
     "A selection of recent work showcasing my skills and creativity.",
 
+  footerImprint: "Imprint",
+  footerPrivacy: "Privacy Policy",
+
+  imprintNotice: () => (
+    <>
+      <strong className="mb-2">Notice</strong>
+      <br />
+      <p className="mt-2">
+        This website is a personal portfolio project created for educational and
+        self-presentation purposes.
+        <br />
+        <br />
+        The contents of this portfolio were created with great care. However, no
+        guarantee is given for the accuracy, completeness, or timeliness of the
+        information. All content, design, and code on this website were created
+        by the site owner unless otherwise noted. Third-party trademarks and
+        logos remain the property of their respective owners.
+        <br />
+        <br />
+        If you have any questions or concerns, you can contact me at any time
+        via email or by using the contact form on this website.
+      </p>
+    </>
+  ),
+
+  imprintText1: "Responsible for content pursuant to Section 18 (2) MStV",
+  imprintText2: "Address as stated above",
+  imprintText3: "Information pursuant to Section 5 DDG (Germany)",
+  imprintContact: "Contact",
+
+  privacyText: () => (
+    <>
+      <strong className="my-2">Contact Form & Email</strong>
+      <br />
+      <p className="mt-2">
+        When you contact me via the contact form or email, the submitted data is
+        processed solely for handling your request. The data is transmitted via
+        Namecheap Inc., partially stored on servers in the USA, in compliance
+        with the EU Standard Contractual Clauses. The legal basis is Art.
+        6(1)(f) GDPR (legitimate interest). Data is deleted when no longer
+        required.
+      </p>
+      <br />
+      <strong className="my-2">Hosting</strong>
+      <br />
+      <p className="mt-2">
+        This website is hosted by Vercel Inc., USA. Personal data (e.g., IP
+        addresses) may be processed there for technical delivery of the website.
+        Vercel is certified under the Data Privacy Framework (DPF).
+      </p>
+      <br />
+      <strong className="my-2">External Links</strong>
+      <br />
+      <p className="mt-2">
+        Links to GitHub or LinkedIn redirect you to the respective platforms.
+        The respective platform’s privacy policy applies.
+      </p>
+      <br />
+      <strong className="my-2">Cookies & Tracking</strong>
+      <br />
+      <p className="mt-2">
+        This website does not use cookies or third-party tracking tools.
+      </p>
+      <br />
+      <strong className="my-2">Your Rights</strong>
+      <br />
+      <p className="mt-2">
+        You have the right to access, correct, delete, restrict processing,
+        object, and data portability. You can exercise these rights at any time
+        via the contact details in the imprint. You also have the right to lodge
+        a complaint with the relevant data protection authority.
+      </p>
+    </>
+  ),
+
   projects: {
     imageTool: {
       title: "Image Tool: Black & White Processing",

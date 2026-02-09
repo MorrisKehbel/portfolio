@@ -52,3 +52,51 @@ textarea::placeholder {
   border: 2px solid transparent;
   background-clip: content-box;
 }
+
+/* Print styles (only when a legal modal is open) */
+@media print {
+  body:has(.legal-modal-panel) > *:not(#legal-modal-root) {
+    display: none !important;
+  }
+
+  body:has(.legal-modal-panel) {
+    overflow: visible !important;
+    padding-right: 0 !important;
+  }
+
+  body:has(.legal-modal-panel) #legal-modal-root,
+  body:has(.legal-modal-panel) #legal-modal-root > * {
+    position: static !important;
+    overflow: visible !important;
+    display: block !important;
+    opacity: 1 !important;
+  }
+
+  .legal-modal-backdrop {
+    display: none !important;
+  }
+
+  .legal-modal-panel {
+    position: static !important;
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    outline: none !important;
+    transform: none !important;
+    padding: 0 !important;
+    background: white !important;
+    color: black !important;
+    border-radius: 0 !important;
+  }
+
+  body:has(.legal-modal-panel) #legal-modal-root * {
+    color: black !important;
+  }
+
+  .legal-modal-close {
+    display: none !important;
+  }
+}
