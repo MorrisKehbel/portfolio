@@ -67,20 +67,19 @@ export const deMessages = {
 
   imprintNotice: () => (
     <>
-      <strong>Hinweis</strong>
-      <br />
-      <p className="mt-2">
+      <h3 className="mb-2 font-bold">Hinweis</h3>
+      <p>
         Diese Website ist ein persönliches Portfolio-Projekt, das zu Bildungs-
         und Selbstdarstellungszwecken erstellt wurde.
-        <br />
-        <br />
+      </p>
+      <p>
         Die Inhalte dieses Portfolios wurden mit größter Sorgfalt erstellt. Für
         die Richtigkeit, Vollständigkeit und Aktualität kann jedoch keine Gewähr
         übernommen werden. Alle Inhalte, Designs und der Code dieser Website
         wurden vom Betreiber erstellt, sofern nicht anders angegeben. Marken und
         Logos Dritter bleiben Eigentum ihrer jeweiligen Inhaber.
-        <br />
-        <br />
+      </p>
+      <p>
         Bei Fragen oder Anliegen können Sie mich jederzeit per E-Mail
         kontaktieren oder das Kontaktformular auf dieser Website nutzen.
       </p>
@@ -94,51 +93,52 @@ export const deMessages = {
 
   privacyText: () => (
     <>
-      <strong className="my-2">Kontaktformular & E-Mail</strong>
-      <br />
-      <p className="mt-2">
-        Wenn Sie mich über das Kontaktformular oder per E-Mail kontaktieren,
-        werden die von Ihnen eingegebenen Daten ausschließlich zur Bearbeitung
-        Ihrer Anfrage verarbeitet. Die Verarbeitung erfolgt durch Namecheap
-        Inc., teilweise auf Servern in den USA, unter Einhaltung der
-        EU-Standardvertragsklauseln. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f
-        DSGVO (berechtigtes Interesse). Die Daten werden gelöscht, sobald sie
-        für die Bearbeitung Ihrer Anfrage nicht mehr erforderlich sind.
-      </p>
-      <br />
-      <strong className="my-2">Hosting</strong>
-      <br />
-      <p className="mt-2">
-        Diese Website wird bei Vercel Inc., USA, gehostet. Technisch notwendige
-        Daten (z. B. IP-Adressen) können dort zur Bereitstellung der Website
-        verarbeitet werden. Vercel ist nach dem Data Privacy Framework (DPF)
-        zertifiziert.
-      </p>
-      <br />
-      <strong className="my-2">Externe Links</strong>
-      <br />
-      <p className="mt-2">
-        Links zu GitHub oder LinkedIn leiten Sie zu den jeweiligen Plattformen
-        weiter. Dort gelten die Datenschutzbestimmungen des jeweiligen
-        Anbieters.
-      </p>
-      <br />
-      <strong className="my-2">Cookies & Tracking</strong>
-      <br />
-      <p className="mt-2">
-        Diese Website verwendet keine Cookies und keine Tracking- oder
-        Analyse-Tools.
-      </p>
-      <br />
-      <strong className="my-2">Ihre Rechte</strong>
-      <br />
-      <p className="mt-2">
-        Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung
-        der Verarbeitung, Widerspruch und Datenübertragbarkeit. Wenden Sie sich
-        hierzu jederzeit an die im Impressum angegebenen Kontaktdaten. Zudem
-        steht Ihnen ein Beschwerderecht bei der zuständigen Datenschutzbehörde
-        zu.
-      </p>
+      <div>
+        <h3 className="mb-2 font-bold">Kontaktformular & E-Mail</h3>
+        <p>
+          Wenn Sie mich über das Kontaktformular oder per E-Mail kontaktieren,
+          werden die von Ihnen eingegebenen Daten ausschließlich zur Bearbeitung
+          Ihrer Anfrage verarbeitet. Die Verarbeitung erfolgt durch Namecheap
+          Inc., teilweise auf Servern in den USA, unter Einhaltung der
+          EU-Standardvertragsklauseln. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f
+          DSGVO (berechtigtes Interesse). Die Daten werden gelöscht, sobald sie
+          für die Bearbeitung Ihrer Anfrage nicht mehr erforderlich sind.
+        </p>
+      </div>
+      <div>
+        <h3 className="mb-2 font-bold">Hosting</h3>
+        <p>
+          Diese Website wird bei Vercel Inc., USA, gehostet. Technisch
+          notwendige Daten (z. B. IP-Adressen) können dort zur Bereitstellung
+          der Website verarbeitet werden. Vercel ist nach dem Data Privacy
+          Framework (DPF) zertifiziert.
+        </p>
+      </div>
+      <div>
+        <h3 className="mb-2 font-bold">Externe Links</h3>
+        <p>
+          Links zu GitHub oder LinkedIn leiten Sie zu den jeweiligen Plattformen
+          weiter. Dort gelten die Datenschutzbestimmungen des jeweiligen
+          Anbieters.
+        </p>
+      </div>
+      <div>
+        <h3 className="mb-2 font-bold">Cookies & Tracking</h3>
+        <p>
+          Diese Website verwendet keine Cookies und keine Tracking- oder
+          Analyse-Tools.
+        </p>
+      </div>
+      <div>
+        <h3 className="mb-2 font-bold">Ihre Rechte</h3>
+        <p>
+          Sie haben das Recht auf Auskunft, Berichtigung, Löschung,
+          Einschränkung der Verarbeitung, Widerspruch und Datenübertragbarkeit.
+          Wenden Sie sich hierzu jederzeit an die im Impressum angegebenen
+          Kontaktdaten. Zudem steht Ihnen ein Beschwerderecht bei der
+          zuständigen Datenschutzbehörde zu.
+        </p>
+      </div>
     </>
   ),
 

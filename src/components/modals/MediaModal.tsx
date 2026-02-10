@@ -23,15 +23,20 @@ export const MediaModal = ({
 }: MediaModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
-  // prevent background scroll
+  // prevent background scroll + compensate scrollbar width
   useEffect(() => {
     if (selectedMediaIndex !== null) {
+      const scrollbarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
       document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
     } else {
       document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
     }
     return () => {
       document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
     };
   }, [selectedMediaIndex]);
 
@@ -68,12 +73,20 @@ export const MediaModal = ({
       }
       if (e.key === "ArrowLeft") {
         setSelectedMediaIndex((prev) =>
-          prev === null ? null : prev === 0 ? currentMedia.length - 1 : prev - 1
+          prev === null
+            ? null
+            : prev === 0
+              ? currentMedia.length - 1
+              : prev - 1,
         );
       }
       if (e.key === "ArrowRight") {
         setSelectedMediaIndex((prev) =>
-          prev === null ? null : prev === currentMedia.length - 1 ? 0 : prev + 1
+          prev === null
+            ? null
+            : prev === currentMedia.length - 1
+              ? 0
+              : prev + 1,
         );
       }
     };
@@ -82,23 +95,30 @@ export const MediaModal = ({
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [selectedMediaIndex, currentMedia.length, setSelectedMediaIndex]);
 
-  if (selectedMediaIndex === null || !currentMedia[selectedMediaIndex])
-    return null;
-
-  const current = currentMedia[selectedMediaIndex];
+  const isOpen =
+    selectedMediaIndex !== null && !!currentMedia[selectedMediaIndex];
 
   return (
     <AnimatePresence>
-      {selectedMediaIndex !== null && currentMedia[selectedMediaIndex] && (
+      {isOpen && (
         <motion.div
           ref={modalRef}
           tabIndex={-1}
-          className="fixed inset-0 bg-black/95 flex items-center justify-center z-50"
+          className="fixed inset-0 flex items-center justify-center z-50"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={() => setSelectedMediaIndex(null)}
         >
+          {/* backdrop */}
+          <motion.div
+            className="absolute inset-0 bg-black/60"
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(4px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            transition={{ duration: 0.5 }}
+          />
+
           {/* close button */}
           <button
             onClick={() => setSelectedMediaIndex(null)}
@@ -112,7 +132,7 @@ export const MediaModal = ({
             onClick={(e) => {
               e.stopPropagation();
               setSelectedMediaIndex((prev) =>
-                prev === 0 ? currentMedia.length - 1 : prev! - 1
+                prev === 0 ? currentMedia.length - 1 : prev! - 1,
               );
             }}
             disabled={selectedMediaIndex === null}
@@ -126,7 +146,7 @@ export const MediaModal = ({
             onClick={(e) => {
               e.stopPropagation();
               setSelectedMediaIndex((prev) =>
-                prev === currentMedia.length - 1 ? 0 : prev! + 1
+                prev === currentMedia.length - 1 ? 0 : prev! + 1,
               );
             }}
             disabled={selectedMediaIndex === null}
@@ -142,7 +162,7 @@ export const MediaModal = ({
             exit={{ scale: 0.8, opacity: 0 }}
             transition={{ duration: 0.3 }}
             onClick={(e) => e.stopPropagation()}
-            className="flex items-center justify-center"
+            className="relative z-10 flex items-center justify-center"
           >
             {currentMedia[selectedMediaIndex].type === "video" ? (
               <video
@@ -159,10 +179,38 @@ export const MediaModal = ({
                 width={2560}
                 height={1080}
                 className="object-contain max-w-[85vw] max-h-[90vh] w-auto h-auto rounded-xl select-none"
+                unoptimized
                 priority
               />
             )}
           </motion.div>
+
+          {/* preload adjacent images */}
+          {currentMedia.length > 1 &&
+            [
+              selectedMediaIndex === 0
+                ? currentMedia.length - 1
+                : selectedMediaIndex - 1,
+              selectedMediaIndex === currentMedia.length - 1
+                ? 0
+                : selectedMediaIndex + 1,
+            ]
+              .filter(
+                (i) =>
+                  i !== selectedMediaIndex && currentMedia[i]?.type === "image",
+              )
+              .map((i) => (
+                <Image
+                  key={`preload-${i}`}
+                  src={currentMedia[i].src}
+                  alt=""
+                  width={1920}
+                  height={1080}
+                  unoptimized
+                  priority
+                  className="absolute w-0 h-0 opacity-0 pointer-events-none"
+                />
+              ))}
         </motion.div>
       )}
     </AnimatePresence>
