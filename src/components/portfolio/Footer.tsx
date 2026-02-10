@@ -71,7 +71,7 @@ export const Footer = () => {
       >
         <section className="space-y-6 text-sm leading-relaxed">
           <div>
-            <h2 className="mb-2 font-medium">{messages.imprintText3}</h2>
+            <h3 className="mb-2 font-bold">{messages.imprintText3}</h3>
             <p data-nosnippet>
               Morris Kehbel
               <br />
@@ -84,7 +84,7 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h2 className="mb-2 font-medium">{messages.imprintContact}</h2>
+            <h3 className="mb-2 font-bold">{messages.imprintContact}</h3>
             <p>
               E-Mail:{" "}
               <a
@@ -97,7 +97,7 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h2 className="mb-2 font-medium">{messages.imprintText1}</h2>
+            <h3 className="mb-2 font-bold">{messages.imprintText1}</h3>
             <p>
               Morris Kehbel
               <br />
@@ -105,7 +105,7 @@ export const Footer = () => {
             </p>
           </div>
 
-          <div className="pt-4 border-t border-text/10">
+          <div className="pt-4 border-t border-text/10 space-y-3">
             {messages.imprintNotice()}
           </div>
         </section>
@@ -116,7 +116,9 @@ export const Footer = () => {
         onClose={() => openModal(null)}
         title={messages.footerPrivacy}
       >
-        <div>{messages.privacyText()}</div>
+        <section className="space-y-6 text-sm leading-relaxed">
+          {messages.privacyText()}
+        </section>
       </LegalModal>
     </>
   );

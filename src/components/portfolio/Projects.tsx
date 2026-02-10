@@ -314,7 +314,7 @@ export const Projects = () => {
         style={{
           overflowAnchor: "none",
         }}
-        className="xl:min-h-210 xl:max-h-[66vh] super:min-h-92.5 super:max-h-[41vh] ultra:min-h-147.5 ultra:max-h-[44vh] overflow-auto overscroll-contain scrollbar-custom pl-2"
+        className="xl:min-h-210 xl:max-h-[66vh] super:min-h-92.5 super:max-h-[41vh] ultra:min-h-147.5 ultra:max-h-[44vh] overflow-auto super:overscroll-contain scrollbar-custom pl-2"
         onMouseEnter={() => setHoveredTech(null)}
       >
         {PROJECTS.map((p, i) => {
@@ -536,6 +536,7 @@ export const Projects = () => {
                                     muted
                                     autoPlay
                                     playsInline
+                                    preload="metadata"
                                     className="object-cover w-full h-full rounded-lg select-none"
                                   />
                                 </motion.button>
