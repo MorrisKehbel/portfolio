@@ -143,6 +143,12 @@ export const deMessages = {
   ),
 
   projects: {
+    frontendDesign: {
+      title: "Frond-End: Fokus auf Design",
+      description: "React.js, Tailwind, GSAP, Three.js, Tanstack-Router",
+      details:
+        "Dieser Hub dient als mein digitales Atelier für experimentelles Frontend-Engineering und visuelles Storytelling, in dem ich den Fokus rein auf UI/UX und Motion Design lege. Die Sammlung reicht von vollständigen Landing Pages bis hin zu einzelnen UI-Komponenten und umfasst Experimente mit KI Video und Bild generierung, dabei teste ich gezielt Prompting-Strategien, um maßgeschneiderte Assets für verschiedenste Anwendungsfälle zu erstellen.",
+    },
     imageTool: {
       title: "Bildverarbeitungstool: Schwarz-Weiß-Filter",
       description: "Ruby on Rails, JavaScript, Bootstrap, Chart.js",

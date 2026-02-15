@@ -64,6 +64,27 @@ export const PROJECTS_DATA = [
     ],
   },
   {
+    key: "frontendDesign",
+    href: "https://frontend-design-hub.onrender.com",
+    github: "https://github.com/MorrisKehbel/frontend_design_hub",
+    images: ["/projects/frontend_hub/frontend_hub-1.webp"],
+    techStack: [
+      "js",
+      "html5",
+      "typescript",
+      "css3",
+      "react",
+      "tailwindcss",
+
+      "vitejs",
+      "render",
+      "git",
+      "github",
+      "npm",
+      "vscode",
+    ],
+  },
+  {
     key: "imageTool",
     href: "https://image-tool-1.onrender.com/",
     github: "https://github.com/MorrisKehbel/image_tool",
