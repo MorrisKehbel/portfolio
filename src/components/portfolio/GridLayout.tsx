@@ -120,7 +120,7 @@ export const GridLayout = () => {
           <Card className="relative aspect-square border-2 border-white/5 overflow-hidden flex justify-center items-end">
             <div className="absolute inset-4 rounded-xl border-5 border-text/10 pointer-events-none"></div>
             <Image
-              src="/me.png"
+              src="/me.webp"
               alt="My Portrait"
               fill
               sizes="(max-width: 768px) 90vw, 

@@ -133,6 +133,12 @@ export const enMessages = {
   ),
 
   projects: {
+    frontendDesign: {
+      title: "Front End Design: Focus on Aesthetics",
+      description: "React.js, Tailwind, GSAP, Three.js, Tanstack-Router",
+      details:
+        "This hub serves as my digital studio for experimental frontend engineering and visual storytelling, where I focus purely on UI/UX and motion design. The collection ranges from complete landing pages to isolated UI components and includes active experimentation with AI video and image generation, testing prompting strategies to create custom assets for diverse applications.",
+    },
     imageTool: {
       title: "Image Tool: Black & White Processing",
       description: "Ruby on Rails, JavaScript, Bootstrap, Chart.js",
