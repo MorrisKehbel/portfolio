@@ -64,11 +64,11 @@ export const LanguageProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [language, setLanguageState] = useState<Language>("en");
+  const [language, setLanguageState] = useState<Language>("de");
   const messages = language === "en" ? enMessages : deMessages;
 
   useEffect(() => {
-    let initialLang: Language = "en";
+    let initialLang: Language = "de";
 
     // 1. Url Hash check
     const hashLang = window.location.hash.replace("#", "") as Language;
