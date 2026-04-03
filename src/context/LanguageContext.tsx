@@ -71,12 +71,12 @@ export const LanguageProvider = ({
     let initialLang: Language = "de";
 
     // 1. Url Hash check
-    const hashLang = window.location.hash.replace("#", "") as Language;
+    const hashLang = window.location.hash.replace("#", "");
     if (hashLang === "de" || hashLang === "en") {
       initialLang = hashLang;
     } else {
       // 2. LocalStorage check
-      const storedLang = localStorage.getItem("lang") as Language | null;
+      const storedLang = localStorage.getItem("lang");
       if (storedLang === "de" || storedLang === "en") {
         initialLang = storedLang;
       }

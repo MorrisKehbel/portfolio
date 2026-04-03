@@ -30,10 +30,6 @@ interface Project {
 }
 
 type Media = { src: string; type: "image" | "video" };
-type MediaItem = {
-  src: string;
-  type: "image" | "video";
-};
 
 export const Projects = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -515,7 +511,7 @@ export const Projects = () => {
                                   whileFocus={{ scale: 1.05 }}
                                   onClick={(e) => {
                                     e.stopPropagation();
-                                    const mediaArray: MediaItem[] = [
+                                    const mediaArray: Media[] = [
                                       ...(p.videos?.map((v) => ({
                                         src: v,
                                         type: "video" as const,
@@ -552,7 +548,7 @@ export const Projects = () => {
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   const videoCount = p.videos?.length ?? 0;
-                                  const mediaArray: MediaItem[] = [
+                                  const mediaArray: Media[] = [
                                     ...(p.videos?.map((v) => ({
                                       src: v,
                                       type: "video" as const,

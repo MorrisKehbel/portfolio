@@ -45,7 +45,7 @@ const tech = [
   { name: "git", label: "Git" },
   { name: "github", label: "GitHub" },
   { name: "npm", label: "NPM" },
-  { name: "docker", label: "Docker", new: true },
+  { name: "docker", label: "Docker" },
   { name: "vercel", label: "Vercel" },
   { name: "render", label: "Render" },
   { name: "make", label: "Make", new: true },
@@ -124,7 +124,7 @@ export const TechStack = () => {
           return (
             <motion.button
               key={itemData.name}
-              className={`group relative flex flex-col items-center justify-center rounded-sm sm:rounded-md md:rounded-lg lg:rounded-xl p-2 md:p-2 ultra:p-4 cursor-pointer transition-all duration-300 ease-out bg-linear-to-br from-white/42 via-white/24 to-white/2 dark:from-white/16 dark:via-white/6 dark:to-white/2 select-none border border-white/10 dark:border-white/5 focus-visible:ring ring-blue-500/20 dark:ring-sky-700/40 active:scale-[0.97] active:ring active:md:ring-2 active:shadow-[0_15px_30px_-28px_rgba(0,0,0,0.8)]
+              className={`group relative flex flex-col items-center justify-center rounded-sm sm:rounded-md md:rounded-lg lg:rounded-xl p-2 md:p-2 ultra:p-4 cursor-pointer transition-all duration-300 ease-out bg-linear-to-br from-white/42 via-white/24 to-white/2 dark:from-white/16 dark:via-white/6 dark:to-white/2 select-none border border-white/10 dark:border-white/5 focus-visible:ring ring-blue-500/20 dark:ring-cyan-700/40 active:scale-[0.97] active:ring active:md:ring-2 active:shadow-[0_15px_30px_-28px_rgba(0,0,0,0.8)]
             ${
               isHighlighted
                 ? "ring md:ring-2 shadow-[0_15px_30px_-28px_rgba(0,0,0,0.8)]"
@@ -168,7 +168,7 @@ export const TechStack = () => {
               <p
                 className={`mt-1 sm:mt-2 md:mt-3 text-[10px] sm:text-xs ultra:text-sm font-medium group-hover:text-text transition-colors duration-400 text-center group-focus-visible:text-blue-500 dark:group-focus-visible:text-blue-400 group-active:text-blue-500 dark:group-active:text-blue-400 ${
                   isHighlighted
-                    ? "dark:text-cyan-400 text-cyan-600"
+                    ? "dark:text-cyan-500 text-cyan-600"
                     : "text-text/40"
                 }`}
               >
