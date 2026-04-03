@@ -5,15 +5,22 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RATE_LIMIT_MAX = 3;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
 
+const { SMTP_HOST, SMTP_USER, SMTP_PASS, CONTACT_EMAIL, SITE_URL } = process.env;
+if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS || !CONTACT_EMAIL || !SITE_URL) {
+  throw new Error(
+    "Missing required environment variables: SMTP_HOST, SMTP_USER, SMTP_PASS, CONTACT_EMAIL, SITE_URL",
+  );
+}
+
 const rateLimit = new Map<string, { count: number; reset: number }>();
 
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
+  host: SMTP_HOST,
   port: Number(process.env.SMTP_PORT) || 465,
   secure: true,
   auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
+    user: SMTP_USER,
+    pass: SMTP_PASS,
   },
 });
 
@@ -151,6 +158,11 @@ const buildHtmlEmail = (
 };
 
 export const POST = async (req: NextRequest) => {
+  const origin = req.headers.get("origin");
+  if (!origin || origin !== SITE_URL) {
+    return NextResponse.json({ success: false }, { status: 403 });
+  }
+
   const ip =
     req.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "unknown";
 
@@ -174,9 +186,9 @@ export const POST = async (req: NextRequest) => {
     const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
 
     await transporter.sendMail({
-      from: `"Portfolio Contact" <${process.env.SMTP_USER}>`,
+      from: `"Portfolio Contact" <${SMTP_USER}>`,
       replyTo: `"${sanitizeHeader(fullName)}" <${sanitizeHeader(email)}>`,
-      to: process.env.CONTACT_EMAIL,
+      to: CONTACT_EMAIL,
       subject: sanitizeHeader(`Neue Nachricht von ${fullName}`),
       text: buildTextEmail(fullName, email, company, message),
       html: buildHtmlEmail(fullName, safeEmail, safeCompany, safeMessage),
@@ -184,7 +196,10 @@ export const POST = async (req: NextRequest) => {
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error(err);
+    console.error(
+      "Contact form error:",
+      err instanceof Error ? err.message : "unknown error",
+    );
     return NextResponse.json({ success: false }, { status: 500 });
   }
 };

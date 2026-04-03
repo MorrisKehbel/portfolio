@@ -8,7 +8,7 @@ export const About = () => {
   const { messages, language } = useLanguage();
 
   return (
-    <div className="w-full h-full flex flex-col justify-between items-center p-2 rounded-xl ultra:rounded-2xl border border-text/40 gap-4 md:gap-2 lg:gap-0">
+    <div className="w-full h-full flex flex-col justify-between items-center p-2 rounded-xl ultra:rounded-2xl border border-text/20 gap-4 md:gap-2 lg:gap-0">
       <AnimatedText
         id={language}
         as="span"
