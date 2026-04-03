@@ -7,6 +7,7 @@ import {
   ReactNode,
   useEffect,
 } from "react";
+import { flushSync } from "react-dom";
 
 type DarkModeContextType = {
   darkMode: boolean;
@@ -16,6 +17,8 @@ type DarkModeContextType = {
 const DarkModeContext = createContext<DarkModeContextType | undefined>(
   undefined
 );
+
+type VT = { finished: Promise<void> };
 
 export const DarkModeProvider = ({ children }: { children: ReactNode }) => {
   const [darkMode, setDarkMode] = useState<boolean | null>(null);
@@ -35,7 +38,16 @@ export const DarkModeProvider = ({ children }: { children: ReactNode }) => {
   }, [darkMode]);
 
   const toggleDarkMode = () => {
-    setDarkMode((prev) => (prev === null ? true : !prev));
+    const next = darkMode === null ? true : !darkMode;
+
+    if (!("startViewTransition" in document)) {
+      setDarkMode(next);
+      return;
+    }
+
+    (document as Document & { startViewTransition: (cb: () => void) => VT }).startViewTransition(() => {
+      flushSync(() => setDarkMode(next));
+    });
   };
 
   if (darkMode === null) {
