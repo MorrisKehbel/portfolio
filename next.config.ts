@@ -1,8 +1,41 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  images: {
+    minimumCacheTTL: 31536000,
+  },
   async headers() {
     return [
+      {
+        // Next.js hashed assets — safe to cache forever
+        source: "/_next/static/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        // Public images — cache 7 days, revalidate in background
+        source: "/:path*(svg|jpg|jpeg|png|webp|gif|ico)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=604800, stale-while-revalidate=86400",
+          },
+        ],
+      },
+      {
+        // Fonts
+        source: "/:path*(woff|woff2)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
       {
         source: "/(.*)",
         headers: [

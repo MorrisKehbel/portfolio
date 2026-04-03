@@ -41,3 +41,9 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+# agents
+/.agents/
+/.claude/
+CLAUDE.MD
+skills-lock.json

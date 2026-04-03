@@ -129,6 +129,7 @@ export const GridLayout = () => {
          35vw"
               priority
               fetchPriority="high"
+              unoptimized
               className="object-cover filter grayscale-20 scale-110 translate-y-[-5%] translate-x-[1%] transition-all duration-1300 delay-300 select-none dark:brightness-75"
             />
           </Card>

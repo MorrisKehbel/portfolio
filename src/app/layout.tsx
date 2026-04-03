@@ -38,6 +38,15 @@ export default function RootLayout({
       data-theme="light"
       style={{ backgroundColor: "var(--color-neutral)" }}
     >
+      <head>
+        <link
+          rel="preload"
+          href="/me.webp"
+          as="image"
+          type="image/webp"
+          fetchPriority="high"
+        />
+      </head>
       <body>
         <Script id="theme-loader" strategy="beforeInteractive">
           {`
