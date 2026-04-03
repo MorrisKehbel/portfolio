@@ -102,7 +102,7 @@ export const Contact = () => {
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           maxLength={20}
-          className="p-4 rounded-lg h-10 ultra:h-13 bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base focus:outline-none focus:ring focus:bg-neutral/15 dark:focus:bg-neutral/65 focus:ring-text/40 focus:placeholder:opacity-60 dark:focus:ring-text/20 text-text shadow-inner border border-white/30 dark:border-white/10 transition-all w-full placeholder-text/50"
+          className="p-4 rounded-lg h-10 ultra:h-13 bg-neutral/20 dark:bg-neutral/70 text-sm ultra:text-base focus:outline-none focus:ring focus:bg-neutral/15 dark:focus:bg-neutral/65 focus:ring-text/40 focus:placeholder:opacity-60 dark:focus:ring-text/15 text-text shadow-inner border border-white/30 dark:border-white/10 transition-all w-full placeholder-text/50"
         />
 
         {/* Last Name */}
