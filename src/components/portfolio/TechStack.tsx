@@ -124,7 +124,7 @@ export const TechStack = () => {
           return (
             <motion.button
               key={itemData.name}
-              className={`group relative flex flex-col items-center justify-center rounded-sm sm:rounded-md md:rounded-lg lg:rounded-xl p-2 md:p-2 ultra:p-4 cursor-pointer transition-all duration-300 ease-out bg-linear-to-br from-white/42 via-white/24 to-white/2 dark:from-white/16 dark:via-white/6 dark:to-white/2 select-none border border-white/10 dark:border-white/5 focus-visible:ring ring-blue-500/20 dark:ring-cyan-700/40 active:scale-[0.97] active:ring active:md:ring-2 active:shadow-[0_15px_30px_-28px_rgba(0,0,0,0.8)]
+              className={`group relative flex flex-col items-center justify-center rounded-sm sm:rounded-md md:rounded-lg lg:rounded-xl p-2 md:p-2 ultra:p-4 cursor-pointer transition-all duration-300 ease-out bg-linear-to-br from-white/42 via-white/24 to-white/2 dark:from-white/10 dark:via-white/6 dark:to-white/2 select-none border border-white/10 dark:border-white/1 focus-visible:ring ring-blue-500/20 dark:ring-cyan-700/40 active:scale-[0.97] active:ring active:md:ring-2 active:shadow-[0_15px_30px_-28px_rgba(0,0,0,0.8)]
             ${
               isHighlighted
                 ? "ring md:ring-2 shadow-[0_15px_30px_-28px_rgba(0,0,0,0.8)]"
