@@ -13,9 +13,11 @@ export const Links = () => {
         href="https://github.com/morriskehbel"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex super:flex-col items-center justify-center gap-2 rounded-lg md:rounded-xl bg-secondary/20 p-4 text-text text-sm font-medium transition-colors duration-200 hover:bg-neutral hover:text-primary dark:hover:text-text select-none focus:ring ring-text focus:outline-none"
+        className="flex super:flex-col items-center justify-center gap-2 rounded-lg md:rounded-xl bg-white/35 dark:bg-secondary/20 p-4 text-text text-sm font-medium transition-colors duration-200 hover:bg-neutral hover:text-primary dark:hover:text-text select-none focus:ring ring-text focus:outline-none"
         onMouseEnter={() => setIsGithubHovered(true)}
         onMouseLeave={() => setIsGithubHovered(false)}
+        onTouchEnd={() => setIsGithubHovered(false)}
+        onTouchCancel={() => setIsGithubHovered(false)}
       >
         <Lottie
           animationData={githubIcon}
@@ -39,7 +41,7 @@ export const Links = () => {
         href="https://www.linkedin.com/in/morriskehbel/"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex super:flex-col items-center justify-center gap-2 rounded-lg md:rounded-xl bg-secondary/20 p-4 text-text text-sm font-medium transition-colors duration-200 hover:bg-neutral hover:text-primary dark:hover:text-text select-none focus:ring ring-text focus:outline-none"
+        className="flex super:flex-col items-center justify-center gap-2 rounded-lg md:rounded-xl bg-white/35 dark:bg-secondary/20 p-4 text-text text-sm font-medium transition-colors duration-200 hover:bg-neutral hover:text-primary dark:hover:text-text select-none focus:ring ring-text focus:outline-none"
       >
         <Lottie
           animationData={linkedinIcon}
